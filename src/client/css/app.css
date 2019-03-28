@@ -1,0 +1,13 @@
+html {
+  height: 100%;
+  -moz-box-shadow: inset 0 0 125px #000000;
+  -webkit-box-shadow: inset 0 0 125px #000000;
+  box-shadow: inset 0 0 125px #000000;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  text-align: center;
+  background-color: #4c4f54 !important;
+}
