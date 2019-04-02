@@ -30,5 +30,11 @@
     "comma-dangle": ["error", "never"],
     "global-require": "off",
     "no-nested-ternary": "off"
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
   }
 }
