@@ -7,7 +7,13 @@ const app = express();
 app.use(express.static("dist"));
 
 app.get("/api/getWeatherData", async (req, res) => {
-  let weatherData = await getWeatherData();
+  // TODO logging service?
+  let weatherData = null;
+  try {
+    weatherData = await getWeatherData();
+  } catch (err) {
+    console.log(err);
+  }
   res.send({ weatherData });
 });
 
