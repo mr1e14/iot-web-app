@@ -1,32 +1,34 @@
 import React from "react";
-import MaterialIcon from "./MaterialIcon";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import { MaterialIcon } from "./";
+import { WeatherWidget } from "./";
 
 const Layout = props => {
-  const { weatherData, classes } = props;
-  const temperature = weatherData ? parseInt(weatherData.temperature) : "";
-  const humidity = weatherData
-    ? parseInt(weatherData.humidity * 100) + "%"
-    : "";
+  const { classes, weatherData } = props;
 
-  return (
-    <div className={classes.root}>
-      <Grid container spacing={24}>
-        <Grid className={classes.child} item xs={12}>
-          <h1>{`Temp: ${temperature}, hum: ${humidity}`}</h1>
+  if (!weatherData) {
+    return <h1>Loading</h1>;
+  } else {
+    return (
+      <div className={classes.root}>
+        <Grid container spacing={24}>
+          <Grid className={classes.child} item xs={12}>
+            <h1>Hi</h1>
+            <WeatherWidget {...props} />
+          </Grid>
+          <Grid className={classes.child} item xs={12} sm={6}>
+            <Typography color="primary">
+              <span>xs=12 sm=6</span>
+            </Typography>
+          </Grid>
+          <Grid className={classes.child} item xs={12} sm={6}>
+            <MaterialIcon iconName="account_circle" />
+          </Grid>
         </Grid>
-        <Grid className={classes.child} item xs={12} sm={6}>
-          <Typography color="primary">
-            <span>xs=12 sm=6</span>
-          </Typography>
-        </Grid>
-        <Grid className={classes.child} item xs={12} sm={6}>
-          <MaterialIcon iconName="account_circle" />
-        </Grid>
-      </Grid>
-    </div>
-  );
+      </div>
+    );
+  }
 };
 
 export default Layout;
