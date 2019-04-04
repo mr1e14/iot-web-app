@@ -1,6 +1,6 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
-import WeatherIcon from "./WeatherIcon";
+import { WeatherIcon } from "./";
 
 const WeatherWidget = props => {
   const { weatherData } = props;
