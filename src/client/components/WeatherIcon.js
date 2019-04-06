@@ -32,8 +32,16 @@ const icons = {
 
 const WeatherIcon = props => {
   const icon = props.weatherData ? props.weatherData.icon : "defaultIcon";
-  const iconSize = matches("xs") ? "32px" : "48px";
-  return <img src={icons[icon]} height={iconSize} />;
+  const iconSize = matches("xs") ? "48px" : "64px";
+  return (
+    <img
+      style={{ marginRight: "0.5rem" }}
+      src={icons[icon]}
+      height={iconSize}
+      alt="weather-icon"
+      align="middle"
+    />
+  );
 };
 
 export default WeatherIcon;
