@@ -5,7 +5,7 @@ import Icon from "@material-ui/core/Icon";
 import matches from "../mediaQuery";
 
 const MaterialIcon = props => {
-  const iconSize = matches("xs") ? "md-36" : "md-48";
+  const iconSize = matches("xs") ? "md-48" : "md-64";
   return <Icon classes={{ root: iconSize }}>{props.iconName}</Icon>;
 };
 
