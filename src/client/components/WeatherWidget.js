@@ -8,7 +8,7 @@ const WeatherWidget = props => {
   const humidity = weatherData ? parseInt(weatherData.humidity * 100) : "";
   return (
     <React.Fragment>
-      <Typography color="secondary" component="span">
+      <Typography component="span">
         <WeatherIcon {...props} />
         <span>
           {temperature}°C / {humidity}%

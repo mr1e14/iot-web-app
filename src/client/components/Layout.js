@@ -1,11 +1,12 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { MaterialIcon } from "./";
 import { WeatherWidget } from "./";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import logo from "../img/logo.png";
+import lightIcon from "../img/light.png";
 
 const pageCentre = {
   position: "fixed",
@@ -26,7 +27,7 @@ const Layout = props => {
   } else {
     return (
       <Grid container className={classes.root}>
-        <Grid className={classes.child} item xs={12}>
+        <Grid className={classes.childGridCenter} item xs={12}>
           <img src={logo} alt="logo" />
         </Grid>
         <Grid
@@ -42,15 +43,31 @@ const Layout = props => {
             <MaterialIcon iconName="account_circle" />
           </Grid>
         </Grid>
+        <Grid className={classes.childGridCenter} item xs={12}>
+          <Typography variant="subtitle1">Smart devices</Typography>
+        </Grid>
         <Grid className={classes.childGridLeft} item xs={6}>
-          <Paper className={classes.paper1} elevation={1}>
-            <Typography>asaad</Typography>
-          </Paper>
+          <Button fullWidth={true} className={classes.button1} elevation={20}>
+            <Typography>Some text here</Typography>
+            <img src={lightIcon} />
+          </Button>
         </Grid>
         <Grid className={classes.childGridRight} item xs={6}>
-          <Paper className={classes.paper2} elevation={1}>
-            <Typography>of paper</Typography>
-          </Paper>
+          <Button fullWidth={true} className={classes.button2} elevation={17}>
+            <Typography>Some text here</Typography>
+            <img src={lightIcon} />
+          </Button>
+        </Grid>
+        <Grid className={classes.childGridLeft} item xs={6}>
+          <Button fullWidth={true} className={classes.button3} elevation={20}>
+            <Typography>Some text here</Typography> <img src={lightIcon} />
+          </Button>
+        </Grid>
+        <Grid className={classes.childGridRight} item xs={6}>
+          <Button fullWidth={true} className={classes.button4} elevation={17}>
+            <Typography>Some text here</Typography>
+            <img src={lightIcon} />
+          </Button>
         </Grid>
       </Grid>
     );

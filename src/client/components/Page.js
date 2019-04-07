@@ -10,21 +10,45 @@ import { Layout } from "./";
 
 const theme = createMuiTheme({
   palette: {
-    type: "dark",
     primary: { main: "#11cb5f" },
-    secondary: { main: "#52cafe" }
+    secondary: { main: "#52cafe" },
+    text: {
+      primary: "#ffffff",
+      secondary: "#52cafe"
+    }
   },
   typography: {
-    useNextVariants: true
+    useNextVariants: true,
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+    fontFamily: [
+      "-apple-system",
+      "BlinkMacSystemFont",
+      "\"Segoe UI\"",
+      "Roboto",
+      "\"Helvetica Neue\"",
+      "Arial",
+      "sans-serif",
+      "\"Apple Color Emoji\"",
+      "\"Segoe UI Emoji\"",
+      "\"Segoe UI Symbol\""
+    ].join(","),
+    subtitle1: {
+      fontStyle: "italic"
+    }
   }
 });
 
 const styles = theme => ({
   "@global": {
-    span: {
-      fontSize: 18,
+    html: {
+      fontSize: 16,
       [theme.breakpoints.up("sm")]: {
-        fontSize: 22
+        fontSize: 18
+      },
+      [theme.breakpoints.up("md")]: {
+        fontSize: 20
       }
     }
   },
@@ -33,8 +57,7 @@ const styles = theme => ({
     textAlign: "center"
   },
   childGridLeft: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 4,
     paddingLeft: theme.spacing.unit * 4,
     paddingRight: theme.spacing.unit,
     [theme.breakpoints.up("md")]: {
@@ -47,8 +70,7 @@ const styles = theme => ({
     }
   },
   childGridRight: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 4,
     paddingRight: theme.spacing.unit * 4,
     paddingLeft: theme.spacing.unit,
     [theme.breakpoints.up("md")]: {
@@ -60,11 +82,32 @@ const styles = theme => ({
       paddingRight: theme.spacing.unit * 16
     }
   },
-  paper1: {
-    backgroundColor: "#64dd17"
+  childGridCenter: {
+    paddingBottom: theme.spacing.unit * 4
   },
-  paper2: {
-    backgroundColor: "#d500f9"
+  button1: {
+    backgroundColor: "#11cb5f",
+    "&:hover": {
+      backgroundColor: "#bdbdbd"
+    }
+  },
+  button2: {
+    backgroundColor: "#9c27b0",
+    "&:hover": {
+      backgroundColor: "#bdbdbd"
+    }
+  },
+  button3: {
+    backgroundColor: "#2196f3",
+    "&:hover": {
+      backgroundColor: "#bdbdbd"
+    }
+  },
+  button4: {
+    backgroundColor: "#ff5722",
+    "&:hover": {
+      backgroundColor: "#bdbdbd"
+    }
   }
 });
 
