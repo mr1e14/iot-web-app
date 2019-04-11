@@ -1,11 +1,10 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import { MaterialIcon, WeatherWidget, Devices } from "./";
+import WeatherWidget from "./WeatherWidget";
+import MaterialIcon from "./MaterialIcon";
+import Devices from "./Devices";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import logo from "../img/logo.png";
-import lightIcon from "../img/light.png";
 
 const pageCentre = {
   position: "fixed",
