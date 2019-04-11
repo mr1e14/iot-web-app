@@ -6,7 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import { Layout } from "./";
+import Layout from "./Layout";
 
 const theme = createMuiTheme({
   palette: {
@@ -33,10 +33,7 @@ const theme = createMuiTheme({
       "\"Apple Color Emoji\"",
       "\"Segoe UI Emoji\"",
       "\"Segoe UI Symbol\""
-    ].join(","),
-    subtitle1: {
-      fontStyle: "italic"
-    }
+    ].join(",")
   }
 });
 
@@ -55,6 +52,14 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     textAlign: "center"
+  },
+  child: {
+    paddingBottom: theme.spacing.unit * 2,
+    paddingLeft: theme.spacing.unit * 4,
+    paddingRight: theme.spacing.unit * 4,
+    [theme.breakpoints.up("md")]: {
+      paddingBottom: theme.spacing.unit * 4
+    }
   },
   childGridLeft: {
     paddingBottom: theme.spacing.unit * 4,
