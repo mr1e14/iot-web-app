@@ -1,57 +1,74 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import lightIcon from "../img/light.png";
 import thermometerIcon from "../img/thermometer.png";
 import humidityIcon from "../img/humidity.png";
+import motionSensorIcon from "../img/motion-sensor.png";
 import matches from "../mediaQuery";
+import DeviceButton from "./DeviceButton";
 
 const Devices = props => {
   const { classes } = props;
 
-  const imageMargin = matches("xs") ? "0.25rem" : "1rem";
+  const isXs = matches("xs");
 
   return (
     <React.Fragment>
       <Grid className={classes.childGridCenter} item xs={12}>
-        <Typography variant="subtitle1">Smart devices</Typography>
+        <Typography variant="h6">Smart devices</Typography>
       </Grid>
-      <Grid className={classes.childGridLeft} item xs={6}>
-        <Button fullWidth={true} className={classes.button1} elevation={20}>
-          <Typography>Manage lights</Typography>
-          <img
-            src={lightIcon}
-            alt="light-icon"
-            style={{ marginLeft: imageMargin }}
-          />
-        </Button>
+      <Grid
+        className={isXs ? classes.child : classes.childGridLeft}
+        item
+        xs={12}
+        sm={6}
+      >
+        <DeviceButton
+          className={classes.button1}
+          text="Manage lights"
+          iconSrc={lightIcon}
+          iconAlt="light-icon"
+        />
       </Grid>
-      <Grid className={classes.childGridRight} item xs={6}>
-        <Button fullWidth={true} className={classes.button2} elevation={17}>
-          <img
-            src={thermometerIcon}
-            alt="thermometer-icon"
-            style={{ marginRight: imageMargin }}
-          />
-          <Typography>House avg. 21°C</Typography>
-        </Button>
+      <Grid
+        className={isXs ? classes.child : classes.childGridRight}
+        item
+        xs={12}
+        sm={6}
+      >
+        <DeviceButton
+          className={classes.button3}
+          text="5 minutes ago"
+          iconSrc={motionSensorIcon}
+          iconAlt="motion-sensor-icon"
+        />
       </Grid>
-      <Grid className={classes.childGridLeft} item xs={6}>
-        <Button fullWidth={true} className={classes.button3} elevation={20}>
-          <Typography>Some text here</Typography>
-          <img src={lightIcon} style={{ marginLeft: imageMargin }} />
-        </Button>
+      <Grid
+        className={isXs ? classes.child : classes.childGridLeft}
+        item
+        xs={12}
+        sm={6}
+      >
+        <DeviceButton
+          className={classes.button2}
+          text="House avg. 21°C"
+          iconSrc={thermometerIcon}
+          alt="thermometer-icon"
+        />
       </Grid>
-      <Grid className={classes.childGridRight} item xs={6}>
-        <Button fullWidth={true} className={classes.button4} elevation={17}>
-          <img
-            src={humidityIcon}
-            alt="humidity-icon"
-            style={{ marginRight: imageMargin }}
-          />
-          <Typography>House avg. 77%</Typography>
-        </Button>
+      <Grid
+        className={isXs ? classes.child : classes.childGridRight}
+        item
+        xs={12}
+        sm={6}
+      >
+        <DeviceButton
+          className={classes.button4}
+          text="House avg. 77%"
+          iconSrc={humidityIcon}
+          iconAlt="humidity-icon"
+        />
       </Grid>
     </React.Fragment>
   );
