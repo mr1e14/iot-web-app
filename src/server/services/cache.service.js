@@ -24,7 +24,7 @@ const getCache = (refreshAfterSeconds, deleteAfterSeconds, getValue) => {
   };
 
   nodeCache.on("expired", (key, value) => {
-    console.log(`Key: ${key}, Value: ${value} expired`);
+    console.log(`Key: ${key}, Value: ${JSON.stringify(value)} expired`);
     try {
       return getValue().then(newValue => {
         nodeCache.set(key, newValue);
@@ -32,7 +32,6 @@ const getCache = (refreshAfterSeconds, deleteAfterSeconds, getValue) => {
       });
     } catch (err) {
       console.log(err);
-      throw err;
     }
   });
 
