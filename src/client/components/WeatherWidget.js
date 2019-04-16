@@ -1,6 +1,6 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
-import { WeatherIcon } from "./";
+import WeatherIcon from "./WeatherIcon";
 
 const WeatherWidget = props => {
   const { weatherData } = props;
@@ -8,10 +8,10 @@ const WeatherWidget = props => {
   const humidity = weatherData ? parseInt(weatherData.humidity * 100) : "";
   return (
     <React.Fragment>
-      <WeatherIcon {...props} />
-      <Typography color="secondary">
+      <Typography component="span" variant="caption">
+        <WeatherIcon {...props} />
         <span>
-          {temperature}° | {humidity}%
+          {temperature}°C / {humidity}%
         </span>
       </Typography>
     </React.Fragment>

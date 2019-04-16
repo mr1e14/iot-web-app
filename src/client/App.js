@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Page } from "./components";
+import Page from "./components/Page";
 
 export default class App extends Component {
   state = { weatherData: null };
