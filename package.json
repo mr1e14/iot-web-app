@@ -22,7 +22,9 @@
     "react-dom": "^16.5.2",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
-    "typeface-roboto": "0.0.54"
+    "typeface-roboto": "0.0.54",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^3.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
