@@ -35,4 +35,20 @@ if (process.env.NODE_ENV !== "production") {
   );
 }
 
-module.exports = logger;
+const getLogger = moduleName => {
+  const info = (functionCall, message) => {
+    logger.info(`${moduleName} - ${functionCall} - ${message}`);
+  };
+  const warn = (functionCall, message) => {
+    logger.warn(`${moduleName} - ${functionCall} - ${message}`);
+  };
+  const error = (functionCall, message, error) => {
+    logger.error(
+      `${moduleName} - ${functionCall} - ${message} - ${error.stack}`
+    );
+  };
+
+  return { info, warn, error };
+};
+
+module.exports = getLogger;
