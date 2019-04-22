@@ -6,6 +6,7 @@ const {
   WEATHER_CACHE_REFRESH_AFTER_SECONDS,
   WEATHER_CACHE_DELETE_AFTER_SECONDS
 } = require("./config");
+const logger = require("./services/logging.service")("index");
 
 const app = express();
 
@@ -18,16 +19,20 @@ const weatherCache = getCache(
 app.use(express.static("dist"));
 
 app.get("/api/getWeatherData", async (req, res) => {
-  // TODO logging service?
+  logger.info("app.get/api/getWeatherData", "invoked");
   let weatherData = null;
   try {
-    weatherData = await weatherCache.get("data");
+    weatherData = await weatherCache.get("weatherData");
   } catch (err) {
-    console.log(err);
+    logger.error(
+      "app.get/api/getWeatherData",
+      "Failed to retrieve weather data",
+      err
+    );
   }
   res.send({ weatherData });
 });
 
 app.listen(process.env.PORT || 8080, () =>
-  console.log(`Listening on port ${process.env.PORT || 8080}!`)
+  logger.info("app.listen", `Listening on port ${process.env.PORT || 8080}!`)
 );

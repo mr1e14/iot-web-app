@@ -9,7 +9,6 @@ const breakpoints = {
 };
 
 const matches = size => {
-  console.log(useMediaQuery(breakpoints[size]));
   return useMediaQuery(breakpoints[size]);
 };
 
