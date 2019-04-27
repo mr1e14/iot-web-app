@@ -1,6 +1,6 @@
 const { DARK_SKY_URL, DARK_SKY_API_OPTIONS } = require("../config");
 const rp = require("request-promise-native");
-const logger = require("../services/logging.service")("dark-sky-api");
+const logger = require("../services/logging")("dark-sky-api");
 
 const getWeatherData = () => {
   logger.info("getWeatherData", "invoked");
