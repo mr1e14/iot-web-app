@@ -1,6 +1,4 @@
 import React from "react";
-import "../css/app.css";
-import "../css/material-ui-icons.css";
 import Icon from "@material-ui/core/Icon";
 import matches from "../mediaQuery";
 
