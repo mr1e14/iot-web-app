@@ -11,6 +11,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "jest ./src",
     "test:client": "jest ./src/client",
+    "test:server": "jest ./src/server",
     "test:coverage": "jest ./src --coverage",
     "test:watch": "jest ./src --watch"
   },
