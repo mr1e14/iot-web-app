@@ -5,7 +5,7 @@ import lightIcon from "../img/light.png";
 import thermometerIcon from "../img/thermometer.png";
 import humidityIcon from "../img/humidity.png";
 import motionSensorIcon from "../img/motion-sensor.png";
-import matches from "../mediaQuery";
+import matches from "./mediaQuery";
 import DeviceButton from "./DeviceButton";
 
 const Devices = props => {

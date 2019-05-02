@@ -2,10 +2,10 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { mount } from "enzyme";
 
-jest.mock("../../mediaQuery");
+jest.mock("../mediaQuery");
 
 import MaterialIcon from "../MaterialIcon";
-import matches from "../../mediaQuery";
+import matches from "../mediaQuery";
 
 describe("MaterialIcon", () => {
   let tree;
