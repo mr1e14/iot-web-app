@@ -1,12 +1,12 @@
 require("dotenv").config();
 const express = require("express");
 const { getWeatherData } = require("./connectors/dark-sky-api");
-const { getCache } = require("./services/cache.service");
+const { getCache } = require("./services/cache");
 const {
   WEATHER_CACHE_REFRESH_AFTER_SECONDS,
   WEATHER_CACHE_DELETE_AFTER_SECONDS
 } = require("./config");
-const logger = require("./services/logging.service")("index");
+const logger = require("./services/logging")("index");
 
 const app = express();
 

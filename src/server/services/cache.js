@@ -1,5 +1,5 @@
 const NodeCache = require("node-cache");
-const logger = require("./logging.service")("cache.service");
+const logger = require("./logging")("cache");
 
 const getCache = (refreshAfterSeconds, deleteAfterSeconds, getValue) => {
   const nodeCache = new NodeCache({
