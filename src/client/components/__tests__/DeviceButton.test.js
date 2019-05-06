@@ -38,7 +38,7 @@ describe("DeviceButton", () => {
       expect(wrapper.find(Button).length).toEqual(1);
     });
     it("has correct Button class", () => {
-      expect(wrapper.find(Button).prop("className")).toEqual("button1");
+      expect(wrapper.find(Button).hasClass("button1")).toEqual(true);
     });
     it("displays text related to a device", () => {
       expect(wrapper.find(Typography).text()).toBe("Manage lights");
