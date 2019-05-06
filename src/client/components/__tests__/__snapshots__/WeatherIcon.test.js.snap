@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WeatherIcon on larger devices renders correctly 1`] = `
+<img
+  align="middle"
+  alt="weather-icon"
+  height="64px"
+  style={
+    Object {
+      "marginRight": "0.5rem",
+    }
+  }
+/>
+`;
+
+exports[`WeatherIcon on xs devices renders correctly 1`] = `
+<img
+  align="middle"
+  alt="weather-icon"
+  height="48px"
+  style={
+    Object {
+      "marginRight": "0.5rem",
+    }
+  }
+/>
+`;
+
+exports[`WeatherIcon when weatherData is not available renders correctly 1`] = `
+<img
+  align="middle"
+  alt="weather-icon"
+  height="64px"
+  src="test-file-stub"
+  style={
+    Object {
+      "marginRight": "0.5rem",
+    }
+  }
+/>
+`;
