@@ -1,5 +1,5 @@
 import React from "react";
-import matches from "../mediaQuery";
+import matches from "./mediaQuery";
 import clearDay from "../img/clear-day.png";
 import clearNight from "../img/clear-night.png";
 import cloudy from "../img/cloudy.png";

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MaterialIcon on larger devices renders correctly 1`] = `
+<span
+  aria-hidden="true"
+  className="material-icons MuiIcon-root-1 md-64"
+>
+  account_circle
+</span>
+`;
+
+exports[`MaterialIcon on xs devices renders correctly 1`] = `
+<span
+  aria-hidden="true"
+  className="material-icons MuiIcon-root-1 md-48"
+>
+  account_circle
+</span>
+`;

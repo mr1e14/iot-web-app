@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WeatherWidget when weatherData is not available renders correctly 1`] = `
+<span
+  className="MuiTypography-root-1 MuiTypography-caption-11"
+>
+  <img
+    align="middle"
+    alt="weather-icon"
+    height="64px"
+    src="test-file-stub"
+    style={
+      Object {
+        "marginRight": "0.5rem",
+      }
+    }
+  />
+  <span>
+    
+    °C / 
+    
+    %
+  </span>
+</span>
+`;
+
+exports[`WeatherWidget when weatherData is supplied renders correctly 1`] = `
+<span
+  className="MuiTypography-root-1 MuiTypography-caption-11"
+>
+  <img
+    align="middle"
+    alt="weather-icon"
+    height="64px"
+    style={
+      Object {
+        "marginRight": "0.5rem",
+      }
+    }
+  />
+  <span>
+    15
+    °C / 
+    75
+    %
+  </span>
+</span>
+`;
