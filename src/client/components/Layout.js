@@ -1,10 +1,10 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import WeatherWidget from "./WeatherWidget";
 import MaterialIcon from "./MaterialIcon";
 import Devices from "./Devices";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import logo from "../img/logo.png";
+import Logo from "./Logo";
 
 const pageCentre = {
   position: "fixed",
@@ -25,9 +25,7 @@ const Layout = props => {
   } else {
     return (
       <Grid container className={classes.root}>
-        <Grid className={classes.childGridCenter} item xs={12}>
-          <img src={logo} alt="logo" />
-        </Grid>
+        <Logo {...props} />
         <Grid
           container
           direction="row"
