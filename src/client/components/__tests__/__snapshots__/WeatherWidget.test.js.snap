@@ -7,7 +7,7 @@ exports[`WeatherWidget when weatherData is not available renders correctly 1`] =
   <img
     align="middle"
     alt="weather-icon"
-    height="64px"
+    height="48px"
     src="test-file-stub"
     style={
       Object {
@@ -31,7 +31,7 @@ exports[`WeatherWidget when weatherData is supplied renders correctly 1`] = `
   <img
     align="middle"
     alt="weather-icon"
-    height="64px"
+    height="48px"
     style={
       Object {
         "marginRight": "0.5rem",

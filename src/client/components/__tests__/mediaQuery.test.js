@@ -4,27 +4,17 @@ import { unstable_useMediaQuery as useMediaQuery } from "@material-ui/core/useMe
 import matches from "../mediaQuery";
 
 describe("mediaQuery", () => {
-  it("passes (max-width: 599px) when xs supplied", () => {
-    matches("xs");
-    expect(useMediaQuery).toHaveBeenCalledWith("(max-width: 599px)");
-  });
-  it("passes (min-width: 600px) and (max-width: 959px) when sm supplied", () => {
+  it("passes (min-width: 600px) when sm supplied", () => {
     matches("sm");
-    expect(useMediaQuery).toHaveBeenCalledWith(
-      "(min-width: 600px) and (max-width: 959px)"
-    );
+    expect(useMediaQuery).toHaveBeenCalledWith("(min-width: 600px)");
   });
-  it("passes (min-width: 960px) and (max-width: 1287px) when md supplied", () => {
+  it("passes (min-width: 960px) when md supplied", () => {
     matches("md");
-    expect(useMediaQuery).toHaveBeenCalledWith(
-      "(min-width: 960px) and (max-width: 1287px)"
-    );
+    expect(useMediaQuery).toHaveBeenCalledWith("(min-width: 960px)");
   });
-  it("passes (min-width: 1280px) and (max-width: 1919px) when md supplied", () => {
+  it("passes (min-width: 1280px) when md supplied", () => {
     matches("lg");
-    expect(useMediaQuery).toHaveBeenCalledWith(
-      "(min-width: 1280px) and (max-width: 1919px)"
-    );
+    expect(useMediaQuery).toHaveBeenCalledWith("(min-width: 1280px)");
   });
   it("passes (min-width: 1920px) when md supplied", () => {
     matches("xl");

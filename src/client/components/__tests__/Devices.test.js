@@ -26,7 +26,7 @@ describe("Devices", () => {
   let component;
   describe("on xs devices", () => {
     beforeEach(() => {
-      matches.mockReturnValue(true);
+      matches.mockReturnValue(false);
       component = renderer.create(<Devices classes={exampleClasses} />);
       tree = component.toJSON();
     });
@@ -36,7 +36,7 @@ describe("Devices", () => {
   });
   describe("on larger devices", () => {
     beforeEach(() => {
-      matches.mockReturnValue(false);
+      matches.mockReturnValue(true);
       component = renderer.create(<Devices classes={exampleClasses} />);
       tree = component.toJSON();
     });
@@ -48,7 +48,7 @@ describe("Devices", () => {
     let wrapper;
     describe("on xs devices", () => {
       beforeEach(() => {
-        matches.mockReturnValue(true);
+        matches.mockReturnValue(false);
         wrapper = mount(<Devices classes={exampleClasses} />);
       });
       it("has a header with text in the centre", () => {
@@ -100,7 +100,7 @@ describe("Devices", () => {
     });
     describe("on larger devices", () => {
       beforeEach(() => {
-        matches.mockReturnValue(false);
+        matches.mockReturnValue(true);
         wrapper = mount(<Devices classes={exampleClasses} />);
       });
       it("has a header with text in the centre", () => {

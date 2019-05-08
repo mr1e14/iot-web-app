@@ -20,7 +20,7 @@ describe("WeatherIcon", () => {
   let component;
   describe("on xs devices", () => {
     beforeEach(() => {
-      matches.mockReturnValue(true);
+      matches.mockReturnValue(false);
       component = renderer.create(
         <WeatherIcon weatherData={exampleWeatherData} />
       );
@@ -32,7 +32,7 @@ describe("WeatherIcon", () => {
   });
   describe("on larger devices", () => {
     beforeEach(() => {
-      matches.mockReturnValue(false);
+      matches.mockReturnValue(true);
       component = renderer.create(
         <WeatherIcon weatherData={exampleWeatherData} />
       );
@@ -54,7 +54,7 @@ describe("WeatherIcon", () => {
   describe("size changes based on screen size", () => {
     describe("On xs devices", () => {
       beforeEach(() => {
-        matches.mockReturnValue(true);
+        matches.mockReturnValue(false);
       });
       it("has has a height of 48px", () => {
         const wrapper = mount(<WeatherIcon weatherData={exampleWeatherData} />);
@@ -63,7 +63,7 @@ describe("WeatherIcon", () => {
     });
     describe("On larger devices", () => {
       beforeEach(() => {
-        matches.mockReturnValue(false);
+        matches.mockReturnValue(true);
       });
       it("has has a height of 64px", () => {
         const wrapper = mount(<WeatherIcon weatherData={exampleWeatherData} />);

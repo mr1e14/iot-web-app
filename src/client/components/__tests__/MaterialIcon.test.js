@@ -12,7 +12,7 @@ describe("MaterialIcon", () => {
   let component;
   describe("on xs devices", () => {
     beforeEach(() => {
-      matches.mockReturnValue(true);
+      matches.mockReturnValue(false);
       component = renderer.create(<MaterialIcon iconName="account_circle" />);
       tree = component.toJSON();
     });
@@ -22,7 +22,7 @@ describe("MaterialIcon", () => {
   });
   describe("on larger devices", () => {
     beforeEach(() => {
-      matches.mockReturnValue(false);
+      matches.mockReturnValue(true);
       component = renderer.create(<MaterialIcon iconName="account_circle" />);
       tree = component.toJSON();
     });
@@ -33,7 +33,7 @@ describe("MaterialIcon", () => {
   describe("size changes based on screen size", () => {
     describe("On xs devices", () => {
       beforeEach(() => {
-        matches.mockReturnValue(true);
+        matches.mockReturnValue(false);
       });
       it("has .md-48 class", () => {
         const wrapper = mount(<MaterialIcon iconName="account_circle" />);
@@ -42,7 +42,7 @@ describe("MaterialIcon", () => {
     });
     describe("On larger devices", () => {
       beforeEach(() => {
-        matches.mockReturnValue(false);
+        matches.mockReturnValue(true);
       });
       it("has .md-64 class", () => {
         const wrapper = mount(<MaterialIcon iconName="account_circle" />);

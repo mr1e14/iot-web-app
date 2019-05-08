@@ -11,15 +11,13 @@ import DeviceButton from "./DeviceButton";
 const Devices = props => {
   const { classes } = props;
 
-  const isXs = matches("xs");
-
   return (
     <React.Fragment>
       <Grid className={classes.childGridCenter} item xs={12}>
         <Typography variant="h6">Smart devices</Typography>
       </Grid>
       <Grid
-        className={isXs ? classes.child : classes.childGridLeft}
+        className={matches("sm") ? classes.childGridLeft : classes.child}
         item
         xs={12}
         sm={6}
@@ -32,7 +30,7 @@ const Devices = props => {
         />
       </Grid>
       <Grid
-        className={isXs ? classes.child : classes.childGridRight}
+        className={matches("sm") ? classes.childGridRight : classes.child}
         item
         xs={12}
         sm={6}
@@ -45,7 +43,7 @@ const Devices = props => {
         />
       </Grid>
       <Grid
-        className={isXs ? classes.child : classes.childGridLeft}
+        className={matches("sm") ? classes.childGridLeft : classes.child}
         item
         xs={12}
         sm={6}
@@ -58,7 +56,7 @@ const Devices = props => {
         />
       </Grid>
       <Grid
-        className={isXs ? classes.child : classes.childGridRight}
+        className={matches("sm") ? classes.childGridRight : classes.child}
         item
         xs={12}
         sm={6}

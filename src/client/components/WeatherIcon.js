@@ -32,7 +32,7 @@ const icons = {
 
 const WeatherIcon = props => {
   const icon = props.weatherData ? props.weatherData.icon : "defaultIcon";
-  const iconSize = matches("xs") ? "48px" : "64px";
+  const iconSize = matches("sm") ? "64px" : "48px";
   return (
     <img
       style={{ marginRight: "0.5rem" }}
