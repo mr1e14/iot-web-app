@@ -16,10 +16,7 @@ exports[`WeatherWidget when weatherData is not available renders correctly 1`] =
     }
   />
   <span>
-    
-    °C / 
-    
-    %
+    °C
   </span>
 </span>
 `;
@@ -39,10 +36,7 @@ exports[`WeatherWidget when weatherData is supplied renders correctly 1`] = `
     }
   />
   <span>
-    15
-    °C / 
-    75
-    %
+    15°C
   </span>
 </span>
 `;

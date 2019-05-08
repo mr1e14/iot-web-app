@@ -6,6 +6,7 @@ jest.mock("../mediaQuery");
 
 import WeatherWidget from "../WeatherWidget";
 import WeatherIcon from "../WeatherWidget";
+import matches from "../mediaQuery";
 
 const exampleWeatherData = {
   icon: "partly-cloudy",
@@ -38,19 +39,39 @@ describe("WeatherWidget", () => {
   });
   describe("when renders", () => {
     let wrapper;
-    beforeEach(() => {
-      wrapper = mount(<WeatherWidget weatherData={exampleWeatherData} />);
+    describe("on xs devices", () => {
+      beforeEach(() => {
+        matches.mockReturnValue(false);
+        wrapper = mount(<WeatherWidget weatherData={exampleWeatherData} />);
+      });
+      it("has one WeatherIcon", () => {
+        expect(wrapper.find(WeatherIcon).length).toEqual(1);
+      });
+      it("presents weather data excluding humidity", () => {
+        expect(
+          wrapper
+            .find("span")
+            .at(1)
+            .text()
+        ).toBe("15°C");
+      });
     });
-    it("has one WeatherIcon", () => {
-      expect(wrapper.find(WeatherIcon).length).toEqual(1);
-    });
-    it("presents weather data", () => {
-      expect(
-        wrapper
-          .find("span")
-          .at(1)
-          .text()
-      ).toBe("15°C / 75%");
+    describe("on larger devices", () => {
+      beforeEach(() => {
+        matches.mockReturnValue(true);
+        wrapper = mount(<WeatherWidget weatherData={exampleWeatherData} />);
+      });
+      it("has one WeatherIcon", () => {
+        expect(wrapper.find(WeatherIcon).length).toEqual(1);
+      });
+      it("presents weather data including humidity", () => {
+        expect(
+          wrapper
+            .find("span")
+            .at(1)
+            .text()
+        ).toBe("15°C / 75%");
+      });
     });
   });
 });

@@ -1,6 +1,7 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import WeatherIcon from "./WeatherIcon";
+import matches from "./mediaQuery";
 
 const WeatherWidget = props => {
   const { weatherData } = props;
@@ -11,7 +12,8 @@ const WeatherWidget = props => {
       <Typography component="span" variant="caption">
         <WeatherIcon {...props} />
         <span>
-          {temperature}°C / {humidity}%
+          {`${temperature}°C`}
+          {matches("sm") ? ` / ${humidity}%` : null}
         </span>
       </Typography>
     </React.Fragment>
