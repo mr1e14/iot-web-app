@@ -1,7 +1,7 @@
 {
-  "name": "simple-react-full-stack",
-  "version": "1.0.0",
-  "description": "Boilerplate to build a full stack web application using React, Node.js, Express and Webpack.",
+  "name": "iot-web-app",
+  "version": "0.0.1",
+  "description": "Front-end to my smart home system",
   "main": "src/server/index.js",
   "scripts": {
     "build": "webpack --mode production",
@@ -15,7 +15,7 @@
     "test:coverage": "jest ./src --coverage",
     "test:watch": "jest ./src --watch"
   },
-  "author": "Sandeep Raveesh",
+  "author": "Michal Rak",
   "license": "ISC",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
