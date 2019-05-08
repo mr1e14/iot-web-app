@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const path = require("path");
 const { getWeatherData } = require("./connectors/dark-sky-api");
 const { getCache } = require("./services/cache");
 const {
@@ -31,6 +32,10 @@ app.get("/api/getWeatherData", async (req, res) => {
     );
   }
   res.send({ weatherData });
+});
+
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "../../dist", "index.html"));
 });
 
 app.listen(process.env.PORT || 8080, () =>
