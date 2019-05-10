@@ -51,40 +51,42 @@ const styles = theme => ({
   },
   root: {
     flexGrow: 1,
-    textAlign: "center"
+    textAlign: "center",
+    paddingLeft: theme.spacing.unit * 4,
+    paddingRight: theme.spacing.unit * 4,
+    [theme.breakpoints.up("md")]: {
+      paddingLeft: theme.spacing.unit * 8,
+      paddingRight: theme.spacing.unit * 8
+    },
+    [theme.breakpoints.up("lg")]: {
+      paddingLeft: theme.spacing.unit * 16,
+      paddingRight: theme.spacing.unit * 16
+    }
   },
   child: {
     paddingBottom: theme.spacing.unit * 2,
-    paddingLeft: theme.spacing.unit * 4,
-    paddingRight: theme.spacing.unit * 4,
     [theme.breakpoints.up("md")]: {
       paddingBottom: theme.spacing.unit * 4
     }
   },
   childGridLeft: {
     paddingBottom: theme.spacing.unit * 4,
-    paddingLeft: theme.spacing.unit * 4,
     paddingRight: theme.spacing.unit,
     [theme.breakpoints.up("md")]: {
-      paddingLeft: theme.spacing.unit * 8,
       paddingRight: theme.spacing.unit * 2
     },
     [theme.breakpoints.up("lg")]: {
-      paddingLeft: theme.spacing.unit * 16,
       paddingRight: theme.spacing.unit * 4
     }
   },
   childGridRight: {
     paddingBottom: theme.spacing.unit * 4,
-    paddingRight: theme.spacing.unit * 4,
     paddingLeft: theme.spacing.unit,
     [theme.breakpoints.up("md")]: {
-      paddingLeft: theme.spacing.unit * 2,
-      paddingRight: theme.spacing.unit * 8
+      paddingLeft: theme.spacing.unit * 2
     },
     [theme.breakpoints.up("lg")]: {
-      paddingLeft: theme.spacing.unit * 4,
-      paddingRight: theme.spacing.unit * 16
+      paddingLeft: theme.spacing.unit * 4
     }
   },
   childGridCenter: {
