@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Page from "./components/Page";
+import ThemeWrapper from "./components/ThemeWrapper";
 
 export default class App extends Component {
   state = { weatherData: null };
@@ -12,6 +12,6 @@ export default class App extends Component {
 
   render() {
     const { weatherData } = this.state;
-    return <Page weatherData={weatherData} />;
+    return <ThemeWrapper weatherData={weatherData} />;
   }
 }

@@ -123,7 +123,7 @@ const styles = theme => ({
   }
 });
 
-const Page = props => {
+const ThemeWrapper = props => {
   return (
     <React.Fragment>
       <CssBaseline />
@@ -134,8 +134,8 @@ const Page = props => {
   );
 };
 
-Page.propTypes = {
+ThemeWrapper.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Page);
+export default withStyles(styles)(ThemeWrapper);
