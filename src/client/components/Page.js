@@ -117,6 +117,9 @@ const styles = theme => ({
     "&:hover": {
       backgroundColor: deviceButtonHoverColor
     }
+  },
+  buttonLabel: {
+    "text-transform": "none"
   }
 });
 

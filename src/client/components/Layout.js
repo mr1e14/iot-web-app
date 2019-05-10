@@ -1,8 +1,9 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import WeatherWidget from "./WeatherWidget";
-import MaterialIcon from "./MaterialIcon";
 import Devices from "./Devices";
 import Logo from "./Logo";
 
@@ -36,7 +37,14 @@ const Layout = props => {
             <WeatherWidget {...props} />
           </Grid>
           <Grid className={classes.childGridRight}>
-            <MaterialIcon iconName="account_circle" />
+            <Button
+              variant="outlined"
+              classes={{ label: classes.buttonLabel }}
+              size="large"
+              color="secondary"
+            >
+              <Typography color="textPrimary">{"Sign in"}</Typography>
+            </Button>
           </Grid>
         </Grid>
         <Devices {...props} />
