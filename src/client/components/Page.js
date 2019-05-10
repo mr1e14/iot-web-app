@@ -8,6 +8,8 @@ import PropTypes from "prop-types";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import Layout from "./Layout";
 
+const deviceButtonHoverColor = "#bdbdbd";
+
 const theme = createMuiTheme({
   palette: {
     primary: { main: "#11cb5f" },
@@ -92,28 +94,28 @@ const styles = theme => ({
   childGridCenter: {
     paddingBottom: theme.spacing.unit * 4
   },
-  button1: {
+  deviceButton1: {
     backgroundColor: "#11cb5f",
     "&:hover": {
-      backgroundColor: "#bdbdbd"
+      backgroundColor: deviceButtonHoverColor
     }
   },
-  button2: {
+  deviceButton2: {
     backgroundColor: "#9c27b0",
     "&:hover": {
-      backgroundColor: "#bdbdbd"
+      backgroundColor: deviceButtonHoverColor
     }
   },
-  button3: {
+  deviceButton3: {
     backgroundColor: "#2196f3",
     "&:hover": {
-      backgroundColor: "#bdbdbd"
+      backgroundColor: deviceButtonHoverColor
     }
   },
-  button4: {
+  deviceButton4: {
     backgroundColor: "#ff5722",
     "&:hover": {
-      backgroundColor: "#bdbdbd"
+      backgroundColor: deviceButtonHoverColor
     }
   }
 });

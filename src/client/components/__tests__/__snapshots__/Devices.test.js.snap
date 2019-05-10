@@ -15,7 +15,7 @@ Array [
     className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49 childGridLeft"
   >
     <button
-      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 button1"
+      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 deviceButton1"
       disabled={false}
       onBlur={[Function]}
       onContextMenu={[Function]}
@@ -58,7 +58,7 @@ Array [
     className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49 childGridRight"
   >
     <button
-      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 button3"
+      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 deviceButton3"
       disabled={false}
       onBlur={[Function]}
       onContextMenu={[Function]}
@@ -101,7 +101,7 @@ Array [
     className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49 childGridLeft"
   >
     <button
-      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 button2"
+      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 deviceButton2"
       disabled={false}
       onBlur={[Function]}
       onContextMenu={[Function]}
@@ -143,7 +143,7 @@ Array [
     className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49 childGridRight"
   >
     <button
-      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 button4"
+      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 deviceButton4"
       disabled={false}
       onBlur={[Function]}
       onContextMenu={[Function]}
@@ -200,7 +200,7 @@ Array [
     className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49 child"
   >
     <button
-      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 button1"
+      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 deviceButton1"
       disabled={false}
       onBlur={[Function]}
       onContextMenu={[Function]}
@@ -243,7 +243,7 @@ Array [
     className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49 child"
   >
     <button
-      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 button3"
+      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 deviceButton3"
       disabled={false}
       onBlur={[Function]}
       onContextMenu={[Function]}
@@ -286,7 +286,7 @@ Array [
     className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49 child"
   >
     <button
-      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 button2"
+      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 deviceButton2"
       disabled={false}
       onBlur={[Function]}
       onContextMenu={[Function]}
@@ -328,7 +328,7 @@ Array [
     className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49 child"
   >
     <button
-      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 button4"
+      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 deviceButton4"
       disabled={false}
       onBlur={[Function]}
       onContextMenu={[Function]}

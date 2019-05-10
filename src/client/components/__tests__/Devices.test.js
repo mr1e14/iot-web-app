@@ -15,10 +15,10 @@ const exampleClasses = {
   childGridCenter: "childGridCenter",
   childGridLeft: "childGridLeft",
   childGridRight: "childGridRight",
-  button1: "button1",
-  button2: "button2",
-  button3: "button3",
-  button4: "button4"
+  deviceButton1: "deviceButton1",
+  deviceButton2: "deviceButton2",
+  deviceButton3: "deviceButton3",
+  deviceButton4: "deviceButton4"
 };
 
 describe("Devices", () => {
