@@ -43,7 +43,7 @@ const Layout = props => {
               size="large"
               color="secondary"
             >
-              <Typography color="textPrimary">{"Sign in"}</Typography>
+              <Typography color="textPrimary">Sign in</Typography>
             </Button>
           </Grid>
         </Grid>
