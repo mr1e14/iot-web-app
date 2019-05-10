@@ -41,7 +41,7 @@ const Layout = props => {
               variant="outlined"
               classes={{ label: classes.buttonLabel }}
               size="large"
-              color="secondary"
+              color="primary"
             >
               <Typography color="textPrimary">Sign in</Typography>
             </Button>
