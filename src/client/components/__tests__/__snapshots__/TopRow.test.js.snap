@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopRow renders correctly 1`] = `
+<div
+  className="MuiGrid-container-1 MuiGrid-align-items-xs-flex-start-10 MuiGrid-justify-xs-space-between-20"
+>
+  <div
+    className="childGridLeft"
+  >
+    <span
+      className="MuiTypography-root-98 MuiTypography-caption-108"
+    >
+      <img
+        align="middle"
+        alt="weather-icon"
+        height="48px"
+        style={
+          Object {
+            "marginRight": "0.5rem",
+          }
+        }
+      />
+      <span>
+        15°C
+      </span>
+    </span>
+  </div>
+  <div
+    className="childGridRight"
+  >
+    <button
+      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-outlined-142 MuiButton-outlinedPrimary-143 MuiButton-sizeLarge-158"
+      disabled={false}
+      onBlur={[Function]}
+      onContextMenu={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-135 buttonLabel"
+      >
+        <p
+          className="MuiTypography-root-98 MuiTypography-body1-107 MuiTypography-colorTextPrimary-130"
+        >
+          Sign in
+        </p>
+      </span>
+      <span
+        className="MuiTouchRipple-root-163"
+      />
+    </button>
+  </div>
+</div>
+`;
