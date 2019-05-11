@@ -11,7 +11,6 @@ import Devices from "../Devices";
 import matches from "../mediaQuery";
 
 const exampleClasses = {
-  child: "child",
   childGridCenter: "childGridCenter",
   childGridLeft: "childGridLeft",
   childGridRight: "childGridRight",
@@ -76,25 +75,25 @@ describe("Devices", () => {
           wrapper
             .find(Grid)
             .at(1)
-            .hasClass("child")
+            .hasClass("childGridCenter")
         ).toBe(true);
         expect(
           wrapper
             .find(Grid)
             .at(2)
-            .hasClass("child")
+            .hasClass("childGridCenter")
         ).toBe(true);
         expect(
           wrapper
             .find(Grid)
             .at(3)
-            .hasClass("child")
+            .hasClass("childGridCenter")
         ).toBe(true);
         expect(
           wrapper
             .find(Grid)
             .at(4)
-            .hasClass("child")
+            .hasClass("childGridCenter")
         ).toBe(true);
       });
     });

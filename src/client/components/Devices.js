@@ -17,7 +17,9 @@ const Devices = props => {
         <Typography variant="h6">Smart devices</Typography>
       </Grid>
       <Grid
-        className={matches("sm") ? classes.childGridLeft : classes.child}
+        className={
+          matches("sm") ? classes.childGridLeft : classes.childGridCenter
+        }
         item
         xs={12}
         sm={6}
@@ -30,7 +32,9 @@ const Devices = props => {
         />
       </Grid>
       <Grid
-        className={matches("sm") ? classes.childGridRight : classes.child}
+        className={
+          matches("sm") ? classes.childGridRight : classes.childGridCenter
+        }
         item
         xs={12}
         sm={6}
@@ -43,7 +47,9 @@ const Devices = props => {
         />
       </Grid>
       <Grid
-        className={matches("sm") ? classes.childGridLeft : classes.child}
+        className={
+          matches("sm") ? classes.childGridLeft : classes.childGridCenter
+        }
         item
         xs={12}
         sm={6}
@@ -56,7 +62,9 @@ const Devices = props => {
         />
       </Grid>
       <Grid
-        className={matches("sm") ? classes.childGridRight : classes.child}
+        className={
+          matches("sm") ? classes.childGridRight : classes.childGridCenter
+        }
         item
         xs={12}
         sm={6}

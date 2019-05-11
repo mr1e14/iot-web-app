@@ -65,12 +65,6 @@ const styles = theme => ({
       paddingRight: theme.spacing.unit * 16
     }
   },
-  child: {
-    paddingBottom: theme.spacing.unit * 2,
-    [theme.breakpoints.up("md")]: {
-      paddingBottom: theme.spacing.unit * 4
-    }
-  },
   childGridLeft: {
     paddingBottom: theme.spacing.unit * 4,
     paddingRight: theme.spacing.unit,
@@ -92,7 +86,13 @@ const styles = theme => ({
     }
   },
   childGridCenter: {
-    paddingBottom: theme.spacing.unit * 4
+    paddingBottom: theme.spacing.unit * 2,
+    [theme.breakpoints.up("md")]: {
+      paddingBottom: theme.spacing.unit * 3
+    },
+    [theme.breakpoints.up("lg")]: {
+      paddingBottom: theme.spacing.unit * 4
+    }
   },
   deviceButton1: {
     backgroundColor: "#11cb5f",
