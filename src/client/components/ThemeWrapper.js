@@ -12,8 +12,8 @@ const deviceButtonHoverColor = "#bdbdbd";
 
 const theme = createMuiTheme({
   palette: {
-    primary: { main: "#52cafe" },
-    secondary: { main: "#11cb5f" },
+    primary: { main: "#4db8ff" },
+    secondary: { main: "#1a1a1a" },
     text: {
       primary: "#ffffff",
       secondary: "#52cafe"
@@ -65,33 +65,10 @@ const styles = theme => ({
       paddingRight: theme.spacing.unit * 16
     }
   },
-  childGridLeft: {
-    paddingBottom: theme.spacing.unit * 4,
-    paddingRight: theme.spacing.unit,
+  child: {
+    paddingBottom: theme.spacing.unit,
     [theme.breakpoints.up("md")]: {
-      paddingRight: theme.spacing.unit * 2
-    },
-    [theme.breakpoints.up("lg")]: {
-      paddingRight: theme.spacing.unit * 4
-    }
-  },
-  childGridRight: {
-    paddingBottom: theme.spacing.unit * 4,
-    paddingLeft: theme.spacing.unit,
-    [theme.breakpoints.up("md")]: {
-      paddingLeft: theme.spacing.unit * 2
-    },
-    [theme.breakpoints.up("lg")]: {
-      paddingLeft: theme.spacing.unit * 4
-    }
-  },
-  childGridCenter: {
-    paddingBottom: theme.spacing.unit * 2,
-    [theme.breakpoints.up("md")]: {
-      paddingBottom: theme.spacing.unit * 3
-    },
-    [theme.breakpoints.up("lg")]: {
-      paddingBottom: theme.spacing.unit * 4
+      paddingBottom: theme.spacing.unit * 2
     }
   },
   deviceButton1: {

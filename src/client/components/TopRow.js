@@ -11,10 +11,10 @@ const TopRow = props => (
     alignItems="flex-start"
     justify="space-between"
   >
-    <Grid className={props.classes.childGridLeft}>
+    <Grid className={props.classes.child}>
       <WeatherWidget {...props} />
     </Grid>
-    <Grid className={props.classes.childGridRight}>
+    <Grid className={props.classes.child}>
       <Button
         variant="outlined"
         classes={{ label: props.classes.buttonLabel }}
