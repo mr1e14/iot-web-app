@@ -36,7 +36,7 @@ class LightOverview extends React.Component {
         <Grid item xs={10} sm={11}>
           <Button
             variant="contained"
-            color="secondary"
+            color="primary"
             fullWidth
             disabled={!connected}
           >
@@ -45,7 +45,7 @@ class LightOverview extends React.Component {
         </Grid>
         <Grid item xs={2} sm={1}>
           <IconButton
-            color="secondary"
+            color="primary"
             disabled={!connected}
             onClick={this.handleToggleClick}
           >

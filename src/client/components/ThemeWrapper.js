@@ -12,8 +12,8 @@ const deviceButtonHoverColor = "#bdbdbd";
 
 const theme = createMuiTheme({
   palette: {
-    primary: { main: "#4db8ff" },
-    secondary: { main: "#1a1a1a" },
+    primary: { main: "#1a1a1a" },
+    secondary: { main: "#4db8ff" },
     text: {
       primary: "#ffffff",
       secondary: "#52cafe"

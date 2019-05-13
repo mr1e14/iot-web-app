@@ -19,7 +19,7 @@ const TopRow = props => (
         variant="outlined"
         classes={{ label: props.classes.buttonLabel }}
         size="large"
-        color="primary"
+        color="secondary"
       >
         <Typography color="textPrimary">Sign in</Typography>
       </Button>

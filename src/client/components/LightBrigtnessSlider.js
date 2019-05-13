@@ -3,20 +3,15 @@ import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/lab/Slider";
 
 const styles = {
-  root: {
-    width: "100%"
-  },
-  slider: {
-    padding: "22px 0px"
+  container: {
+    padding: "16px 0"
   },
   track: {
-    height: "8px",
-    backgroundColor: "#1a1a1a"
+    height: "8px"
   },
   thumb: {
     width: "22px",
-    height: "22px",
-    backgroundColor: "#1a1a1a"
+    height: "22px"
   }
 };
 
@@ -37,7 +32,7 @@ class LightBrightnessSlider extends React.Component {
       <div className={classes.root}>
         <Slider
           classes={{
-            container: classes.slider,
+            container: classes.container,
             track: classes.track,
             thumb: classes.thumb
           }}

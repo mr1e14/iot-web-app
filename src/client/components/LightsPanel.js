@@ -31,12 +31,12 @@ const LightsPanel = props => (
       className={props.classes.child}
     >
       <Grid item>
-        <IconButton color="primary">
+        <IconButton color="secondary">
           <MaterialIcon iconName="arrow_back" />
         </IconButton>
       </Grid>
       <Grid item>
-        <IconButton color="primary">
+        <IconButton color="secondary">
           <MaterialIcon iconName="add_circle" />
         </IconButton>
       </Grid>
