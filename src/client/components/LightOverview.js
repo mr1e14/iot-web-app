@@ -26,14 +26,15 @@ class LightOverview extends React.Component {
         style={{
           background: `linear-gradient(45deg, ${
             data.color
-          } 30%, rgb(242,242,242) 90%)`,
-          opacity: on ? 1 : 0.2
+          } 35%, rgb(242,242,242) 90%)`,
+          opacity: on ? 1 : 0.2,
+          cursor: connected ? "pointer" : "no-drop"
         }}
         container
         alignItems="center"
         className={classes.lightRow}
       >
-        <Grid item xs={10} sm={11}>
+        <Grid item xs={10}>
           <Button
             variant="contained"
             color="primary"
@@ -43,7 +44,7 @@ class LightOverview extends React.Component {
             <Typography>{data.name}</Typography>
           </Button>
         </Grid>
-        <Grid item xs={2} sm={1}>
+        <Grid item xs={2}>
           <IconButton
             color="primary"
             disabled={!connected}

@@ -1,6 +1,5 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import LightOverview from "./LightOverview";
 import matches from "./mediaQuery";
@@ -12,7 +11,9 @@ const Lights = props => {
 
   for (let i in props.data) {
     lights.push(
-      <LightOverview data={props.data[i]} classes={props.classes} key={i} />
+      <Grid item xs={12} sm={6} key={i}>
+        <LightOverview data={props.data[i]} classes={props.classes} key={i} />
+      </Grid>
     );
   }
   return lights;
@@ -41,7 +42,9 @@ const LightsPanel = props => (
         </IconButton>
       </Grid>
     </Grid>
-    <Lights {...props} />
+    <Grid container spacing={matches("md") ? 24 : 16} justify="center">
+      <Lights {...props} />
+    </Grid>
   </Grid>
 );
 

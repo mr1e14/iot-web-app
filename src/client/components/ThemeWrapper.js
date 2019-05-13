@@ -100,46 +100,13 @@ const styles = theme => ({
   },
   lightsPanel: {
     position: "relative",
-    overflow: "hidden",
-    [theme.breakpoints.up("sm")]: {
-      paddingLeft: theme.spacing.unit,
-      paddingRight: theme.spacing.unit
-    },
-    [theme.breakpoints.up("md")]: {
-      paddingLeft: theme.spacing.unit * 2,
-      paddingRight: theme.spacing.unit * 2
-    },
-    [theme.breakpoints.up("lg")]: {
-      paddingLeft: theme.spacing.unit * 12,
-      paddingRight: theme.spacing.unit * 12
-    },
-    [theme.breakpoints.up("xl")]: {
-      paddingLeft: theme.spacing.unit * 16,
-      paddingRight: theme.spacing.unit * 16
-    }
+    overflow: "hidden"
   },
   lightRow: {
     boxShadow: "0 3px 5px 2px rgba(51,51,51, .3)",
     borderRadius: 6,
-    padding: "0 12px",
-    margin: `0 ${theme.spacing.unit * 2}`,
-    marginBottom: theme.spacing.unit * 2,
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing.unit * 4,
-      marginRight: theme.spacing.unit * 4
-    },
-    [theme.breakpoints.up("md")]: {
-      marginLeft: theme.spacing.unit * 8,
-      marginRight: theme.spacing.unit * 8
-    },
-    [theme.breakpoints.up("lg")]: {
-      marginLeft: theme.spacing.unit * 12,
-      marginRight: theme.spacing.unit * 12
-    },
-    [theme.breakpoints.up("xl")]: {
-      marginLeft: theme.spacing.unit * 18,
-      marginRight: theme.spacing.unit * 18
-    }
+    padding: "8px 12px 0",
+    marginBottom: theme.spacing.unit * 2
   }
 });
 

@@ -4,14 +4,15 @@ import Slider from "@material-ui/lab/Slider";
 
 const styles = {
   container: {
-    padding: "26px 0"
+    padding: "24px 0",
+    margin: "0 3px"
   },
   track: {
-    height: "8px"
+    height: "6px"
   },
   thumb: {
-    width: "22px",
-    height: "22px"
+    width: "16px",
+    height: "16px"
   }
 };
 
