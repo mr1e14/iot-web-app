@@ -4,7 +4,7 @@ import Slider from "@material-ui/lab/Slider";
 
 const styles = {
   container: {
-    padding: "16px 0"
+    padding: "26px 0"
   },
   track: {
     height: "8px"
