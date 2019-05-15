@@ -20,6 +20,7 @@ const Devices = props => {
         <DeviceButton
           className={classes.deviceButton1}
           text="Manage lights"
+          linkTo="/lights"
           iconSrc={lightIcon}
           iconAlt="light-icon"
         />
@@ -28,6 +29,7 @@ const Devices = props => {
         <DeviceButton
           className={classes.deviceButton3}
           text="5 minutes ago"
+          linkTo={"/motion-sensor"}
           iconSrc={motionSensorIcon}
           iconAlt="motion-sensor-icon"
         />
@@ -36,6 +38,7 @@ const Devices = props => {
         <DeviceButton
           className={classes.deviceButton2}
           text="House avg. 21°C"
+          linkTo="/temperature"
           iconSrc={thermometerIcon}
           alt="thermometer-icon"
         />
@@ -44,6 +47,7 @@ const Devices = props => {
         <DeviceButton
           className={classes.deviceButton4}
           text="House avg. 77%"
+          linkTo="/humidity"
           iconSrc={humidityIcon}
           iconAlt="humidity-icon"
         />

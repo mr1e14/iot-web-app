@@ -6,7 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import Layout from "./Layout";
+import PageSwitch from "./PageSwitch";
 
 const deviceButtonHoverColor = "#bdbdbd";
 
@@ -110,16 +110,14 @@ const styles = theme => ({
   }
 });
 
-const ThemeWrapper = props => {
-  return (
-    <React.Fragment>
-      <CssBaseline />
-      <MuiThemeProvider theme={theme}>
-        <Layout {...props} />
-      </MuiThemeProvider>
-    </React.Fragment>
-  );
-};
+const ThemeWrapper = props => (
+  <React.Fragment>
+    <CssBaseline />
+    <MuiThemeProvider theme={theme}>
+      <PageSwitch {...props} />
+    </MuiThemeProvider>
+  </React.Fragment>
+);
 
 ThemeWrapper.propTypes = {
   classes: PropTypes.object.isRequired

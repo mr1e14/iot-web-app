@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import ThemeWrapper from "./components/ThemeWrapper";
+import { oneLight, twoLights, fourLights } from "./sample_data/lights";
 
 export default class App extends Component {
-  state = { weatherData: null };
+  state = { weatherData: null, lightsData: fourLights };
 
   componentDidMount() {
     fetch("/api/getWeatherData")
@@ -11,7 +12,6 @@ export default class App extends Component {
   }
 
   render() {
-    const { weatherData } = this.state;
-    return <ThemeWrapper weatherData={weatherData} />;
+    return <ThemeWrapper {...this.state} />;
   }
 }
