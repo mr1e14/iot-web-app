@@ -11,11 +11,13 @@ const Home = props => {
     return <LoadingSpinner />;
   } else {
     return (
-      <Grid container className={classes.root}>
-        <Logo classes={classes} />
-        <TopRow classes={classes} weatherData={weatherData} />
-        <Devices {...props} />
-      </Grid>
+      <div className="page">
+        <Grid container className={classes.root}>
+          <Logo classes={classes} />
+          <TopRow classes={classes} weatherData={weatherData} />
+          <Devices {...props} />
+        </Grid>
+      </div>
     );
   }
 };

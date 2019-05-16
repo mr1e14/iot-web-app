@@ -9,7 +9,35 @@ body,
   -moz-box-shadow: inset 0 0 125px #000000;
   -webkit-box-shadow: inset 0 0 125px #000000;
   box-shadow: inset 0 0 125px #000000;
-  overflow: auto;
+  overflow: hidden;
   margin: 0;
   background-color: #4c4f54 !important;
+}
+
+/* fade transitions */
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.fade-appear,
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms linear 150ms;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 150ms linear;
 }

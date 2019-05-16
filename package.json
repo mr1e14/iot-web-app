@@ -27,6 +27,7 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-router-dom": "^5.0.0",
+    "react-transition-group": "^4.0.1",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
     "typeface-roboto": "0.0.54",
