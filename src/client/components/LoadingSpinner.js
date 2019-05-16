@@ -13,7 +13,7 @@ const styles = {
 
 const LoadingSpinner = props => (
   <div className={props.classes.spinnerContainer}>
-    <CircularProgress />;
+    <CircularProgress color="secondary" />
   </div>
 );
 
