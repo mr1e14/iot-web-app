@@ -34,14 +34,18 @@ class PageSwitch extends React.Component {
   }
 
   render() {
-    const { location, classes } = this.props;
+    const { location, classes, isMobileDevice } = this.props;
     const { weatherData, lightsData } = this.state;
+    const transitionProperties = isMobileDevice
+      ? { timeout: { enter: 700, exit: 350 }, class: "slide" }
+      : { timeout: { enter: 300, exit: 150 }, class: "fade" };
+
     return (
       <TransitionGroup>
         <CSSTransition
           key={location.key}
-          timeout={{ enter: 700, exit: 350 }}
-          classNames="pageSlider"
+          timeout={transitionProperties.timeout}
+          classNames={transitionProperties.class}
           mountOnEnter={false}
           unmountOnExit={true}
         >

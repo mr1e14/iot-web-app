@@ -15,7 +15,6 @@ body,
   position: relative;
 }
 
-/* slider transitions */
 .page {
   position: absolute;
   top: 0;
@@ -23,31 +22,55 @@ body,
   right: 0;
 }
 
-.pageSlider-exit > .page {
+/* slider transitions */
+
+.slide-exit > .page {
   z-index: 1;
 }
 
-.pageSlider-enter > .page {
+.slide-enter > .page {
   z-index: 10;
 }
 
-.pageSlider-enter.left > .page {
+.slide-enter.left > .page {
   transform: translate3d(100%, 0, 0);
 }
 
-.pageSlider-enter.right > .page {
+.slide-enter.right > .page {
   transform: translate3d(-100%, 0, 0);
 }
 
-.pageSlider-exit.left > .page {
+.slide-exit.left > .page {
   transform: translate3d(-100%, 0, 0);
 }
 
-.pageSlider-exit.right > .page {
+.slide-exit.right > .page {
   transform: translate3d(100%, 0, 0);
 }
 
-.pageSlider-enter.pageSlider-enter-active > .page {
+.slide-enter.slide-enter-active > .page {
   transform: translate3d(0, 0, 0);
   transition: all 700ms ease-in-out;
+}
+
+/* fade transitions */
+
+.fade-appear,
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms linear 150ms;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 150ms linear;
 }
