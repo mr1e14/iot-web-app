@@ -8,6 +8,7 @@ const {
   WEATHER_CACHE_DELETE_AFTER_SECONDS
 } = require("./config");
 const logger = require("./services/logging")("index");
+const { oneLight, twoLights, fourLights } = require("./sample_data/lights");
 
 const app = express();
 
@@ -32,6 +33,10 @@ app.get("/api/getWeatherData", async (req, res) => {
     );
   }
   res.send({ weatherData });
+});
+
+app.get("/api/getLightsData", async (req, res) => {
+  res.send({ lightsData: fourLights });
 });
 
 app.get("*", function(req, res) {

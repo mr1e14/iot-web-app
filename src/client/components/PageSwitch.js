@@ -8,8 +8,20 @@ class PageSwitch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      previousDepth: this.getPathDepth(this.props.location)
+      previousDepth: this.getPathDepth(this.props.location),
+      weatherData: null,
+      lightsData: null
     };
+  }
+
+  componentDidMount() {
+    fetch("/api/getWeatherData")
+      .then(res => res.json())
+      .then(res => this.setState({ weatherData: res.weatherData }));
+
+    fetch("/api/getLightsData")
+      .then(res => res.json())
+      .then(res => this.setState({ lightsData: res.lightsData }));
   }
 
   componentWillReceiveProps() {
@@ -22,7 +34,8 @@ class PageSwitch extends React.Component {
   }
 
   render() {
-    const { location } = this.props;
+    const { location, classes } = this.props;
+    const { weatherData, lightsData } = this.state;
     return (
       <TransitionGroup>
         <CSSTransition
@@ -40,8 +53,23 @@ class PageSwitch extends React.Component {
             }
           >
             <Switch location={location}>
-              <Route exact path="/" render={() => <Home {...this.props} />} />
-              <Route path="/lights" render={() => <Lights {...this.props} />} />
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <Home classes={classes} weatherData={weatherData} />
+                )}
+              />
+              <Route
+                path="/lights"
+                render={() => (
+                  <Lights
+                    classes={classes}
+                    weatherData={weatherData}
+                    lightsData={lightsData}
+                  />
+                )}
+              />
             </Switch>
           </div>
         </CSSTransition>

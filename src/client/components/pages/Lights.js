@@ -6,8 +6,8 @@ import Grid from "@material-ui/core/Grid";
 import LoadingSpinner from "../LoadingSpinner";
 
 const Lights = props => {
-  const { classes, lightsData, weatherData } = props;
-  if (!props.lightsData) {
+  const { classes, weatherData, lightsData } = props;
+  if (!lightsData) {
     return <LoadingSpinner />;
   } else {
     return (

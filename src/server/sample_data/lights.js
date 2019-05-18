@@ -63,4 +63,4 @@ const fourLights = [
   }
 ];
 
-export { oneLight, twoLights, fourLights };
+module.exports = { oneLight, twoLights, fourLights };
