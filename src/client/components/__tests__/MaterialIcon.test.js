@@ -37,7 +37,7 @@ describe("MaterialIcon", () => {
       });
       it("has .md-48 class", () => {
         const wrapper = mount(<MaterialIcon iconName="account_circle" />);
-        expect(wrapper.find(".material-icons.md-48").exists()).toEqual(true);
+        expect(wrapper.find(".material-icons.md-28").exists()).toEqual(true);
       });
     });
     describe("On larger devices", () => {
@@ -46,7 +46,7 @@ describe("MaterialIcon", () => {
       });
       it("has .md-64 class", () => {
         const wrapper = mount(<MaterialIcon iconName="account_circle" />);
-        expect(wrapper.find(".material-icons.md-64").exists()).toEqual(true);
+        expect(wrapper.find(".material-icons.md-40").exists()).toEqual(true);
       });
     });
   });
