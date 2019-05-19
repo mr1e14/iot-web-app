@@ -2,6 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { mount } from "enzyme";
 
+jest.mock("react-router-dom");
 jest.mock("../mediaQuery");
 
 import Typography from "@material-ui/core/Typography";
@@ -11,9 +12,7 @@ import Devices from "../Devices";
 import matches from "../mediaQuery";
 
 const exampleClasses = {
-  childGridCenter: "childGridCenter",
-  childGridLeft: "childGridLeft",
-  childGridRight: "childGridRight",
+  child: "child",
   deviceButton1: "deviceButton1",
   deviceButton2: "deviceButton2",
   deviceButton3: "deviceButton3",
@@ -45,56 +44,33 @@ describe("Devices", () => {
   });
   describe("when renders", () => {
     let wrapper;
-    describe("on xs devices", () => {
+    describe("on xs and sm devices", () => {
       beforeEach(() => {
         matches.mockReturnValue(false);
         wrapper = mount(<Devices classes={exampleClasses} />);
       });
-      it("has a header with text in the centre", () => {
-        expect(
-          wrapper
-            .find(Typography)
-            .at(0)
-            .text()
-        ).toEqual("Smart devices");
+      it("has a root container spacing of 16", () => {
         expect(
           wrapper
             .find(Grid)
             .at(0)
-            .hasClass("childGridCenter")
+            .prop("spacing")
+        ).toEqual(16);
+      });
+      it("has a header with text in the centre", () => {
+        expect(wrapper.find(Typography).text()).toEqual("Smart devices");
+        expect(
+          wrapper
+            .find(Grid)
+            .at(1)
+            .hasClass("child")
         ).toBe(true);
       });
       it("has four DeviceButtons", () => {
         expect(wrapper.find(DeviceButton).length).toEqual(4);
       });
-      it("has five Grids", () => {
-        expect(wrapper.find(Grid).length).toEqual(5);
-      });
-      it("assigned child class to Grids with DeviceButton so there is one per line", () => {
-        expect(
-          wrapper
-            .find(Grid)
-            .at(1)
-            .hasClass("childGridCenter")
-        ).toBe(true);
-        expect(
-          wrapper
-            .find(Grid)
-            .at(2)
-            .hasClass("childGridCenter")
-        ).toBe(true);
-        expect(
-          wrapper
-            .find(Grid)
-            .at(3)
-            .hasClass("childGridCenter")
-        ).toBe(true);
-        expect(
-          wrapper
-            .find(Grid)
-            .at(4)
-            .hasClass("childGridCenter")
-        ).toBe(true);
+      it("has six Grids", () => {
+        expect(wrapper.find(Grid).length).toEqual(6);
       });
     });
     describe("on larger devices", () => {
@@ -102,51 +78,33 @@ describe("Devices", () => {
         matches.mockReturnValue(true);
         wrapper = mount(<Devices classes={exampleClasses} />);
       });
+      it("has a root container spacing of 24", () => {
+        expect(
+          wrapper
+            .find(Grid)
+            .at(0)
+            .prop("spacing")
+        ).toEqual(24);
+      });
       it("has a header with text in the centre", () => {
         expect(
           wrapper
             .find(Typography)
-            .at(0)
+
             .text()
         ).toEqual("Smart devices");
         expect(
           wrapper
             .find(Grid)
-            .at(0)
-            .hasClass("childGridCenter")
+            .at(1)
+            .hasClass("child")
         ).toBe(true);
       });
       it("has four DeviceButtons", () => {
         expect(wrapper.find(DeviceButton).length).toEqual(4);
       });
-      it("has five Grids", () => {
-        expect(wrapper.find(Grid).length).toEqual(5);
-      });
-      it("assigned classes to Grids with DeviceButton such that there are two per line", () => {
-        expect(
-          wrapper
-            .find(Grid)
-            .at(1)
-            .hasClass("childGridLeft")
-        ).toBe(true);
-        expect(
-          wrapper
-            .find(Grid)
-            .at(2)
-            .hasClass("childGridRight")
-        ).toBe(true);
-        expect(
-          wrapper
-            .find(Grid)
-            .at(3)
-            .hasClass("childGridLeft")
-        ).toBe(true);
-        expect(
-          wrapper
-            .find(Grid)
-            .at(4)
-            .hasClass("childGridRight")
-        ).toBe(true);
+      it("has six Grids", () => {
+        expect(wrapper.find(Grid).length).toEqual(6);
       });
     });
   });

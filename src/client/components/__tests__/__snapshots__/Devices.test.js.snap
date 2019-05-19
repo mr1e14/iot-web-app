@@ -1,371 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Devices on larger devices renders correctly 1`] = `
-Array [
+<div
+  className="MuiGrid-container-1 MuiGrid-spacing-xs-24-25"
+>
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 childGridCenter"
+    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 child"
   >
     <h6
       className="MuiTypography-root-98 MuiTypography-h6-115"
     >
       Smart devices
     </h6>
-  </div>,
+  </div>
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49 childGridLeft"
-  >
-    <button
-      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 deviceButton1"
-      disabled={false}
-      onBlur={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="button"
-    >
-      <span
-        className="MuiButton-label-135"
-      >
-        <p
-          className="MuiTypography-root-98 MuiTypography-body1-107"
-        >
-          Manage lights
-        </p>
-        <img
-          alt="light-icon"
-          src="test-file-stub"
-          style={
-            Object {
-              "padding": "0.25rem 0.5rem",
-            }
-          }
-        />
-      </span>
-      <span
-        className="MuiTouchRipple-root-163"
-      />
-    </button>
-  </div>,
+    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49"
+  />
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49 childGridRight"
-  >
-    <button
-      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 deviceButton3"
-      disabled={false}
-      onBlur={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="button"
-    >
-      <span
-        className="MuiButton-label-135"
-      >
-        <p
-          className="MuiTypography-root-98 MuiTypography-body1-107"
-        >
-          5 minutes ago
-        </p>
-        <img
-          alt="motion-sensor-icon"
-          src="test-file-stub"
-          style={
-            Object {
-              "padding": "0.25rem 0.5rem",
-            }
-          }
-        />
-      </span>
-      <span
-        className="MuiTouchRipple-root-163"
-      />
-    </button>
-  </div>,
+    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49"
+  />
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49 childGridLeft"
-  >
-    <button
-      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 deviceButton2"
-      disabled={false}
-      onBlur={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="button"
-    >
-      <span
-        className="MuiButton-label-135"
-      >
-        <p
-          className="MuiTypography-root-98 MuiTypography-body1-107"
-        >
-          House avg. 21°C
-        </p>
-        <img
-          src="test-file-stub"
-          style={
-            Object {
-              "padding": "0.25rem 0.5rem",
-            }
-          }
-        />
-      </span>
-      <span
-        className="MuiTouchRipple-root-163"
-      />
-    </button>
-  </div>,
+    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49"
+  />
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49 childGridRight"
-  >
-    <button
-      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 deviceButton4"
-      disabled={false}
-      onBlur={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="button"
-    >
-      <span
-        className="MuiButton-label-135"
-      >
-        <p
-          className="MuiTypography-root-98 MuiTypography-body1-107"
-        >
-          House avg. 77%
-        </p>
-        <img
-          alt="humidity-icon"
-          src="test-file-stub"
-          style={
-            Object {
-              "padding": "0.25rem 0.5rem",
-            }
-          }
-        />
-      </span>
-      <span
-        className="MuiTouchRipple-root-163"
-      />
-    </button>
-  </div>,
-]
+    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49"
+  />
+</div>
 `;
 
 exports[`Devices on xs devices renders correctly 1`] = `
-Array [
+<div
+  className="MuiGrid-container-1 MuiGrid-spacing-xs-16-24"
+>
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 childGridCenter"
+    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 child"
   >
     <h6
       className="MuiTypography-root-98 MuiTypography-h6-115"
     >
       Smart devices
     </h6>
-  </div>,
+  </div>
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49 childGridCenter"
-  >
-    <button
-      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 deviceButton1"
-      disabled={false}
-      onBlur={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="button"
-    >
-      <span
-        className="MuiButton-label-135"
-      >
-        <p
-          className="MuiTypography-root-98 MuiTypography-body1-107"
-        >
-          Manage lights
-        </p>
-        <img
-          alt="light-icon"
-          src="test-file-stub"
-          style={
-            Object {
-              "padding": "0.25rem 0.5rem",
-            }
-          }
-        />
-      </span>
-      <span
-        className="MuiTouchRipple-root-163"
-      />
-    </button>
-  </div>,
+    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49"
+  />
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49 childGridCenter"
-  >
-    <button
-      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 deviceButton3"
-      disabled={false}
-      onBlur={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="button"
-    >
-      <span
-        className="MuiButton-label-135"
-      >
-        <p
-          className="MuiTypography-root-98 MuiTypography-body1-107"
-        >
-          5 minutes ago
-        </p>
-        <img
-          alt="motion-sensor-icon"
-          src="test-file-stub"
-          style={
-            Object {
-              "padding": "0.25rem 0.5rem",
-            }
-          }
-        />
-      </span>
-      <span
-        className="MuiTouchRipple-root-163"
-      />
-    </button>
-  </div>,
+    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49"
+  />
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49 childGridCenter"
-  >
-    <button
-      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 deviceButton2"
-      disabled={false}
-      onBlur={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="button"
-    >
-      <span
-        className="MuiButton-label-135"
-      >
-        <p
-          className="MuiTypography-root-98 MuiTypography-body1-107"
-        >
-          House avg. 21°C
-        </p>
-        <img
-          src="test-file-stub"
-          style={
-            Object {
-              "padding": "0.25rem 0.5rem",
-            }
-          }
-        />
-      </span>
-      <span
-        className="MuiTouchRipple-root-163"
-      />
-    </button>
-  </div>,
+    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49"
+  />
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49 childGridCenter"
-  >
-    <button
-      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-contained-145 MuiButton-raised-148 MuiButton-fullWidth-159 deviceButton4"
-      disabled={false}
-      onBlur={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="button"
-    >
-      <span
-        className="MuiButton-label-135"
-      >
-        <p
-          className="MuiTypography-root-98 MuiTypography-body1-107"
-        >
-          House avg. 77%
-        </p>
-        <img
-          alt="humidity-icon"
-          src="test-file-stub"
-          style={
-            Object {
-              "padding": "0.25rem 0.5rem",
-            }
-          }
-        />
-      </span>
-      <span
-        className="MuiTouchRipple-root-163"
-      />
-    </button>
-  </div>,
-]
+    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49"
+  />
+</div>
 `;
