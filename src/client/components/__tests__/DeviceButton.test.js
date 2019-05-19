@@ -2,17 +2,21 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { mount } from "enzyme";
 
-jest.mock("../mediaQuery");
-
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import DeviceButton from "../DeviceButton";
+import ReactRouterDom from "react-router-dom";
+
+jest.mock("react-router-dom", () => ({
+  Link: "button"
+}));
 
 const exampleDeviceButtonProps = {
   className: "button1",
   text: "Manage lights",
   iconSrc: "../img/some_img.png",
-  iconAlt: "lights-button"
+  iconAlt: "lights-button",
+  to: "/lights"
 };
 
 describe("DeviceButton", () => {
