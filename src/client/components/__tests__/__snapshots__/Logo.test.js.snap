@@ -2,7 +2,7 @@
 
 exports[`Logo renders correctly 1`] = `
 <div
-  className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 childGridCenter"
+  className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 child"
 >
   <img
     alt="logo"

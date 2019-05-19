@@ -6,8 +6,7 @@ import Logo from "../Logo";
 import Grid from "@material-ui/core/Grid";
 
 const exampleClasses = {
-  child: "child",
-  childGridCenter: "childGridCenter"
+  child: "child"
 };
 
 describe("Logo", () => {
