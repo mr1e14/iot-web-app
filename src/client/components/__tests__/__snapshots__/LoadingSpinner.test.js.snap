@@ -5,7 +5,7 @@ exports[`LoadingSpinner renders correctly 1`] = `
   className="LoadingSpinner-spinnerContainer-1"
 >
   <div
-    className="MuiCircularProgress-root-2 MuiCircularProgress-colorPrimary-5 MuiCircularProgress-indeterminate-4"
+    className="MuiCircularProgress-root-2 MuiCircularProgress-colorSecondary-6 MuiCircularProgress-indeterminate-4"
     role="progressbar"
     style={
       Object {
@@ -29,6 +29,5 @@ exports[`LoadingSpinner renders correctly 1`] = `
       />
     </svg>
   </div>
-  ;
 </div>
 `;
