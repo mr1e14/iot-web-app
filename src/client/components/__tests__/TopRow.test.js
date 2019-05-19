@@ -8,9 +8,6 @@ import TopRow from "../TopRow";
 
 const classes = {
   child: "child",
-  childGridCenter: "childGridCenter",
-  childGridLeft: "childGridLeft",
-  childGridRight: "childGridRight",
   buttonLabel: "buttonLabel"
 };
 

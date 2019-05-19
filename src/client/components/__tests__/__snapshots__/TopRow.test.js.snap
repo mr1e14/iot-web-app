@@ -5,7 +5,7 @@ exports[`TopRow renders correctly 1`] = `
   className="MuiGrid-container-1 MuiGrid-align-items-xs-flex-start-10 MuiGrid-justify-xs-space-between-20"
 >
   <div
-    className="childGridLeft"
+    className="child"
   >
     <span
       className="MuiTypography-root-98 MuiTypography-caption-108"
@@ -26,10 +26,10 @@ exports[`TopRow renders correctly 1`] = `
     </span>
   </div>
   <div
-    className="childGridRight"
+    className="child"
   >
     <button
-      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-outlined-142 MuiButton-outlinedPrimary-143 MuiButton-sizeLarge-158"
+      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-outlined-142 MuiButton-outlinedSecondary-144 MuiButton-sizeLarge-158"
       disabled={false}
       onBlur={[Function]}
       onContextMenu={[Function]}
