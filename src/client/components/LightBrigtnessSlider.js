@@ -40,6 +40,7 @@ class LightBrightnessSlider extends React.Component {
           value={value}
           onChange={this.handleChange}
           disabled={!on || !connected}
+          min={1}
         />
       </div>
     );
