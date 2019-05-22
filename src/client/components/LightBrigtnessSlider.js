@@ -30,19 +30,17 @@ class LightBrightnessSlider extends React.Component {
     const { value } = this.state;
 
     return (
-      <div className={classes.root}>
-        <Slider
-          classes={{
-            container: classes.container,
-            track: classes.track,
-            thumb: classes.thumb
-          }}
-          value={value}
-          onChange={this.handleChange}
-          disabled={!on || !connected}
-          min={1}
-        />
-      </div>
+      <Slider
+        classes={{
+          container: classes.container,
+          track: classes.track,
+          thumb: classes.thumb
+        }}
+        value={value}
+        onChange={this.handleChange}
+        disabled={!on || !connected}
+        min={1}
+      />
     );
   }
 }
