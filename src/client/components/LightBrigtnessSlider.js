@@ -45,4 +45,10 @@ class LightBrightnessSlider extends React.Component {
   }
 }
 
+LightBrightnessSlider.defaultProps = {
+  brightness: 1,
+  on: false,
+  connected: false
+};
+
 export default withStyles(styles)(LightBrightnessSlider);
