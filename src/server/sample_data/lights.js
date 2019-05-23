@@ -48,10 +48,10 @@ const fourLights = [
   {
     name: "Lounge",
     connected: false,
-    on: true,
-    brightness: 55,
-    effect: null,
-    color: "#BA55D3"
+    on: undefined,
+    brightness: undefined,
+    effect: undefined,
+    color: undefined
   },
   {
     name: "Lounge",

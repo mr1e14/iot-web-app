@@ -2,8 +2,8 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { withTheme } from "@material-ui/core/styles";
 import LightBrightnessSlider from "./LightBrigtnessSlider";
-import matches from "./mediaQuery";
 import IconButton from "@material-ui/core/IconButton";
 import MaterialIcon from "./MaterialIcon";
 
@@ -20,13 +20,12 @@ class LightOverview extends React.Component {
 
   render() {
     const { on, connected } = this.state;
-    const { classes, data } = this.props;
+    const { classes, data, theme } = this.props;
     return (
       <Grid
         style={{
-          background: `linear-gradient(45deg, ${
-            data.color
-          } 35%, rgb(242,242,242) 90%)`,
+          background: `linear-gradient(45deg, ${data.color ||
+            theme.palette.primary.main} 35%, rgb(242,242,242) 90%)`,
           opacity: on ? 1 : 0.2,
           cursor: connected ? "pointer" : "no-drop"
         }}
@@ -65,4 +64,4 @@ class LightOverview extends React.Component {
   }
 }
 
-export default LightOverview;
+export default withTheme()(LightOverview);
