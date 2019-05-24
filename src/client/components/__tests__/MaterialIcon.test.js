@@ -35,7 +35,7 @@ describe("MaterialIcon", () => {
       beforeEach(() => {
         matches.mockReturnValue(false);
       });
-      it("has .md-48 class", () => {
+      it("has .md-28 class", () => {
         const wrapper = mount(<MaterialIcon iconName="account_circle" />);
         expect(wrapper.find(".material-icons.md-28").exists()).toEqual(true);
       });
@@ -44,7 +44,7 @@ describe("MaterialIcon", () => {
       beforeEach(() => {
         matches.mockReturnValue(true);
       });
-      it("has .md-64 class", () => {
+      it("has .md-40 class", () => {
         const wrapper = mount(<MaterialIcon iconName="account_circle" />);
         expect(wrapper.find(".material-icons.md-40").exists()).toEqual(true);
       });
