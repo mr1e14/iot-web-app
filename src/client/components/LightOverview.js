@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { withTheme } from "@material-ui/core/styles";
+import { withTheme } from "@material-ui/styles";
 import LightBrightnessSlider from "./LightBrigtnessSlider";
 import IconButton from "@material-ui/core/IconButton";
 import MaterialIcon from "./MaterialIcon";
@@ -64,4 +64,4 @@ class LightOverview extends React.Component {
   }
 }
 
-export default withTheme()(LightOverview);
+export default withTheme(LightOverview);

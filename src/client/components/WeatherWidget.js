@@ -9,7 +9,7 @@ const WeatherWidget = props => {
   const humidity = weatherData ? parseInt(weatherData.humidity * 100) : "";
   return (
     <React.Fragment>
-      <Typography component="span" variant="caption">
+      <Typography color="textPrimary" component="span" variant="caption">
         <WeatherIcon {...props} />
         <span>
           {`${temperature}°C`}

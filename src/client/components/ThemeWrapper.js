@@ -3,9 +3,12 @@ import "../css/app.css";
 import "../css/material-ui-icons.css";
 import "typeface-roboto";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import {
+  MuiThemeProvider,
+  createMuiTheme,
+  withStyles
+} from "@material-ui/core/styles";
 import PageSwitch from "./PageSwitch";
 import matches from "./mediaQuery";
 
@@ -21,7 +24,6 @@ const theme = createMuiTheme({
     }
   },
   typography: {
-    useNextVariants: true,
     fontWeightLight: 300,
     fontWeightRegular: 400,
     fontWeightMedium: 500,
@@ -55,21 +57,18 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     textAlign: "center",
-    paddingLeft: theme.spacing.unit * 4,
-    paddingRight: theme.spacing.unit * 4,
+    padding: theme.spacing(0, 4),
     [theme.breakpoints.up("md")]: {
-      paddingLeft: theme.spacing.unit * 8,
-      paddingRight: theme.spacing.unit * 8
+      padding: theme.spacing(0, 8)
     },
     [theme.breakpoints.up("lg")]: {
-      paddingLeft: theme.spacing.unit * 16,
-      paddingRight: theme.spacing.unit * 16
+      padding: theme.spacing(0, 16)
     }
   },
   child: {
-    paddingBottom: theme.spacing.unit,
+    paddingBottom: theme.spacing(2),
     [theme.breakpoints.up("md")]: {
-      paddingBottom: theme.spacing.unit * 2
+      paddingBottom: theme.spacing(3)
     }
   },
   deviceButton1: {
@@ -107,7 +106,7 @@ const styles = theme => ({
     boxShadow: "0 3px 5px 2px rgba(51,51,51, .3)",
     borderRadius: 6,
     padding: "8px 12px 0",
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing(2)
   }
 });
 

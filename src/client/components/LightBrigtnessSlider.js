@@ -1,11 +1,13 @@
 import React from "react";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/styles";
 import Slider from "@material-ui/lab/Slider";
 
 const styles = {
-  container: {
-    padding: "24px 0",
+  root: {
     margin: "0 3px"
+  },
+  slider: {
+    padding: "24px 0"
   },
   track: {
     height: "6px"
@@ -30,17 +32,19 @@ class LightBrightnessSlider extends React.Component {
     const { value } = this.state;
 
     return (
-      <Slider
-        classes={{
-          container: classes.container,
-          track: classes.track,
-          thumb: classes.thumb
-        }}
-        value={value}
-        onChange={this.handleChange}
-        disabled={!on || !connected}
-        min={1}
-      />
+      <div className={classes.root}>
+        <Slider
+          className={classes.slider}
+          classes={{
+            track: classes.track,
+            thumb: classes.thumb
+          }}
+          value={value}
+          onChange={this.handleChange}
+          disabled={!on || !connected}
+          min={1}
+        />
+      </div>
     );
   }
 }

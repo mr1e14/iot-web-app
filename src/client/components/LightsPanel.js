@@ -27,7 +27,9 @@ const Lights = props => {
 const LightsPanel = props => (
   <Grid container className={props.classes.lightsPanel}>
     <Grid item xs={12}>
-      <Typography variant="h6">Manage lights</Typography>
+      <Typography color="textPrimary" variant="h6">
+        Manage lights
+      </Typography>
     </Grid>
     <Grid
       container
@@ -49,7 +51,7 @@ const LightsPanel = props => (
     </Grid>
     <Grid
       container
-      spacing={matches("md") ? 24 : 16}
+      spacing={matches("md") ? 2 : 1}
       justify={props.lightsData.length > 1 ? "flex-start" : "center"}
     >
       <Lights {...props} />

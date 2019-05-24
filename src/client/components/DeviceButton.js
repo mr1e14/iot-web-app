@@ -14,7 +14,7 @@ const DeviceButton = props => {
       fullWidth={true}
       className={className}
     >
-      <Typography>{text}</Typography>
+      <Typography color="textPrimary">{text}</Typography>
       <img src={iconSrc} alt={iconAlt} style={{ padding: "0.25rem 0.5rem" }} />
     </Button>
   );

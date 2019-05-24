@@ -1,4 +1,4 @@
-import { unstable_useMediaQuery as useMediaQuery } from "@material-ui/core/useMediaQuery";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const breakpoints = {
   sm: "(min-width: 600px)",
