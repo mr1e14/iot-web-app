@@ -5,7 +5,6 @@ import { mount } from "enzyme";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import DeviceButton from "../DeviceButton";
-import ReactRouterDom from "react-router-dom";
 
 jest.mock("react-router-dom", () => ({
   Link: "button"
