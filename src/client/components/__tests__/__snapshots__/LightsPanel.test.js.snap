@@ -1,0 +1,923 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LightsPanel on larger devices renders correctly 1`] = `
+<div
+  className="MuiGrid-container-1 lightsPanel"
+>
+  <div
+    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41"
+  >
+    <h6
+      className="MuiTypography-root-98 MuiTypography-h6-115"
+    >
+      Manage lights
+    </h6>
+  </div>
+  <div
+    className="MuiGrid-container-1 MuiGrid-align-items-xs-flex-start-10 MuiGrid-justify-xs-space-between-20 child"
+  >
+    <div
+      className="MuiGrid-item-2"
+    >
+      <button
+        className="MuiButtonBase-root-140 MuiIconButton-root-134 MuiIconButton-colorSecondary-137"
+        disabled={false}
+        onBlur={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        to="/"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-139"
+        >
+          <span
+            aria-hidden="true"
+            className="material-icons MuiIcon-root-143 md-40"
+          >
+            arrow_back
+          </span>
+        </span>
+        <span
+          className="MuiTouchRipple-root-195"
+        />
+      </button>
+    </div>
+    <div
+      className="MuiGrid-item-2"
+    >
+      <button
+        className="MuiButtonBase-root-140 MuiIconButton-root-134 MuiIconButton-colorSecondary-137"
+        disabled={false}
+        onBlur={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-139"
+        >
+          <span
+            aria-hidden="true"
+            className="material-icons MuiIcon-root-143 md-40"
+          >
+            add_circle
+          </span>
+        </span>
+        <span
+          className="MuiTouchRipple-root-195"
+        />
+      </button>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-container-1 MuiGrid-spacing-xs-24-25 MuiGrid-justify-xs-center-18"
+  />
+</div>
+`;
+
+exports[`LightsPanel on md and smaller devices renders correctly 1`] = `
+<div
+  className="MuiGrid-container-1 lightsPanel"
+>
+  <div
+    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41"
+  >
+    <h6
+      className="MuiTypography-root-98 MuiTypography-h6-115"
+    >
+      Manage lights
+    </h6>
+  </div>
+  <div
+    className="MuiGrid-container-1 MuiGrid-align-items-xs-flex-start-10 MuiGrid-justify-xs-space-between-20 child"
+  >
+    <div
+      className="MuiGrid-item-2"
+    >
+      <button
+        className="MuiButtonBase-root-140 MuiIconButton-root-134 MuiIconButton-colorSecondary-137"
+        disabled={false}
+        onBlur={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        to="/"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-139"
+        >
+          <span
+            aria-hidden="true"
+            className="material-icons MuiIcon-root-143 md-28"
+          >
+            arrow_back
+          </span>
+        </span>
+        <span
+          className="MuiTouchRipple-root-195"
+        />
+      </button>
+    </div>
+    <div
+      className="MuiGrid-item-2"
+    >
+      <button
+        className="MuiButtonBase-root-140 MuiIconButton-root-134 MuiIconButton-colorSecondary-137"
+        disabled={false}
+        onBlur={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-139"
+        >
+          <span
+            aria-hidden="true"
+            className="material-icons MuiIcon-root-143 md-28"
+          >
+            add_circle
+          </span>
+        </span>
+        <span
+          className="MuiTouchRipple-root-195"
+        />
+      </button>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-container-1 MuiGrid-spacing-xs-16-24 MuiGrid-justify-xs-center-18"
+  />
+</div>
+`;
+
+exports[`LightsPanel when no lights are provided renders correctly 1`] = `
+<div
+  className="MuiGrid-container-1 lightsPanel"
+>
+  <div
+    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41"
+  >
+    <h6
+      className="MuiTypography-root-98 MuiTypography-h6-115"
+    >
+      Manage lights
+    </h6>
+  </div>
+  <div
+    className="MuiGrid-container-1 MuiGrid-align-items-xs-flex-start-10 MuiGrid-justify-xs-space-between-20 child"
+  >
+    <div
+      className="MuiGrid-item-2"
+    >
+      <button
+        className="MuiButtonBase-root-140 MuiIconButton-root-134 MuiIconButton-colorSecondary-137"
+        disabled={false}
+        onBlur={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        to="/"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-139"
+        >
+          <span
+            aria-hidden="true"
+            className="material-icons MuiIcon-root-143 md-28"
+          >
+            arrow_back
+          </span>
+        </span>
+        <span
+          className="MuiTouchRipple-root-195"
+        />
+      </button>
+    </div>
+    <div
+      className="MuiGrid-item-2"
+    >
+      <button
+        className="MuiButtonBase-root-140 MuiIconButton-root-134 MuiIconButton-colorSecondary-137"
+        disabled={false}
+        onBlur={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-139"
+        >
+          <span
+            aria-hidden="true"
+            className="material-icons MuiIcon-root-143 md-28"
+          >
+            add_circle
+          </span>
+        </span>
+        <span
+          className="MuiTouchRipple-root-195"
+        />
+      </button>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-container-1 MuiGrid-spacing-xs-16-24 MuiGrid-justify-xs-center-18"
+  />
+</div>
+`;
+
+exports[`LightsPanel when one light is provided renders correctly 1`] = `
+<div
+  className="MuiGrid-container-1 lightsPanel"
+>
+  <div
+    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41"
+  >
+    <h6
+      className="MuiTypography-root-98 MuiTypography-h6-115"
+    >
+      Manage lights
+    </h6>
+  </div>
+  <div
+    className="MuiGrid-container-1 MuiGrid-align-items-xs-flex-start-10 MuiGrid-justify-xs-space-between-20 child"
+  >
+    <div
+      className="MuiGrid-item-2"
+    >
+      <button
+        className="MuiButtonBase-root-140 MuiIconButton-root-134 MuiIconButton-colorSecondary-137"
+        disabled={false}
+        onBlur={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        to="/"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-139"
+        >
+          <span
+            aria-hidden="true"
+            className="material-icons MuiIcon-root-143 md-28"
+          >
+            arrow_back
+          </span>
+        </span>
+        <span
+          className="MuiTouchRipple-root-195"
+        />
+      </button>
+    </div>
+    <div
+      className="MuiGrid-item-2"
+    >
+      <button
+        className="MuiButtonBase-root-140 MuiIconButton-root-134 MuiIconButton-colorSecondary-137"
+        disabled={false}
+        onBlur={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-139"
+        >
+          <span
+            aria-hidden="true"
+            className="material-icons MuiIcon-root-143 md-28"
+          >
+            add_circle
+          </span>
+        </span>
+        <span
+          className="MuiTouchRipple-root-195"
+        />
+      </button>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-container-1 MuiGrid-spacing-xs-16-24 MuiGrid-justify-xs-center-18"
+  >
+    <div
+      className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49"
+    >
+      <div
+        className="MuiGrid-container-1 MuiGrid-align-items-xs-center-9"
+        style={
+          Object {
+            "background": "linear-gradient(45deg, #42f48f 35%, rgb(242,242,242) 90%)",
+            "cursor": "pointer",
+            "opacity": 1,
+          }
+        }
+      >
+        <div
+          className="MuiGrid-item-2 MuiGrid-grid-xs-10-39"
+        >
+          <button
+            className="MuiButtonBase-root-140 MuiButton-root-152 MuiButton-contained-163 MuiButton-containedPrimary-164 MuiButton-raised-166 MuiButton-raisedPrimary-167 MuiButton-fullWidth-177"
+            disabled={false}
+            onBlur={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiButton-label-153"
+            >
+              <p
+                className="MuiTypography-root-98 MuiTypography-body1-107"
+              >
+                Bedroom
+              </p>
+            </span>
+            <span
+              className="MuiTouchRipple-root-195"
+            />
+          </button>
+        </div>
+        <div
+          className="MuiGrid-item-2 MuiGrid-grid-xs-2-31"
+        >
+          <button
+            className="MuiButtonBase-root-140 MuiIconButton-root-134 MuiIconButton-colorPrimary-136"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label-139"
+            >
+              <span
+                aria-hidden="true"
+                className="material-icons MuiIcon-root-143 md-28"
+              >
+                power_settings_new
+              </span>
+            </span>
+            <span
+              className="MuiTouchRipple-root-195"
+            />
+          </button>
+        </div>
+        <div
+          className="MuiGrid-item-2 MuiGrid-grid-xs-12-41"
+        >
+          <div
+            aria-disabled={false}
+            aria-orientation="horizontal"
+            aria-valuemax={100}
+            aria-valuemin={1}
+            aria-valuenow={100}
+            className="MuiSlider-root-181"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onTouchMove={[Function]}
+            onTouchStartCapture={[Function]}
+            role="slider"
+          >
+            <div
+              className="MuiSlider-container-182 LightBrightnessSlider-container-178"
+            >
+              <div
+                className="MuiSlider-track-183 LightBrightnessSlider-track-179 MuiSlider-trackBefore-184"
+                style={
+                  Object {
+                    "transform": "translateY(-50%) scaleX(1)",
+                  }
+                }
+              />
+              <div
+                className="MuiSlider-thumbWrapper-186"
+                style={
+                  Object {
+                    "transform": "translateX(100%)",
+                  }
+                }
+              >
+                <button
+                  className="MuiButtonBase-root-140 MuiSlider-thumb-187 LightBrightnessSlider-thumb-180"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onContextMenu={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  onTouchStartCapture={[Function]}
+                  tabIndex="0"
+                  type="button"
+                />
+              </div>
+              <div
+                className="MuiSlider-track-183 LightBrightnessSlider-track-179 MuiSlider-trackAfter-185"
+                style={
+                  Object {
+                    "transform": "translateY(-50%) scaleX(0)",
+                  }
+                }
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LightsPanel when two lights are provided renders correctly 1`] = `
+<div
+  className="MuiGrid-container-1 lightsPanel"
+>
+  <div
+    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41"
+  >
+    <h6
+      className="MuiTypography-root-98 MuiTypography-h6-115"
+    >
+      Manage lights
+    </h6>
+  </div>
+  <div
+    className="MuiGrid-container-1 MuiGrid-align-items-xs-flex-start-10 MuiGrid-justify-xs-space-between-20 child"
+  >
+    <div
+      className="MuiGrid-item-2"
+    >
+      <button
+        className="MuiButtonBase-root-140 MuiIconButton-root-134 MuiIconButton-colorSecondary-137"
+        disabled={false}
+        onBlur={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        to="/"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-139"
+        >
+          <span
+            aria-hidden="true"
+            className="material-icons MuiIcon-root-143 md-28"
+          >
+            arrow_back
+          </span>
+        </span>
+        <span
+          className="MuiTouchRipple-root-195"
+        />
+      </button>
+    </div>
+    <div
+      className="MuiGrid-item-2"
+    >
+      <button
+        className="MuiButtonBase-root-140 MuiIconButton-root-134 MuiIconButton-colorSecondary-137"
+        disabled={false}
+        onBlur={[Function]}
+        onContextMenu={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-139"
+        >
+          <span
+            aria-hidden="true"
+            className="material-icons MuiIcon-root-143 md-28"
+          >
+            add_circle
+          </span>
+        </span>
+        <span
+          className="MuiTouchRipple-root-195"
+        />
+      </button>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-container-1 MuiGrid-spacing-xs-16-24"
+  >
+    <div
+      className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49"
+    >
+      <div
+        className="MuiGrid-container-1 MuiGrid-align-items-xs-center-9"
+        style={
+          Object {
+            "background": "linear-gradient(45deg, #42f48f 35%, rgb(242,242,242) 90%)",
+            "cursor": "pointer",
+            "opacity": 1,
+          }
+        }
+      >
+        <div
+          className="MuiGrid-item-2 MuiGrid-grid-xs-10-39"
+        >
+          <button
+            className="MuiButtonBase-root-140 MuiButton-root-152 MuiButton-contained-163 MuiButton-containedPrimary-164 MuiButton-raised-166 MuiButton-raisedPrimary-167 MuiButton-fullWidth-177"
+            disabled={false}
+            onBlur={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiButton-label-153"
+            >
+              <p
+                className="MuiTypography-root-98 MuiTypography-body1-107"
+              >
+                Bedroom
+              </p>
+            </span>
+            <span
+              className="MuiTouchRipple-root-195"
+            />
+          </button>
+        </div>
+        <div
+          className="MuiGrid-item-2 MuiGrid-grid-xs-2-31"
+        >
+          <button
+            className="MuiButtonBase-root-140 MuiIconButton-root-134 MuiIconButton-colorPrimary-136"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label-139"
+            >
+              <span
+                aria-hidden="true"
+                className="material-icons MuiIcon-root-143 md-28"
+              >
+                power_settings_new
+              </span>
+            </span>
+            <span
+              className="MuiTouchRipple-root-195"
+            />
+          </button>
+        </div>
+        <div
+          className="MuiGrid-item-2 MuiGrid-grid-xs-12-41"
+        >
+          <div
+            aria-disabled={false}
+            aria-orientation="horizontal"
+            aria-valuemax={100}
+            aria-valuemin={1}
+            aria-valuenow={100}
+            className="MuiSlider-root-181"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onTouchMove={[Function]}
+            onTouchStartCapture={[Function]}
+            role="slider"
+          >
+            <div
+              className="MuiSlider-container-182 LightBrightnessSlider-container-178"
+            >
+              <div
+                className="MuiSlider-track-183 LightBrightnessSlider-track-179 MuiSlider-trackBefore-184"
+                style={
+                  Object {
+                    "transform": "translateY(-50%) scaleX(1)",
+                  }
+                }
+              />
+              <div
+                className="MuiSlider-thumbWrapper-186"
+                style={
+                  Object {
+                    "transform": "translateX(100%)",
+                  }
+                }
+              >
+                <button
+                  className="MuiButtonBase-root-140 MuiSlider-thumb-187 LightBrightnessSlider-thumb-180"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onContextMenu={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  onTouchStartCapture={[Function]}
+                  tabIndex="0"
+                  type="button"
+                />
+              </div>
+              <div
+                className="MuiSlider-track-183 LightBrightnessSlider-track-179 MuiSlider-trackAfter-185"
+                style={
+                  Object {
+                    "transform": "translateY(-50%) scaleX(0)",
+                  }
+                }
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49"
+    >
+      <div
+        className="MuiGrid-container-1 MuiGrid-align-items-xs-center-9"
+        style={
+          Object {
+            "background": "linear-gradient(45deg, #ff8026 35%, rgb(242,242,242) 90%)",
+            "cursor": "pointer",
+            "opacity": 0.2,
+          }
+        }
+      >
+        <div
+          className="MuiGrid-item-2 MuiGrid-grid-xs-10-39"
+        >
+          <button
+            className="MuiButtonBase-root-140 MuiButton-root-152 MuiButton-contained-163 MuiButton-containedPrimary-164 MuiButton-raised-166 MuiButton-raisedPrimary-167 MuiButton-fullWidth-177"
+            disabled={false}
+            onBlur={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiButton-label-153"
+            >
+              <p
+                className="MuiTypography-root-98 MuiTypography-body1-107"
+              >
+                Hall
+              </p>
+            </span>
+            <span
+              className="MuiTouchRipple-root-195"
+            />
+          </button>
+        </div>
+        <div
+          className="MuiGrid-item-2 MuiGrid-grid-xs-2-31"
+        >
+          <button
+            className="MuiButtonBase-root-140 MuiIconButton-root-134 MuiIconButton-colorPrimary-136"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label-139"
+            >
+              <span
+                aria-hidden="true"
+                className="material-icons MuiIcon-root-143 md-28"
+              >
+                power_settings_new
+              </span>
+            </span>
+            <span
+              className="MuiTouchRipple-root-195"
+            />
+          </button>
+        </div>
+        <div
+          className="MuiGrid-item-2 MuiGrid-grid-xs-12-41"
+        >
+          <div
+            aria-disabled={true}
+            aria-orientation="horizontal"
+            aria-valuemax={100}
+            aria-valuemin={1}
+            aria-valuenow={14}
+            className="MuiSlider-root-181 MuiSlider-disabled-190"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onTouchMove={[Function]}
+            onTouchStartCapture={[Function]}
+            role="slider"
+          >
+            <div
+              className="MuiSlider-container-182 LightBrightnessSlider-container-178"
+            >
+              <div
+                className="MuiSlider-track-183 LightBrightnessSlider-track-179 MuiSlider-trackBefore-184 MuiSlider-disabled-190"
+                style={
+                  Object {
+                    "width": "calc(13.131313131313131% - 6px)",
+                  }
+                }
+              />
+              <div
+                className="MuiSlider-thumbWrapper-186 MuiSlider-disabled-190"
+                style={
+                  Object {
+                    "transform": "translateX(13.131313131313131%)",
+                  }
+                }
+              >
+                <button
+                  className="MuiButtonBase-root-140 MuiButtonBase-disabled-141 MuiSlider-thumb-187 LightBrightnessSlider-thumb-180 MuiSlider-disabled-190"
+                  disabled={true}
+                  onBlur={[Function]}
+                  onContextMenu={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  onTouchStartCapture={[Function]}
+                  tabIndex="-1"
+                  type="button"
+                />
+              </div>
+              <div
+                className="MuiSlider-track-183 LightBrightnessSlider-track-179 MuiSlider-trackAfter-185 MuiSlider-disabled-190"
+                style={
+                  Object {
+                    "width": "calc(86.86868686868686% - 6px)",
+                  }
+                }
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
