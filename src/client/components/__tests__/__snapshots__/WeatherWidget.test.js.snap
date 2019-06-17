@@ -2,7 +2,7 @@
 
 exports[`WeatherWidget when weatherData is not available renders correctly 1`] = `
 <span
-  className="MuiTypography-root-1 MuiTypography-caption-11"
+  className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextPrimary"
 >
   <img
     align="middle"
@@ -23,7 +23,7 @@ exports[`WeatherWidget when weatherData is not available renders correctly 1`] =
 
 exports[`WeatherWidget when weatherData is supplied renders correctly 1`] = `
 <span
-  className="MuiTypography-root-1 MuiTypography-caption-11"
+  className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextPrimary"
 >
   <img
     align="middle"

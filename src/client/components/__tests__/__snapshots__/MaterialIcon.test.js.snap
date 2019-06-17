@@ -2,8 +2,8 @@
 
 exports[`MaterialIcon on larger devices renders correctly 1`] = `
 <span
-  aria-hidden="true"
-  className="material-icons MuiIcon-root-1 md-40"
+  aria-hidden={true}
+  className="material-icons MuiIcon-root md-40"
 >
   account_circle
 </span>
@@ -11,8 +11,8 @@ exports[`MaterialIcon on larger devices renders correctly 1`] = `
 
 exports[`MaterialIcon on xs devices renders correctly 1`] = `
 <span
-  aria-hidden="true"
-  className="material-icons MuiIcon-root-1 md-28"
+  aria-hidden={true}
+  className="material-icons MuiIcon-root md-28"
 >
   account_circle
 </span>

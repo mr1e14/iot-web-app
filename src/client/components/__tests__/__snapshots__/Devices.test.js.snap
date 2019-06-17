@@ -2,56 +2,358 @@
 
 exports[`Devices on larger devices renders correctly 1`] = `
 <div
-  className="MuiGrid-container-1 MuiGrid-spacing-xs-24-25"
+  className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
 >
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 child"
+    className="MuiGrid-root child MuiGrid-item MuiGrid-grid-xs-12"
   >
     <h6
-      className="MuiTypography-root-98 MuiTypography-h6-115"
+      className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary"
     >
       Smart devices
     </h6>
   </div>
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49"
-  />
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6"
+  >
+    <div
+      aria-disabled={false}
+      className="MuiButtonBase-root MuiButton-root deviceButton1 MuiButton-contained MuiButton-fullWidth"
+      onBlur={[Function]}
+      onDragEnd={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      role="button"
+      tabIndex={0}
+      to="/lights"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        <p
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
+        >
+          Manage lights
+        </p>
+        <img
+          alt="light-icon"
+          src="test-file-stub"
+          style={
+            Object {
+              "padding": "0.25rem 0.5rem",
+            }
+          }
+        />
+      </span>
+    </div>
+  </div>
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49"
-  />
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6"
+  >
+    <div
+      aria-disabled={false}
+      className="MuiButtonBase-root MuiButton-root deviceButton3 MuiButton-contained MuiButton-fullWidth"
+      onBlur={[Function]}
+      onDragEnd={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      role="button"
+      tabIndex={0}
+      to="/motion-sensor"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        <p
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
+        >
+          5 minutes ago
+        </p>
+        <img
+          alt="motion-sensor-icon"
+          src="test-file-stub"
+          style={
+            Object {
+              "padding": "0.25rem 0.5rem",
+            }
+          }
+        />
+      </span>
+    </div>
+  </div>
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49"
-  />
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6"
+  >
+    <div
+      aria-disabled={false}
+      className="MuiButtonBase-root MuiButton-root deviceButton2 MuiButton-contained MuiButton-fullWidth"
+      onBlur={[Function]}
+      onDragEnd={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      role="button"
+      tabIndex={0}
+      to="/temperature"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        <p
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
+        >
+          House avg. 21°C
+        </p>
+        <img
+          src="test-file-stub"
+          style={
+            Object {
+              "padding": "0.25rem 0.5rem",
+            }
+          }
+        />
+      </span>
+    </div>
+  </div>
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49"
-  />
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6"
+  >
+    <div
+      aria-disabled={false}
+      className="MuiButtonBase-root MuiButton-root deviceButton4 MuiButton-contained MuiButton-fullWidth"
+      onBlur={[Function]}
+      onDragEnd={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      role="button"
+      tabIndex={0}
+      to="/humidity"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        <p
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
+        >
+          House avg. 77%
+        </p>
+        <img
+          alt="humidity-icon"
+          src="test-file-stub"
+          style={
+            Object {
+              "padding": "0.25rem 0.5rem",
+            }
+          }
+        />
+      </span>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`Devices on xs devices renders correctly 1`] = `
 <div
-  className="MuiGrid-container-1 MuiGrid-spacing-xs-16-24"
+  className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
 >
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 child"
+    className="MuiGrid-root child MuiGrid-item MuiGrid-grid-xs-12"
   >
     <h6
-      className="MuiTypography-root-98 MuiTypography-h6-115"
+      className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary"
     >
       Smart devices
     </h6>
   </div>
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49"
-  />
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6"
+  >
+    <div
+      aria-disabled={false}
+      className="MuiButtonBase-root MuiButton-root deviceButton1 MuiButton-contained MuiButton-fullWidth"
+      onBlur={[Function]}
+      onDragEnd={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      role="button"
+      tabIndex={0}
+      to="/lights"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        <p
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
+        >
+          Manage lights
+        </p>
+        <img
+          alt="light-icon"
+          src="test-file-stub"
+          style={
+            Object {
+              "padding": "0.25rem 0.5rem",
+            }
+          }
+        />
+      </span>
+    </div>
+  </div>
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49"
-  />
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6"
+  >
+    <div
+      aria-disabled={false}
+      className="MuiButtonBase-root MuiButton-root deviceButton3 MuiButton-contained MuiButton-fullWidth"
+      onBlur={[Function]}
+      onDragEnd={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      role="button"
+      tabIndex={0}
+      to="/motion-sensor"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        <p
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
+        >
+          5 minutes ago
+        </p>
+        <img
+          alt="motion-sensor-icon"
+          src="test-file-stub"
+          style={
+            Object {
+              "padding": "0.25rem 0.5rem",
+            }
+          }
+        />
+      </span>
+    </div>
+  </div>
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49"
-  />
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6"
+  >
+    <div
+      aria-disabled={false}
+      className="MuiButtonBase-root MuiButton-root deviceButton2 MuiButton-contained MuiButton-fullWidth"
+      onBlur={[Function]}
+      onDragEnd={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      role="button"
+      tabIndex={0}
+      to="/temperature"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        <p
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
+        >
+          House avg. 21°C
+        </p>
+        <img
+          src="test-file-stub"
+          style={
+            Object {
+              "padding": "0.25rem 0.5rem",
+            }
+          }
+        />
+      </span>
+    </div>
+  </div>
   <div
-    className="MuiGrid-item-2 MuiGrid-grid-xs-12-41 MuiGrid-grid-sm-6-49"
-  />
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6"
+  >
+    <div
+      aria-disabled={false}
+      className="MuiButtonBase-root MuiButton-root deviceButton4 MuiButton-contained MuiButton-fullWidth"
+      onBlur={[Function]}
+      onDragEnd={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      role="button"
+      tabIndex={0}
+      to="/humidity"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        <p
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
+        >
+          House avg. 77%
+        </p>
+        <img
+          alt="humidity-icon"
+          src="test-file-stub"
+          style={
+            Object {
+              "padding": "0.25rem 0.5rem",
+            }
+          }
+        />
+      </span>
+    </div>
+  </div>
 </div>
 `;

@@ -2,13 +2,13 @@
 
 exports[`TopRow renders correctly 1`] = `
 <div
-  className="MuiGrid-container-1 MuiGrid-align-items-xs-flex-start-10 MuiGrid-justify-xs-space-between-20"
+  className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-flex-start MuiGrid-justify-xs-space-between"
 >
   <div
-    className="child"
+    className="MuiGrid-root child"
   >
     <span
-      className="MuiTypography-root-98 MuiTypography-caption-108"
+      className="MuiTypography-root MuiTypography-caption MuiTypography-colorTextPrimary"
     >
       <img
         align="middle"
@@ -26,13 +26,13 @@ exports[`TopRow renders correctly 1`] = `
     </span>
   </div>
   <div
-    className="child"
+    className="MuiGrid-root child"
   >
     <button
-      className="MuiButtonBase-root-160 MuiButton-root-134 MuiButton-outlined-142 MuiButton-outlinedSecondary-144 MuiButton-sizeLarge-158"
+      className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary MuiButton-sizeLarge"
       disabled={false}
       onBlur={[Function]}
-      onContextMenu={[Function]}
+      onDragEnd={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
@@ -42,21 +42,18 @@ exports[`TopRow renders correctly 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      tabIndex="0"
+      tabIndex={0}
       type="button"
     >
       <span
-        className="MuiButton-label-135 buttonLabel"
+        className="MuiButton-label buttonLabel"
       >
         <p
-          className="MuiTypography-root-98 MuiTypography-body1-107 MuiTypography-colorTextPrimary-130"
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextPrimary"
         >
           Sign in
         </p>
       </span>
-      <span
-        className="MuiTouchRipple-root-163"
-      />
     </button>
   </div>
 </div>
