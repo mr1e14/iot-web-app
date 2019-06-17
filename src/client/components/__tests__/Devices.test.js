@@ -2,7 +2,10 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { mount } from "enzyme";
 
-jest.mock("react-router-dom");
+jest.mock("react-router-dom", () => ({
+  Link: "div"
+}));
+
 jest.mock("../mediaQuery");
 
 import Typography from "@material-ui/core/Typography";
@@ -49,16 +52,21 @@ describe("Devices", () => {
         matches.mockReturnValue(false);
         wrapper = mount(<Devices classes={exampleClasses} />);
       });
-      it("has a root container spacing of 16", () => {
+      it("has a root container spacing of 2", () => {
         expect(
           wrapper
             .find(Grid)
             .at(0)
             .prop("spacing")
-        ).toEqual(16);
+        ).toEqual(2);
       });
       it("has a header with text in the centre", () => {
-        expect(wrapper.find(Typography).text()).toEqual("Smart devices");
+        expect(
+          wrapper
+            .find(Typography)
+            .first()
+            .text()
+        ).toEqual("Smart devices");
         expect(
           wrapper
             .find(Grid)
@@ -78,19 +86,19 @@ describe("Devices", () => {
         matches.mockReturnValue(true);
         wrapper = mount(<Devices classes={exampleClasses} />);
       });
-      it("has a root container spacing of 24", () => {
+      it("has a root container spacing of 3", () => {
         expect(
           wrapper
             .find(Grid)
             .at(0)
             .prop("spacing")
-        ).toEqual(24);
+        ).toEqual(3);
       });
       it("has a header with text in the centre", () => {
         expect(
           wrapper
             .find(Typography)
-
+            .first()
             .text()
         ).toEqual("Smart devices");
         expect(

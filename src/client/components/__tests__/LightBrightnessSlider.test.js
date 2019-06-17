@@ -44,7 +44,7 @@ describe("LightBrightnessSlider", () => {
         .find("Slider")
         .props()
         .onChange({}, newBrightness);
-      expect(wrapper.find("LightBrightnessSlider").state()).toEqual({
+      expect(wrapper.find("LightBrightnessSlider").instance().state).toEqual({
         value: newBrightness
       });
     });

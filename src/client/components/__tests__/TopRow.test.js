@@ -5,6 +5,9 @@ import { mount } from "enzyme";
 jest.mock("../mediaQuery");
 
 import TopRow from "../TopRow";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 const classes = {
   child: "child",
@@ -38,11 +41,11 @@ describe("TopRow", () => {
       wrapper = mount(<TopRow {...exampleProps} />);
     });
     it("has three Grid components", () => {
-      expect(wrapper.find("Grid").length).toBe(3);
+      expect(wrapper.find(Grid).length).toBe(3);
     });
     it("has a container Grid", () => {
       const { direction, alignItems, justify } = wrapper
-        .find("Grid")
+        .find(Grid)
         .at(0)
         .props();
       expect(direction).toEqual("row");
@@ -52,7 +55,7 @@ describe("TopRow", () => {
     it("has Grid with WeatherWidget", () => {
       expect(
         wrapper
-          .find("Grid")
+          .find(Grid)
           .at(1)
           .find("WeatherWidget").length
       ).toBe(1);
@@ -60,10 +63,10 @@ describe("TopRow", () => {
     it("has Grid with 'sign in' Button", () => {
       expect(
         wrapper
-          .find("Grid")
+          .find(Grid)
           .at(2)
-          .find("Button")
-          .find("Typography")
+          .find(Button)
+          .find(Typography)
           .text()
       ).toBe("Sign in");
     });

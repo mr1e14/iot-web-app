@@ -5,6 +5,9 @@ import { mount } from "enzyme";
 jest.mock("../mediaQuery");
 
 import LightOverview from "../LightOverview";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
 
 const exampleClasses = {
   lightRow: "lightRow"
@@ -71,13 +74,13 @@ describe("LightOverview", () => {
       expect(tree).toMatchSnapshot();
     });
     it("has all elements enabled", () => {
-      expect(wrapper.find("IconButton").prop("disabled")).toBe(false);
-      expect(wrapper.find("Button").prop("disabled")).toBe(false);
+      expect(wrapper.find(IconButton).prop("disabled")).toBe(false);
+      expect(wrapper.find(Button).prop("disabled")).toBe(false);
       expect(wrapper.find("Slider").prop("disabled")).toBe(false);
     });
     it("has a Grid container with correct attributes", () => {
       const gridStyle = wrapper
-        .find("Grid")
+        .find(Grid)
         .at(0)
         .prop("style");
       expect(gridStyle).toHaveProperty(
@@ -88,11 +91,11 @@ describe("LightOverview", () => {
       expect(gridStyle).toHaveProperty("cursor", "pointer");
     });
     it("has a main button with correct text", () => {
-      expect(wrapper.find("Button").text()).toEqual("Bedroom");
+      expect(wrapper.find(Button).text()).toEqual("Bedroom");
     });
     it("has a working toggle button", () => {
-      wrapper.find("IconButton").simulate("click");
-      expect(wrapper.find("LightOverview").state("on")).toBe(false);
+      wrapper.find(IconButton).simulate("click");
+      expect(wrapper.find("LightOverview").instance().state.on).toBe(false);
     });
     it("has an iconButton with correct icon", () => {
       expect(wrapper.find("MaterialIcon").prop("iconName")).toEqual(
@@ -122,15 +125,15 @@ describe("LightOverview", () => {
       expect(tree).toMatchSnapshot();
     });
     it("has both buttons enabled", () => {
-      expect(wrapper.find("IconButton").prop("disabled")).toBe(false);
-      expect(wrapper.find("Button").prop("disabled")).toBe(false);
+      expect(wrapper.find(IconButton).prop("disabled")).toBe(false);
+      expect(wrapper.find(Button).prop("disabled")).toBe(false);
     });
     it("has a disabled Slider", () => {
       expect(wrapper.find("Slider").prop("disabled")).toBe(true);
     });
     it("has a Grid container with correct attributes", () => {
       const gridStyle = wrapper
-        .find("Grid")
+        .find(Grid)
         .at(0)
         .prop("style");
       expect(gridStyle).toHaveProperty(
@@ -141,7 +144,7 @@ describe("LightOverview", () => {
       expect(gridStyle).toHaveProperty("cursor", "pointer");
     });
     it("has a main button with correct text", () => {
-      expect(wrapper.find("Button").text()).toEqual("Bedroom");
+      expect(wrapper.find(Button).text()).toEqual("Bedroom");
     });
     it("has an iconButton with correct icon", () => {
       expect(wrapper.find("MaterialIcon").prop("iconName")).toEqual(
@@ -171,13 +174,13 @@ describe("LightOverview", () => {
       expect(tree).toMatchSnapshot();
     });
     it("has all elements disabled", () => {
-      expect(wrapper.find("IconButton").prop("disabled")).toBe(true);
-      expect(wrapper.find("Button").prop("disabled")).toBe(true);
+      expect(wrapper.find(IconButton).prop("disabled")).toBe(true);
+      expect(wrapper.find(Button).prop("disabled")).toBe(true);
       expect(wrapper.find("Slider").prop("disabled")).toBe(true);
     });
     it("has a Grid container with correct attributes", () => {
       const gridStyle = wrapper
-        .find("Grid")
+        .find(Grid)
         .at(0)
         .prop("style");
       expect(gridStyle).toHaveProperty(
@@ -188,7 +191,7 @@ describe("LightOverview", () => {
       expect(gridStyle).toHaveProperty("cursor", "no-drop");
     });
     it("has a main button with correct text", () => {
-      expect(wrapper.find("Button").text()).toEqual("Bedroom");
+      expect(wrapper.find(Button).text()).toEqual("Bedroom");
     });
     it("has an iconButton with correct icon", () => {
       expect(wrapper.find("MaterialIcon").prop("iconName")).toEqual(

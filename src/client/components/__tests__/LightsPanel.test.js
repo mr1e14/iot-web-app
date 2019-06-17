@@ -1,6 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import { mount } from "enzyme";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
 jest.mock("../mediaQuery");
 jest.mock("react-router-dom", () => ({
@@ -65,15 +67,15 @@ describe("LightsPanel", () => {
     it("has a Grid container with a custom class", () => {
       expect(
         wrapper
-          .find("Grid")
-          .at(0)
+          .find(Grid)
+          .first()
           .hasClass("lightsPanel")
       ).toBe(true);
     });
     it("has a header with text in the centre", () => {
       expect(
         wrapper
-          .find("Typography")
+          .find(Typography)
           .at(0)
           .text()
       ).toEqual("Manage lights");
@@ -97,7 +99,7 @@ describe("LightsPanel", () => {
     it("positions the LightOverview component in the centre", () => {
       expect(
         wrapper
-          .find("Grid")
+          .find(Grid)
           .at(5)
           .prop("justify")
       ).toEqual("center");
@@ -122,7 +124,7 @@ describe("LightsPanel", () => {
     it("has a Grid container with a custom class", () => {
       expect(
         wrapper
-          .find("Grid")
+          .find(Grid)
           .at(0)
           .hasClass("lightsPanel")
       ).toBe(true);
@@ -130,7 +132,7 @@ describe("LightsPanel", () => {
     it("has a header with text in the centre", () => {
       expect(
         wrapper
-          .find("Typography")
+          .find(Typography)
           .at(0)
           .text()
       ).toEqual("Manage lights");
@@ -154,7 +156,7 @@ describe("LightsPanel", () => {
     it("positions the LightOverview components side-by-side", () => {
       expect(
         wrapper
-          .find("Grid")
+          .find(Grid)
           .at(5)
           .prop("justify")
       ).toEqual("flex-start");
@@ -177,7 +179,7 @@ describe("LightsPanel", () => {
     it("has a Grid container with a custom class", () => {
       expect(
         wrapper
-          .find("Grid")
+          .find(Grid)
           .at(0)
           .hasClass("lightsPanel")
       ).toBe(true);
@@ -185,7 +187,7 @@ describe("LightsPanel", () => {
     it("has a header with text in the centre", () => {
       expect(
         wrapper
-          .find("Typography")
+          .find(Typography)
           .at(0)
           .text()
       ).toEqual("Manage lights");
@@ -222,13 +224,13 @@ describe("LightsPanel", () => {
     it("renders correctly", () => {
       expect(tree).toMatchSnapshot();
     });
-    it("has a spacing value of 16", () => {
+    it("has a spacing value of 1", () => {
       expect(
         wrapper
-          .find("Grid")
+          .find(Grid)
           .last()
           .prop("spacing")
-      ).toEqual(16);
+      ).toEqual(1);
     });
   });
   describe("on larger devices", () => {
@@ -243,13 +245,13 @@ describe("LightsPanel", () => {
     it("renders correctly", () => {
       expect(tree).toMatchSnapshot();
     });
-    it("has a spacing value of 24", () => {
+    it("has a spacing value of 2", () => {
       expect(
         wrapper
-          .find("Grid")
+          .find(Grid)
           .last()
           .prop("spacing")
-      ).toEqual(24);
+      ).toEqual(2);
     });
   });
 });

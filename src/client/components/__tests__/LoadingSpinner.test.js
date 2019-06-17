@@ -3,6 +3,7 @@ import renderer from "react-test-renderer";
 import { mount } from "enzyme";
 
 import LoadingSpinner from "../LoadingSpinner";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 describe("LoadingSpinner", () => {
   let tree;
@@ -28,7 +29,7 @@ describe("LoadingSpinner", () => {
       ).toContain("spinnerContainer");
     });
     it("has a CircularProgress component", () => {
-      expect(wrapper.find("CircularProgress").exists()).toEqual(true);
+      expect(wrapper.find(CircularProgress).exists()).toEqual(true);
     });
   });
 });
