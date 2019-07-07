@@ -28,6 +28,11 @@ exports[`LightOverview when light is disabled renders correctly 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
+      style={
+        Object {
+          "color": "#ffffff",
+        }
+      }
       tabIndex={0}
       type="button"
     >
@@ -151,7 +156,7 @@ exports[`LightOverview when light is disconnected renders correctly 1`] = `
   className="MuiGrid-root lightRow MuiGrid-container MuiGrid-align-items-xs-center"
   style={
     Object {
-      "background": "linear-gradient(45deg, #fff 35%, rgb(242,242,242) 90%)",
+      "background": "linear-gradient(45deg, #1a1a1a 35%, rgb(242,242,242) 90%)",
       "cursor": "no-drop",
       "opacity": 0.2,
     }
@@ -174,6 +179,11 @@ exports[`LightOverview when light is disconnected renders correctly 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
+      style={
+        Object {
+          "color": "#ffffff",
+        }
+      }
       tabIndex={-1}
       type="button"
     >
@@ -320,6 +330,11 @@ exports[`LightOverview when light is enabled renders correctly 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
+      style={
+        Object {
+          "color": "#ffffff",
+        }
+      }
       tabIndex={0}
       type="button"
     >

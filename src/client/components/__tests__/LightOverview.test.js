@@ -185,7 +185,7 @@ describe("LightOverview", () => {
         .prop("style");
       expect(gridStyle).toHaveProperty(
         "background",
-        "linear-gradient(45deg, #fff 35%, rgb(242,242,242) 90%)"
+        "linear-gradient(45deg, #1a1a1a 35%, rgb(242,242,242) 90%)"
       );
       expect(gridStyle).toHaveProperty("opacity", 0.2);
       expect(gridStyle).toHaveProperty("cursor", "no-drop");

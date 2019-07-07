@@ -2,10 +2,12 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { withTheme } from "@material-ui/styles";
 import LightBrightnessSlider from "./LightBrigtnessSlider";
 import IconButton from "@material-ui/core/IconButton";
 import MaterialIcon from "./MaterialIcon";
+
+const defaultBackgroundColor = "#1a1a1a";
+const labelColor = "#ffffff";
 
 class LightOverview extends React.Component {
   state = {
@@ -20,12 +22,12 @@ class LightOverview extends React.Component {
 
   render() {
     const { on, connected } = this.state;
-    const { classes, data, theme } = this.props;
+    const { classes, data } = this.props;
     return (
       <Grid
         style={{
           background: `linear-gradient(45deg, ${data.color ||
-            theme.palette.primary.main} 35%, rgb(242,242,242) 90%)`,
+            defaultBackgroundColor} 35%, rgb(242,242,242) 90%)`,
           opacity: on ? 1 : 0.2,
           cursor: connected ? "pointer" : "no-drop"
         }}
@@ -39,6 +41,9 @@ class LightOverview extends React.Component {
             color="primary"
             fullWidth
             disabled={!connected}
+            style={{
+              color: labelColor
+            }}
           >
             <Typography>{data.name}</Typography>
           </Button>
@@ -64,4 +69,4 @@ class LightOverview extends React.Component {
   }
 }
 
-export default withTheme(LightOverview);
+export default LightOverview;

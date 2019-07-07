@@ -379,6 +379,11 @@ exports[`LightsPanel when one light is provided renders correctly 1`] = `
             onTouchEnd={[Function]}
             onTouchMove={[Function]}
             onTouchStart={[Function]}
+            style={
+              Object {
+                "color": "#ffffff",
+              }
+            }
             tabIndex={0}
             type="button"
           >
@@ -615,6 +620,11 @@ exports[`LightsPanel when two lights are provided renders correctly 1`] = `
             onTouchEnd={[Function]}
             onTouchMove={[Function]}
             onTouchStart={[Function]}
+            style={
+              Object {
+                "color": "#ffffff",
+              }
+            }
             tabIndex={0}
             type="button"
           >
@@ -762,6 +772,11 @@ exports[`LightsPanel when two lights are provided renders correctly 1`] = `
             onTouchEnd={[Function]}
             onTouchMove={[Function]}
             onTouchStart={[Function]}
+            style={
+              Object {
+                "color": "#ffffff",
+              }
+            }
             tabIndex={0}
             type="button"
           >
