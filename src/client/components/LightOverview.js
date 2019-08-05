@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import LightBrightnessSlider from "./LightBrigtnessSlider";
 import IconButton from "@material-ui/core/IconButton";
 import MaterialIcon from "./MaterialIcon";
+import { Link } from "react-router-dom";
 
 const defaultBackgroundColor = "#1a1a1a";
 const labelColor = "#ffffff";
@@ -37,6 +38,8 @@ class LightOverview extends React.Component {
       >
         <Grid item xs={10}>
           <Button
+            component={Link}
+            to={`/light/${data.id}`}
             variant="contained"
             color="primary"
             fullWidth

@@ -36,7 +36,20 @@ app.get("/api/getWeatherData", async (req, res) => {
 });
 
 app.get("/api/getLightsData", async (req, res) => {
+  // TODO get from db and cache
   res.send({ lightsData: fourLights });
+});
+
+app.get("/api/getLightDataById/:id", async (req, res) => {
+  // TODO get from db and cache
+  let lightData;
+  console.log(`param id: ${req.params.id}`);
+  fourLights.forEach(light => {
+    if (light.id === req.params.id) {
+      lightData = { ...light };
+    }
+  });
+  res.send({ lightData });
 });
 
 app.get("*", function(req, res) {

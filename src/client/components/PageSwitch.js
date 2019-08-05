@@ -3,6 +3,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Home from "./pages/Home";
 import Lights from "./pages/Lights";
+import LightView from "./pages/LightView";
 
 class PageSwitch extends React.Component {
   constructor(props) {
@@ -72,6 +73,12 @@ class PageSwitch extends React.Component {
                     weatherData={weatherData}
                     lightsData={lightsData}
                   />
+                )}
+              />
+              <Route
+                path="/light/:id"
+                render={props => (
+                  <LightView classes={classes} match={props.match} />
                 )}
               />
             </Switch>
