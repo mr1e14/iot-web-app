@@ -78,7 +78,11 @@ class PageSwitch extends React.Component {
               <Route
                 path="/light/:id"
                 render={props => (
-                  <LightView classes={classes} match={props.match} />
+                  <LightView
+                    classes={classes}
+                    match={props.match}
+                    lightsData={lightsData}
+                  />
                 )}
               />
             </Switch>
