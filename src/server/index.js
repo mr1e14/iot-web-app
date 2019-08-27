@@ -1,74 +1,14 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const { getWeatherData } = require("./connectors/dark-sky-api");
-const { getCache } = require("./services/cache");
-const {
-  WEATHER_CACHE_REFRESH_AFTER_SECONDS,
-  WEATHER_CACHE_DELETE_AFTER_SECONDS
-} = require("./config");
 const logger = require("./services/logging")("index");
-const { oneLight, twoLights, fourLights } = require("./sample_data/lights");
-const { getSupportedColors } = require("./connectors/db/iot-db");
+const { apiRouter } = require("./routes/api");
 
 const app = express();
 
-const weatherCache = getCache(
-  WEATHER_CACHE_REFRESH_AFTER_SECONDS,
-  WEATHER_CACHE_DELETE_AFTER_SECONDS,
-  getWeatherData
-);
-
-const supportedColorsCache = getCache(0, 0, getSupportedColors);
-
 app.use(express.static("dist"));
 
-app.get("/api/getWeatherData", async (req, res) => {
-  logger.info("app.get/api/getWeatherData", "invoked");
-  let weatherData = null;
-  try {
-    weatherData = await weatherCache.get("weatherData");
-  } catch (err) {
-    logger.error(
-      "app.get/api/getWeatherData",
-      "Failed to retrieve weather data",
-      err
-    );
-  }
-  res.send({ weatherData });
-});
-
-app.get("/api/getLightsData", async (req, res) => {
-  // TODO get from db and cache
-  res.send({ lightsData: fourLights });
-});
-
-app.get("/api/getLightDataById/:id", async (req, res) => {
-  // TODO get from db and cache
-  let lightData;
-  console.log(`param id: ${req.params.id}`);
-  fourLights.forEach(light => {
-    if (light.id === req.params.id) {
-      lightData = { ...light };
-    }
-  });
-  res.send({ lightData });
-});
-
-app.get("/api/getSupportedColors", async (req, res) => {
-  logger.info("app.get/api/getSupportedColors", "invoked");
-  let supportedColors = null;
-  try {
-    supportedColors = await supportedColorsCache.get("supportedColors");
-  } catch (err) {
-    logger.error(
-      "app.get/api/getSupportedColors",
-      "Failed to retrieve supported colors",
-      err
-    );
-  }
-  res.send({ supportedColors });
-});
+app.use("/api", apiRouter());
 
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "../../dist", "index.html"));

@@ -20,7 +20,7 @@ class PageSwitch extends React.Component {
       .then(res => res.json())
       .then(res => this.setState({ weatherData: res.weatherData }));
 
-    fetch("/api/getLightsData")
+    fetch("/api/lights/getLightsData")
       .then(res => res.json())
       .then(res => this.setState({ lightsData: res.lightsData }));
   }

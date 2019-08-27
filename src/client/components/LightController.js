@@ -19,11 +19,11 @@ class LightController extends React.Component {
   componentDidMount() {
     const { id } = this.props;
     // always update after render
-    fetch(`/api/getLightDataById/${id}`)
+    fetch(`/api/lights/getLightDataById/${id}`)
       .then(res => res.json())
       .then(res => this.setState({ ...res.lightData }));
 
-    fetch("/api/getSupportedColors")
+    fetch("/api/lights/getSupportedColors")
       .then(res => res.json())
       .then(res => this.setState({ colors: res.supportedColors }));
   }
