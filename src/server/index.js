@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const logger = require("./services/logging")("index");
-const { apiRouter } = require("./routes/api");
+const { apiRouter } = require("./routes/api.router");
 
 const app = express();
 

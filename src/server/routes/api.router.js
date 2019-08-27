@@ -12,13 +12,13 @@ const weatherCache = getCache(
   WEATHER_CACHE_DELETE_AFTER_SECONDS,
   getWeatherData
 );
-const { lightsRouter } = require("./lights");
+const { lightsRouter } = require("./lights.router");
 
 const apiRouter = () => {
   const router = Router();
 
   router.get("/getWeatherData", async (req, res) => {
-    logger.info("app.get/api/getWeatherData", "invoked");
+    logger.info("/api/getWeatherData", "route called");
     let weatherData = null;
     try {
       weatherData = await weatherCache.get("weatherData");
