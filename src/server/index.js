@@ -9,6 +9,7 @@ const {
 } = require("./config");
 const logger = require("./services/logging")("index");
 const { oneLight, twoLights, fourLights } = require("./sample_data/lights");
+const { getSupportedColors } = require("./connectors/db/iot-db");
 
 const app = express();
 
@@ -17,6 +18,8 @@ const weatherCache = getCache(
   WEATHER_CACHE_DELETE_AFTER_SECONDS,
   getWeatherData
 );
+
+const supportedColorsCache = getCache(0, 0, getSupportedColors);
 
 app.use(express.static("dist"));
 
@@ -50,6 +53,21 @@ app.get("/api/getLightDataById/:id", async (req, res) => {
     }
   });
   res.send({ lightData });
+});
+
+app.get("/api/getSupportedColors", async (req, res) => {
+  logger.info("app.get/api/getSupportedColors", "invoked");
+  let supportedColors = null;
+  try {
+    supportedColors = await supportedColorsCache.get("supportedColors");
+  } catch (err) {
+    logger.error(
+      "app.get/api/getSupportedColors",
+      "Failed to retrieve supported colors",
+      err
+    );
+  }
+  res.send({ supportedColors });
 });
 
 app.get("*", function(req, res) {

@@ -22,6 +22,10 @@ class LightController extends React.Component {
     fetch(`/api/getLightDataById/${id}`)
       .then(res => res.json())
       .then(res => this.setState({ ...res.lightData }));
+
+    fetch("/api/getSupportedColors")
+      .then(res => res.json())
+      .then(res => this.setState({ colors: res.supportedColors }));
   }
 
   onNameChange(event) {
@@ -32,8 +36,8 @@ class LightController extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { connected, name } = this.state;
-    if (!connected) {
+    const { connected, name, colors } = this.state;
+    if (!connected || !colors) {
       return <LoadingSpinner />;
     } else {
       return (
@@ -45,7 +49,7 @@ class LightController extends React.Component {
             />
           </Grid>
           <Grid item xs={12}>
-            <ColorPicker />
+            <ColorPicker colors={colors} />
           </Grid>
         </Grid>
       );
