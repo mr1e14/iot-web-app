@@ -77,7 +77,7 @@ class LightController extends React.Component {
           >
             <div style={{ width: containerWidth, opacity: on ? 1 : 0.2 }}>
               <Grid item xs={12} className={classes.child}>
-                <RoomNameField name={name} />
+                <RoomNameField name={name} classes={classes} />
               </Grid>
               <Grid item xs={12} className={classes.child}>
                 <ColorPicker

@@ -24,6 +24,7 @@ class RoomNameField extends React.Component {
             ? `Must be between 1 - ${MAX_ROOM_NAME_LENGTH} characters`
             : ""
         }
+        inputProps={{ className: this.props.classes.textCenter }}
       />
     );
   }

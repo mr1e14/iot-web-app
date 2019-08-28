@@ -112,6 +112,9 @@ const styles = theme => ({
     boxShadow: "0 4px 4px 4px rgba(51,51,51, .3)",
     borderRadius: 16,
     padding: "0 12px"
+  },
+  textCenter: {
+    textAlign: "center"
   }
 });
 
