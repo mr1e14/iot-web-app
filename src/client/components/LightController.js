@@ -39,9 +39,13 @@ class LightController extends React.Component {
     this.setState({ on: !this.state.on });
   };
 
+  handleColorChange = (color, event) => {
+    this.setState({ color: color.hex });
+  };
+
   render() {
     const { classes, isXs } = this.props;
-    const { on, connected, name, colors } = this.state;
+    const { on, connected, name, color, colors } = this.state;
     const containerWidth = isXs ? "260px" : "520px";
     if (!connected || !colors) {
       return <LoadingSpinner />;
@@ -93,9 +97,17 @@ class LightController extends React.Component {
                   colors={colors}
                   containerWidth={containerWidth}
                   isXs={isXs}
+                  handleColorChange={this.handleColorChange}
                 />
               </Grid>
-              <Grid item xs={12} className={classes.child}>
+              <Grid
+                item
+                xs={12}
+                className={classes.sliderBackground}
+                style={{
+                  background: `linear-gradient(45deg, ${color} 35%, rgb(242,242,242) 90%)`
+                }}
+              >
                 <LightBrightnessSlider on={on} connected={connected} />
               </Grid>
             </div>

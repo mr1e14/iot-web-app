@@ -10,7 +10,7 @@ const styles = {
 };
 
 const ColorPicker = props => {
-  const { isXs, containerWidth } = props;
+  const { isXs, containerWidth, handleColorChange } = props;
   const circleSpacing = isXs ? 6 : 8;
   const circleSize = isXs ? 20 : 26;
 
@@ -21,6 +21,7 @@ const ColorPicker = props => {
         width={containerWidth}
         circleSize={circleSize}
         circleSpacing={circleSpacing}
+        onChangeComplete={handleColorChange}
       />
     </div>
   );
