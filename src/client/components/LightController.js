@@ -7,7 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MaterialIcon from "./MaterialIcon";
 import LoadingSpinner from "./LoadingSpinner";
 import ColorPicker from "./ColorPicker";
-import TextField from "@material-ui/core/TextField";
+import RoomNameField from "./RoomNameField";
 import { Link } from "react-router-dom";
 
 class LightController extends React.Component {
@@ -27,12 +27,6 @@ class LightController extends React.Component {
     fetch("/api/lights/getSupportedColors")
       .then(res => res.json())
       .then(res => this.setState({ colors: res.supportedColors }));
-  }
-
-  onNameChange(event) {
-    // TODO validate
-    this.setState({ name: event.target.value });
-    // TODO API request to save value
   }
 
   handleToggleClick = event => {
@@ -83,10 +77,7 @@ class LightController extends React.Component {
           >
             <div style={{ width: containerWidth, opacity: on ? 1 : 0.2 }}>
               <Grid item xs={12} className={classes.child}>
-                <TextField
-                  defaultValue={name}
-                  onChange={e => this.onNameChange(e)}
-                />
+                <RoomNameField name={name} />
               </Grid>
               <Grid item xs={12} className={classes.child}>
                 <ColorPicker
