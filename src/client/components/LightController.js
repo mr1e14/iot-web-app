@@ -85,7 +85,7 @@ class LightController extends React.Component {
             spacing={2}
             className={classes.root}
           >
-            <div style={{ width: containerWidth }}>
+            <div style={{ width: containerWidth, opacity: on ? 1 : 0.2 }}>
               <Grid item xs={12} className={classes.child}>
                 <TextField
                   defaultValue={name}
