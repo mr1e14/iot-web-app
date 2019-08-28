@@ -35,6 +35,10 @@ class LightController extends React.Component {
     // TODO API request to save value
   }
 
+  handleToggleClick = event => {
+    this.setState({ on: !this.state.on });
+  };
+
   render() {
     const { classes, isXs } = this.props;
     const { on, connected, name, colors } = this.state;
@@ -43,29 +47,57 @@ class LightController extends React.Component {
       return <LoadingSpinner />;
     } else {
       return (
-        <Grid
-          container
-          justify="center"
-          alignItems="center"
-          spacing={2}
-          className={classes.root}
-        >
-          <div style={{ width: containerWidth }}>
-            <Grid item xs={12} className={classes.child}>
-              <TextField
-                defaultValue={name}
-                onChange={e => this.onNameChange(e)}
-              />
+        <React.Fragment>
+          <Grid
+            container
+            direction="row"
+            alignItems="flex-start"
+            justify="space-between"
+            className={classes.child}
+          >
+            <Grid item>
+              <IconButton component={Link} to="/lights" color="secondary">
+                <MaterialIcon iconName="arrow_back" />
+              </IconButton>
             </Grid>
-            <Grid item xs={12} className={classes.child}>
-              <ColorPicker
-                colors={colors}
-                containerWidth={containerWidth}
-                isXs={isXs}
-              />
+            <Grid item>
+              <IconButton
+                color="primary"
+                disabled={!connected}
+                onClick={this.handleToggleClick}
+              >
+                <MaterialIcon
+                  iconName={
+                    this.state.connected ? "power_settings_new" : "power_off"
+                  }
+                />
+              </IconButton>
             </Grid>
-          </div>
-        </Grid>
+          </Grid>
+          <Grid
+            container
+            justify="center"
+            alignItems="center"
+            spacing={2}
+            className={classes.root}
+          >
+            <div style={{ width: containerWidth }}>
+              <Grid item xs={12} className={classes.child}>
+                <TextField
+                  defaultValue={name}
+                  onChange={e => this.onNameChange(e)}
+                />
+              </Grid>
+              <Grid item xs={12} className={classes.child}>
+                <ColorPicker
+                  colors={colors}
+                  containerWidth={containerWidth}
+                  isXs={isXs}
+                />
+              </Grid>
+            </div>
+          </Grid>
+        </React.Fragment>
       );
     }
   }
