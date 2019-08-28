@@ -70,11 +70,7 @@ class LightController extends React.Component {
                 disabled={!connected}
                 onClick={this.handleToggleClick}
               >
-                <MaterialIcon
-                  iconName={
-                    this.state.connected ? "power_settings_new" : "power_off"
-                  }
-                />
+                <MaterialIcon iconName="power_settings_new" />
               </IconButton>
             </Grid>
           </Grid>
