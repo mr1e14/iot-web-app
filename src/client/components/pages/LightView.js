@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "../Logo";
 import LightController from "../LightController";
 import Grid from "@material-ui/core/Grid";
+import matches from "../mediaQuery";
 
 const getLightData = (lightsData, id) => {
   let lightData = null;
@@ -29,6 +30,7 @@ const LightView = props => {
           classes={classes}
           id={id}
           lightData={getLightData(lightsData, id)}
+          isXs={!matches("sm")}
         />
       </Grid>
     </div>

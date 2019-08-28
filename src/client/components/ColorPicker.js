@@ -1,6 +1,5 @@
 import React from "react";
 import { CirclePicker } from "react-color";
-import matches from "./mediaQuery";
 import { withStyles } from "@material-ui/styles";
 
 const styles = {
@@ -10,10 +9,8 @@ const styles = {
   }
 };
 
-
 const ColorPicker = props => {
-  const isXs = !matches("sm");
-  const pickerWidth = isXs ? "260px" : "520px";
+  const { isXs, containerWidth } = props;
   const circleSpacing = isXs ? 6 : 8;
   const circleSize = isXs ? 20 : 26;
 
@@ -21,7 +18,7 @@ const ColorPicker = props => {
     <div className={props.classes.pickerContainer}>
       <CirclePicker
         colors={props.colors}
-        width={pickerWidth}
+        width={containerWidth}
         circleSize={circleSize}
         circleSpacing={circleSpacing}
       />

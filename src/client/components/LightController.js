@@ -8,6 +8,7 @@ import MaterialIcon from "./MaterialIcon";
 import LoadingSpinner from "./LoadingSpinner";
 import ColorPicker from "./ColorPicker";
 import TextField from "@material-ui/core/TextField";
+import { Link } from "react-router-dom";
 
 class LightController extends React.Component {
   constructor(props) {
@@ -35,22 +36,35 @@ class LightController extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
-    const { connected, name, colors } = this.state;
+    const { classes, isXs } = this.props;
+    const { on, connected, name, colors } = this.state;
+    const containerWidth = isXs ? "260px" : "520px";
     if (!connected || !colors) {
       return <LoadingSpinner />;
     } else {
       return (
-        <Grid container justify="center" alignItems="center" spacing={2}>
-          <Grid item xs={12}>
-            <TextField
-              defaultValue={name}
-              onChange={e => this.onNameChange(e)}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <ColorPicker colors={colors} />
-          </Grid>
+        <Grid
+          container
+          justify="center"
+          alignItems="center"
+          spacing={2}
+          className={classes.root}
+        >
+          <div style={{ width: containerWidth }}>
+            <Grid item xs={12} className={classes.child}>
+              <TextField
+                defaultValue={name}
+                onChange={e => this.onNameChange(e)}
+              />
+            </Grid>
+            <Grid item xs={12} className={classes.child}>
+              <ColorPicker
+                colors={colors}
+                containerWidth={containerWidth}
+                isXs={isXs}
+              />
+            </Grid>
+          </div>
         </Grid>
       );
     }
