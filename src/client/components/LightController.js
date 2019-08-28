@@ -95,6 +95,9 @@ class LightController extends React.Component {
                   isXs={isXs}
                 />
               </Grid>
+              <Grid item xs={12} className={classes.child}>
+                <LightBrightnessSlider on={on} connected={connected} />
+              </Grid>
             </div>
           </Grid>
         </React.Fragment>
