@@ -23,10 +23,6 @@ class LightController extends React.Component {
     fetch(`/api/lights/getLightDataById/${id}`)
       .then(res => res.json())
       .then(res => this.setState({ ...res.lightData }));
-
-    fetch("/api/lights/getSupportedColors")
-      .then(res => res.json())
-      .then(res => this.setState({ colors: res.supportedColors }));
   }
 
   handleToggleClick = event => {
@@ -38,10 +34,10 @@ class LightController extends React.Component {
   };
 
   render() {
-    const { classes, isXs } = this.props;
-    const { on, connected, name, color, colors } = this.state;
+    const { classes, isXs, supportedColors } = this.props;
+    const { on, connected, name, color } = this.state;
     const containerWidth = isXs ? "260px" : "520px";
-    if (!connected || !colors) {
+    if (!connected || !supportedColors) {
       return <LoadingSpinner />;
     } else {
       return (
@@ -81,7 +77,7 @@ class LightController extends React.Component {
               </Grid>
               <Grid item xs={12} className={classes.child}>
                 <ColorPicker
-                  colors={colors}
+                  colors={supportedColors}
                   containerWidth={containerWidth}
                   isXs={isXs}
                   handleColorChange={this.handleColorChange}

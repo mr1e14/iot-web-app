@@ -11,7 +11,8 @@ class PageSwitch extends React.Component {
     this.state = {
       previousDepth: this.getPathDepth(this.props.location),
       weatherData: null,
-      lightsData: null
+      lightsData: null,
+      supportedColors: null
     };
   }
 
@@ -23,6 +24,10 @@ class PageSwitch extends React.Component {
     fetch("/api/lights/getLightsData")
       .then(res => res.json())
       .then(res => this.setState({ lightsData: res.lightsData }));
+
+    fetch("/api/lights/getSupportedColors")
+      .then(res => res.json())
+      .then(res => this.setState({ supportedColors: res.supportedColors }));
   }
 
   componentWillReceiveProps() {
@@ -36,7 +41,7 @@ class PageSwitch extends React.Component {
 
   render() {
     const { location, classes, isMobileDevice } = this.props;
-    const { weatherData, lightsData } = this.state;
+    const { weatherData, lightsData, supportedColors } = this.state;
     const transitionProperties = isMobileDevice
       ? { timeout: { enter: 700, exit: 350 }, class: "slide" }
       : { timeout: { enter: 300, exit: 150 }, class: "fade" };
@@ -82,6 +87,7 @@ class PageSwitch extends React.Component {
                     classes={classes}
                     match={props.match}
                     lightsData={lightsData}
+                    supportedColors={supportedColors}
                   />
                 )}
               />
