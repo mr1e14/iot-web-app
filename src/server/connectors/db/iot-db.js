@@ -21,7 +21,7 @@ const establishConnection = async () => {
 };
 
 const getConfigItems = async ({ id }) => {
-  logger.info(`getConfigItems${id}`, "invoked");
+  logger.info(`getConfigItems(${id})`, "invoked");
 
   try {
     await establishConnection();
@@ -33,7 +33,7 @@ const getConfigItems = async ({ id }) => {
     return item.values;
   } catch (err) {
     logger.error(
-      `getConfigItems${id}`,
+      `getConfigItems(${id})`,
       "Failed to retrieve list of colors",
       err
     );
