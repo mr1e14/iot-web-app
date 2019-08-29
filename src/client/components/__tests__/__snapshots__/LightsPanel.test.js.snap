@@ -385,6 +385,7 @@ exports[`LightsPanel when one light is provided renders correctly 1`] = `
               }
             }
             tabIndex={0}
+            to="/light/undefined"
             type="button"
           >
             <span
@@ -626,6 +627,7 @@ exports[`LightsPanel when two lights are provided renders correctly 1`] = `
               }
             }
             tabIndex={0}
+            to="/light/undefined"
             type="button"
           >
             <span
@@ -778,6 +780,7 @@ exports[`LightsPanel when two lights are provided renders correctly 1`] = `
               }
             }
             tabIndex={0}
+            to="/light/undefined"
             type="button"
           >
             <span

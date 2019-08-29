@@ -34,6 +34,7 @@ exports[`LightOverview when light is disabled renders correctly 1`] = `
         }
       }
       tabIndex={0}
+      to="/light/undefined"
       type="button"
     >
       <span
@@ -185,6 +186,7 @@ exports[`LightOverview when light is disconnected renders correctly 1`] = `
         }
       }
       tabIndex={-1}
+      to="/light/undefined"
       type="button"
     >
       <span
@@ -336,6 +338,7 @@ exports[`LightOverview when light is enabled renders correctly 1`] = `
         }
       }
       tabIndex={0}
+      to="/light/undefined"
       type="button"
     >
       <span

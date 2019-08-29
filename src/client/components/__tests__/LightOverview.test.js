@@ -9,6 +9,10 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 
+jest.mock("react-router-dom", () => ({
+  Link: "button"
+}));
+
 const exampleClasses = {
   lightRow: "lightRow"
 };
