@@ -18,7 +18,7 @@ const nodeCacheMock = jest.mock("node-cache", () => {
 
 const { getCache } = require("../cache");
 
-const getValueCallback = jest.fn().mockImplementation(() => {
+const getValueCallback = jest.fn().mockImplementation(params => {
   return Promise.resolve("some value");
 });
 
@@ -29,7 +29,7 @@ describe("cache", () => {
     nodeCacheMockSet.mockClear();
   });
   describe("Given no value is cached for a key", () => {
-    let myCache = getCache(60, 120, getValueCallback);
+    let myCache = getCache(60, 120, getValueCallback, {});
     let value;
     beforeEach(async () => {
       nodeCacheMockGet.mockImplementation(() => {
@@ -40,8 +40,9 @@ describe("cache", () => {
     it("should attempt to get value from cache first", () => {
       expect(nodeCacheMockGet).toHaveBeenCalledTimes(1);
     });
-    it("should call provided callback function", () => {
+    it("should call provided callback function with empty object", () => {
       expect(getValueCallback).toHaveBeenCalledTimes(1);
+      expect(getValueCallback).toHaveBeenCalledWith({});
     });
     it("should return getValueCallback value", () => {
       expect(value).toBe("some value");
@@ -51,7 +52,7 @@ describe("cache", () => {
     });
   });
   describe("Given value is cached for a key", () => {
-    let myCache = getCache(60, 120, getValueCallback);
+    let myCache = getCache(60, 120, getValueCallback, {});
     let value;
     beforeEach(async () => {
       nodeCacheMockGet.mockImplementation(() => {
@@ -73,7 +74,7 @@ describe("cache", () => {
     });
   });
   describe("Given library throws an error", () => {
-    let myCache = getCache(60, 120, getValueCallback);
+    let myCache = getCache(60, 120, getValueCallback, {});
     let value;
     let error;
     beforeEach(async () => {
@@ -98,7 +99,7 @@ describe("cache", () => {
       getValueCallback.mockImplementation(() => {
         throw new Error("some error");
       });
-      getCache(60, 120, getValueCallback);
+      getCache(60, 120, getValueCallback, {});
     });
     it("should call provided callback function and swallow exception", () => {
       expect(getValueCallback).toHaveBeenCalledTimes(1);

@@ -1,7 +1,12 @@
 const NodeCache = require("node-cache");
 const logger = require("./logging")("cache");
 
-const getCache = (refreshAfterSeconds, deleteAfterSeconds, getValue) => {
+const getCache = (
+  refreshAfterSeconds,
+  deleteAfterSeconds,
+  getValue,
+  params
+) => {
   const nodeCache = new NodeCache({
     stdTTL: refreshAfterSeconds,
     checkperiod: deleteAfterSeconds
@@ -13,7 +18,7 @@ const getCache = (refreshAfterSeconds, deleteAfterSeconds, getValue) => {
     if (value) {
       return Promise.resolve(value);
     } else {
-      return getValue().then(newValue => {
+      return getValue(params).then(newValue => {
         nodeCache.set(key, newValue);
         return newValue;
       });
@@ -27,7 +32,7 @@ const getCache = (refreshAfterSeconds, deleteAfterSeconds, getValue) => {
     );
     let newValue = null;
     try {
-      newValue = await getValue();
+      newValue = await getValue(params);
       nodeCache.set(key, newValue);
       logger.info(
         `nodeCache.on("expired")`,
