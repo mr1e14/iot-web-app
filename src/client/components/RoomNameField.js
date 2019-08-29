@@ -6,21 +6,25 @@ import { MAX_ROOM_NAME_LENGTH } from "../config";
 class RoomNameField extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { name: props.name };
+    this.state = { name: props.name, isValid: validateRoomName(props.name) };
   }
 
   onNameChange(event) {
-    this.setState({ name: event.target.value });
+    this.setState({
+      name: event.target.value,
+      isValid: validateRoomName(event.target.value)
+    });
     // TODO API request to save value
   }
   render() {
+    const { name, isValid } = this.state;
     return (
       <TextField
-        defaultValue={this.state.name}
+        defaultValue={name}
         onChange={e => this.onNameChange(e)}
-        error={!validateRoomName(this.state.name)}
+        error={!isValid}
         helperText={
-          !validateRoomName(this.state.name)
+          !isValid
             ? `Must be between 1 - ${MAX_ROOM_NAME_LENGTH} characters`
             : ""
         }
