@@ -20,20 +20,20 @@ const establishConnection = async () => {
   sampleDataCollection = db.collection("sample_data");
 };
 
-const getSupportedColors = async () => {
-  logger.info("getSupportedColors", "invoked");
+const getConfigItems = async ({ id }) => {
+  logger.info(`getConfigItems${id}`, "invoked");
 
   try {
     await establishConnection();
 
-    const supportedColors = await configCollection.findOne({
-      _id: "supportedColors"
+    const item = await configCollection.findOne({
+      _id: id
     });
 
-    return supportedColors.values;
+    return item.values;
   } catch (err) {
     logger.error(
-      "getSupportedColors",
+      `getConfigItems${id}`,
       "Failed to retrieve list of colors",
       err
     );
@@ -58,4 +58,4 @@ const getSampleLightsData = async () => {
   }
 };
 
-module.exports = { getSupportedColors, getSampleLightsData };
+module.exports = { getConfigItems, getSampleLightsData };

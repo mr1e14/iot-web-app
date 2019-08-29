@@ -1,11 +1,17 @@
 const logger = require("../services/logging")("lights.controller");
 const {
-  getSupportedColors,
+  getConfigItems,
   getSampleLightsData
 } = require("../connectors/db/iot-db");
 const { getCache } = require("../services/cache");
 
-const supportedColorsCache = getCache(0, 0, getSupportedColors);
+const supportedColorsCache = getCache(0, 0, getConfigItems, {
+  id: "supportedColors"
+});
+const supportedEffectsCache = getCache(0, 0, getConfigItems, {
+  id: "supportedEffects"
+});
+
 let lightsDataCache;
 
 const lightsDataController = async () => {
@@ -69,8 +75,25 @@ const supportedColorsController = async () => {
   return supportedColors;
 };
 
+const supportedEffectsController = async () => {
+  logger.info("supportedEffectsController", "invoked");
+  let supportedEffects = null;
+  try {
+    supportedEffects = await supportedEffectsCache.get("supportedEffects");
+  } catch (err) {
+    logger.error(
+      "supportedEffectsController",
+      "Failed to retrieve supported effects",
+      err
+    );
+    throw err;
+  }
+  return supportedEffects;
+};
+
 module.exports = {
   lightsDataController,
   lightDataController,
-  supportedColorsController
+  supportedColorsController,
+  supportedEffectsController
 };

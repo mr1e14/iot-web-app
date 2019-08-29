@@ -3,7 +3,8 @@ const logger = require("../services/logging")("lights.router");
 const {
   lightsDataController,
   lightDataController,
-  supportedColorsController
+  supportedColorsController,
+  supportedEffectsController
 } = require("../controllers/lights.controller");
 
 const lightsRouter = () => {
@@ -54,6 +55,22 @@ const lightsRouter = () => {
       throw err;
     }
     res.send({ supportedColors });
+  });
+
+  router.get("/getSupportedEffects", async (req, res) => {
+    logger.info("/api/lights/getSupportedEffects", "invoked");
+    let supportedEffects = null;
+    try {
+      supportedEffects = await supportedEffectsController();
+    } catch (err) {
+      logger.error(
+        "/api/lights/getSupportedEffects",
+        "Failed to retrieve supported effects",
+        err
+      );
+      throw err;
+    }
+    res.send({ supportedEffects });
   });
 
   return router;
