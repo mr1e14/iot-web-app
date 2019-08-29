@@ -31,4 +31,11 @@ describe("RoomNameField", () => {
     expect(textField.prop("error")).toBe(false);
     expect(textField.prop("helperText").length).toBe(0);
   });
+  it("may be used to change name", () => {
+    const wrapper = mount(<RoomNameField name="bedroom" classes={classes} />);
+    const textField = wrapper.find(TextField);
+    textField.props().onChange({ target: { value: "new name" } });
+    wrapper.update();
+    expect(wrapper.instance().state.name).toEqual("new name");
+  });
 });
