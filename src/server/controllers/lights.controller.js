@@ -2,7 +2,8 @@ const logger = require("../services/logging")("lights.controller");
 const {
   getConfigItems,
   getLightsIds,
-  getLightDataById
+  getLightDataById,
+  updateLightData
 } = require("../connectors/db/iot-db");
 const { getCache } = require("../services/cache");
 
@@ -47,6 +48,7 @@ const lightDataController = async id => {
 const updateController = async lightData => {
   logger.info("updateController", "invoked");
   lightsDataCache.update(lightData.id, lightData);
+  updateLightData(lightData);
 };
 
 const supportedColorsController = async () => {

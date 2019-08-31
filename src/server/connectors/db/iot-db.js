@@ -72,4 +72,35 @@ const getLightDataById = async ({ id }) => {
   }
 };
 
-module.exports = { getConfigItems, getLightsIds, getLightDataById };
+const updateLightData = async lightData => {
+  logger.info(`updateLightData(${JSON.stringify(lightData)}`, "invoked");
+
+  try {
+    await establishConnection();
+
+    await lightsDataCollection.updateOne(
+      {
+        _id: lightData.id
+      },
+      {
+        $set: {
+          ...lightData
+        }
+      }
+    );
+  } catch (err) {
+    logger.error(
+      `updateLightData(${JSON.stringify(lightData)})`,
+      "Failed to update data",
+      err
+    );
+    throw err;
+  }
+};
+
+module.exports = {
+  getConfigItems,
+  getLightsIds,
+  getLightDataById,
+  updateLightData
+};
