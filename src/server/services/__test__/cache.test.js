@@ -16,6 +16,14 @@ const nodeCacheMock = jest.mock("node-cache", () => {
   });
 });
 
+jest.mock("../logging", () => {
+  return jest.fn(() => ({
+    info: jest.fn(),
+    warn: jest.fn(),
+    error: jest.fn()
+  }));
+});
+
 const { getCache } = require("../cache");
 
 const getValueCallback = jest.fn().mockImplementation(params => {
