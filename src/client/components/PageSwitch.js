@@ -11,7 +11,6 @@ class PageSwitch extends React.Component {
     this.state = {
       previousDepth: this.getPathDepth(this.props.location),
       weatherData: null,
-      lightsData: null,
       supportedColors: null
     };
   }
@@ -20,10 +19,6 @@ class PageSwitch extends React.Component {
     fetch("/api/getWeatherData")
       .then(res => res.json())
       .then(res => this.setState({ weatherData: res.weatherData }));
-
-    fetch("/api/lights/getLightsData")
-      .then(res => res.json())
-      .then(res => this.setState({ lightsData: res.lightsData }));
 
     fetch("/api/lights/getSupportedColors")
       .then(res => res.json())
@@ -41,7 +36,7 @@ class PageSwitch extends React.Component {
 
   render() {
     const { location, classes, isMobileDevice } = this.props;
-    const { weatherData, lightsData, supportedColors } = this.state;
+    const { weatherData, supportedColors } = this.state;
     const transitionProperties = isMobileDevice
       ? { timeout: { enter: 700, exit: 350 }, class: "slide" }
       : { timeout: { enter: 300, exit: 150 }, class: "fade" };
@@ -73,11 +68,7 @@ class PageSwitch extends React.Component {
               <Route
                 path="/lights"
                 render={() => (
-                  <Lights
-                    classes={classes}
-                    weatherData={weatherData}
-                    lightsData={lightsData}
-                  />
+                  <Lights classes={classes} weatherData={weatherData} />
                 )}
               />
               <Route
@@ -86,7 +77,6 @@ class PageSwitch extends React.Component {
                   <LightView
                     classes={classes}
                     match={props.match}
-                    lightsData={lightsData}
                     supportedColors={supportedColors}
                   />
                 )}

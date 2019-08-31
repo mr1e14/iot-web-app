@@ -19,17 +19,8 @@ const styles = {
 };
 
 class LightBrightnessSlider extends React.Component {
-  state = {
-    value: this.props.brightness
-  };
-
-  handleChange = (event, value) => {
-    this.setState({ value });
-  };
-
   render() {
-    const { classes, on, connected } = this.props;
-    const { value } = this.state;
+    const { classes, on, connected, brightness, handleChange } = this.props;
 
     return (
       <div className={classes.root}>
@@ -39,8 +30,8 @@ class LightBrightnessSlider extends React.Component {
             track: classes.track,
             thumb: classes.thumb
           }}
-          value={value}
-          onChange={this.handleChange}
+          value={brightness}
+          onChange={handleChange}
           disabled={!on || !connected}
           min={1}
         />

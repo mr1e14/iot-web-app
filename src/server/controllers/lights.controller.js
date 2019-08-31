@@ -1,7 +1,8 @@
 const logger = require("../services/logging")("lights.controller");
 const {
   getConfigItems,
-  getSampleLightsData
+  getLightsIds,
+  getLightDataById
 } = require("../connectors/db/iot-db");
 const { getCache } = require("../services/cache");
 
@@ -12,30 +13,19 @@ const supportedEffectsCache = getCache(0, 0, getConfigItems, {
   id: "supportedEffects"
 });
 
-let lightsDataCache;
+const lightIdsCache = getCache(0, 0, getLightsIds);
+const lightsDataCache = getCache(0, 0, getLightDataById);
 
-const lightsDataController = async () => {
-  logger.info("lightsDataController", "invoked");
+const lightIdsController = async () => {
+  logger.info("lightIdsController", "invoked");
 
-  let lightsData = null;
-  if (process.env.NODE_ENV !== "production") {
-    if (!lightsDataCache) {
-      lightsDataCache = getCache(0, 0, getSampleLightsData);
-    }
-    try {
-      lightsData = await lightsDataCache.get("lightsData");
-    } catch (err) {
-      logger.error(
-        "lightsDataController",
-        "Failed to retrieve sample data",
-        err
-      );
-      throw err;
-    }
-  } else {
-    // TODO real API call and temporary cache
+  let lightIds = [];
+  try {
+    lightIds = await lightIdsCache.get("lightIds");
+  } catch (err) {
+    logger.error("lightIdsController", "Failed to retrieve lights' IDs", err);
   }
-  return lightsData;
+  return lightIds;
 };
 
 const lightDataController = async id => {
@@ -43,12 +33,7 @@ const lightDataController = async id => {
 
   let lightData = null;
   try {
-    const lightsData = await lightsDataCache.get("lightsData");
-    lightsData.forEach(light => {
-      if (light.id === id) {
-        lightData = { ...light };
-      }
-    });
+    lightData = await lightsDataCache.get(id, { id });
   } catch (err) {
     logger.error(
       "lightDataController",
@@ -57,6 +42,11 @@ const lightDataController = async id => {
     );
   }
   return lightData;
+};
+
+const updateController = async lightData => {
+  logger.info("updateController", "invoked");
+  lightsDataCache.update(lightData.id, lightData);
 };
 
 const supportedColorsController = async () => {
@@ -92,8 +82,9 @@ const supportedEffectsController = async () => {
 };
 
 module.exports = {
-  lightsDataController,
+  lightIdsController,
   lightDataController,
+  updateController,
   supportedColorsController,
   supportedEffectsController
 };

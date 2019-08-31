@@ -1,11 +1,13 @@
 require("dotenv").config();
 const express = require("express");
+const bodyParser = require("body-parser");
 const path = require("path");
 const logger = require("./services/logging")("index");
 const { apiRouter } = require("./routes/api.router");
 
 const app = express();
 
+app.use(bodyParser.json());
 app.use(express.static("dist"));
 
 app.use("/api", apiRouter());

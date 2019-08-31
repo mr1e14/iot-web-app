@@ -12,13 +12,13 @@ const getCache = (
     checkperiod: deleteAfterSeconds
   });
 
-  const get = async key => {
+  const get = async (key, newParams) => {
     logger.info(`get(${key})`, "invoked");
     const value = await nodeCache.get(key);
     if (value) {
       return Promise.resolve(value);
     } else {
-      return getValue(params).then(newValue => {
+      return getValue(newParams || params).then(newValue => {
         nodeCache.set(key, newValue);
         return newValue;
       });
@@ -54,7 +54,20 @@ const getCache = (
     );
   });
 
-  const cache = { get };
+  const update = async (key, value) => {
+    logger.info(`update(${key}, ${JSON.stringify(value)})`, "invoked");
+    try {
+      nodeCache.set(key, value);
+    } catch (err) {
+      logger.error(
+        `update(${key}, ${JSON.stringify(value)})`,
+        "Could not set value",
+        err
+      );
+    }
+  };
+
+  const cache = { get, update };
   return cache;
 };
 

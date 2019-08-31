@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import LightBrightnessSlider from "./LightBrigtnessSlider";
 import IconButton from "@material-ui/core/IconButton";
@@ -12,7 +13,14 @@ class LightController extends React.Component {
   constructor(props) {
     super(props);
     // initialize if cached
-    this.state = { ...props.lightData };
+    this.state = {
+      name: "",
+      color: "#1a1a1a",
+      brightness: 0
+    };
+    this.handleBrightnessChange = this.handleBrightnessChange.bind(this);
+    this.handleToggleClick = this.handleToggleClick.bind(this);
+    this.handleColorChange = this.handleColorChange.bind(this);
   }
 
   componentDidMount() {
@@ -24,16 +32,35 @@ class LightController extends React.Component {
   }
 
   handleToggleClick = event => {
-    this.setState({ on: !this.state.on });
+    this.setState({ on: !this.state.on }, () =>
+      axios.post("/api/lights/updateLightData", {
+        id: this.props.id,
+        ...this.state
+      })
+    );
   };
 
   handleColorChange = (color, event) => {
-    this.setState({ color: color.hex });
+    this.setState({ color: color.hex }, () =>
+      axios.post("/api/lights/updateLightData", {
+        id: this.props.id,
+        ...this.state
+      })
+    );
+  };
+
+  handleBrightnessChange = (event, value) => {
+    this.setState({ brightness: value }, () =>
+      axios.post("/api/lights/updateLightData", {
+        id: this.props.id,
+        ...this.state
+      })
+    );
   };
 
   render() {
     const { classes, isXs, supportedColors } = this.props;
-    const { on, connected, name, color } = this.state;
+    const { on, connected, name, color, brightness } = this.state;
     const containerWidth = isXs ? "260px" : "520px";
     if (!connected || !supportedColors) {
       return <LoadingSpinner />;
@@ -89,7 +116,12 @@ class LightController extends React.Component {
                   background: `linear-gradient(45deg, ${color} 35%, rgb(242,242,242) 90%)`
                 }}
               >
-                <LightBrightnessSlider on={on} connected={connected} />
+                <LightBrightnessSlider
+                  on={on}
+                  connected={connected}
+                  brightness={brightness}
+                  handleChange={this.handleBrightnessChange}
+                />
               </Grid>
             </div>
           </Grid>

@@ -1,8 +1,9 @@
 const { Router } = require("express");
 const logger = require("../services/logging")("lights.router");
 const {
-  lightsDataController,
+  lightIdsController,
   lightDataController,
+  updateController,
   supportedColorsController,
   supportedEffectsController
 } = require("../controllers/lights.controller");
@@ -10,16 +11,16 @@ const {
 const lightsRouter = () => {
   const router = Router();
 
-  router.get("/getLightsData", async (req, res) => {
-    logger.info("/api/lights/getLightsData", "route called");
-    let lightsData = null;
+  router.get("/getLightIds", async (req, res) => {
+    logger.info("/api/lights/getLightIds", "route called");
+    let lightIds = null;
     try {
-      lightsData = await lightsDataController();
+      lightIds = await lightIdsController();
     } catch (err) {
-      logger.error("/api/lights/getLightsData", "Could not retrieve data", err);
+      logger.error("/api/lights/getLightIds", "Could not retrieve data", err);
       throw err;
     }
-    res.send({ lightsData });
+    res.send({ lightIds });
   });
 
   router.get("/getLightDataById/:id", async (req, res) => {
@@ -39,6 +40,12 @@ const lightsRouter = () => {
       throw err;
     }
     res.send({ lightData });
+  });
+
+  router.post("/updateLightData", async (req, res) => {
+    logger.info("/api/lights/updateLightData", "route called");
+    updateController(req.body);
+    res.sendStatus(200);
   });
 
   router.get("/getSupportedColors", async (req, res) => {

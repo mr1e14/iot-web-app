@@ -1,12 +1,11 @@
 const mongo = require("mongodb");
 const { IOT_DB_URL } = require("../../config");
 const logger = require("../../services/logging")("iot-db");
-const { SAMPLE_LIGHTS_DATA_DOCUMENT } = require("../../config");
 
 let client;
 let db;
 let configCollection;
-let sampleDataCollection;
+let lightsDataCollection;
 
 const establishConnection = async () => {
   logger.info("establishConnection", "invoked");
@@ -17,7 +16,7 @@ const establishConnection = async () => {
 
   db = client.db("iot_db");
   configCollection = db.collection("config");
-  sampleDataCollection = db.collection("sample_data");
+  lightsDataCollection = db.collection("lights_data");
 };
 
 const getConfigItems = async ({ id }) => {
@@ -41,21 +40,36 @@ const getConfigItems = async ({ id }) => {
   }
 };
 
-const getSampleLightsData = async () => {
-  logger.info("getSampleLightsData", "invoked");
+const getLightsIds = async () => {
+  logger.info("getLightsIds", "invoked");
 
   try {
     await establishConnection();
 
-    const sampleLightsData = await sampleDataCollection.findOne({
-      _id: SAMPLE_LIGHTS_DATA_DOCUMENT
-    });
+    const lightIds = await lightsDataCollection.distinct("_id");
 
-    return sampleLightsData.data;
+    return lightIds;
   } catch (err) {
-    logger.error("getSampleLightsData", "Failed to retrieve sample data", err);
+    logger.error("getLightsIds", "Failed to retrieve data", err);
     throw err;
   }
 };
 
-module.exports = { getConfigItems, getSampleLightsData };
+const getLightDataById = async ({ id }) => {
+  logger.info(`getLightDataById(${id})`, "invoked");
+
+  try {
+    await establishConnection();
+
+    const lightData = await lightsDataCollection.findOne({
+      _id: id
+    });
+
+    return lightData;
+  } catch (err) {
+    logger.error(`getLightDataById(${id})`, "Failed to retrieve data", err);
+    throw err;
+  }
+};
+
+module.exports = { getConfigItems, getLightsIds, getLightDataById };

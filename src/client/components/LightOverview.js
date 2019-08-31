@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -11,23 +12,49 @@ const defaultBackgroundColor = "#1a1a1a";
 const labelColor = "#ffffff";
 
 class LightOverview extends React.Component {
-  state = {
-    connected: this.props.data.connected,
-    on: this.props.data.on,
-    brightness: this.props.data.brightness
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      connected: false,
+      on: false,
+      brightness: 0
+    };
+    this.handleBrightnessChange = this.handleBrightnessChange.bind(this);
+    this.handleToggleClick = this.handleToggleClick.bind(this);
+  }
 
   handleToggleClick = event => {
-    this.setState({ on: !this.state.on });
+    this.setState({ on: !this.state.on }, () =>
+      axios.post("/api/lights/updateLightData", {
+        id: this.props.id,
+        ...this.state
+      })
+    );
   };
 
+  handleBrightnessChange = (event, value) => {
+    this.setState({ brightness: value }, () =>
+      axios.post("/api/lights/updateLightData", {
+        id: this.props.id,
+        ...this.state
+      })
+    );
+  };
+
+  componentDidMount() {
+    fetch(`/api/lights/getLightDataById/${this.props.id}`)
+      .then(res => res.json())
+      .then(res => this.setState({ ...res.lightData }));
+  }
+
   render() {
-    const { on, connected } = this.state;
-    const { classes, data } = this.props;
+    const { on, connected, brightness, color, name } = this.state;
+    const { classes, id } = this.props;
     return (
       <Grid
         style={{
-          background: `linear-gradient(45deg, ${data.color ||
+          background: `linear-gradient(45deg, ${color ||
             defaultBackgroundColor} 35%, rgb(242,242,242) 90%)`,
           opacity: on ? 1 : 0.2,
           cursor: connected ? "pointer" : "no-drop"
@@ -39,7 +66,7 @@ class LightOverview extends React.Component {
         <Grid item xs={10}>
           <Button
             component={Link}
-            to={`/light/${data.id}`}
+            to={`/light/${id}`}
             variant="contained"
             color="primary"
             fullWidth
@@ -48,7 +75,7 @@ class LightOverview extends React.Component {
               color: labelColor
             }}
           >
-            <Typography>{data.name}</Typography>
+            <Typography>{name}</Typography>
           </Button>
         </Grid>
         <Grid item xs={2}>
@@ -65,7 +92,12 @@ class LightOverview extends React.Component {
           </IconButton>
         </Grid>
         <Grid item xs={12}>
-          <LightBrightnessSlider {...this.state} />
+          <LightBrightnessSlider
+            on={on}
+            connected={connected}
+            brightness={brightness}
+            handleChange={this.handleBrightnessChange}
+          />
         </Grid>
       </Grid>
     );
