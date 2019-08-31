@@ -48,7 +48,7 @@ describe("cache", () => {
     it("should attempt to get value from cache first", () => {
       expect(nodeCacheMockGet).toHaveBeenCalledTimes(1);
     });
-    it("should call provided callback function with empty object", () => {
+    it("should call provided callback function with object supplied", () => {
       expect(getValueCallback).toHaveBeenCalledTimes(1);
       expect(getValueCallback).toHaveBeenCalledWith({});
     });
@@ -80,6 +80,31 @@ describe("cache", () => {
     it("should not attempt to save retrieved value in cache", () => {
       expect(nodeCacheMockSet).toHaveBeenCalledTimes(0);
     });
+    describe("Given update is called", () => {
+      beforeEach(async () => {
+        nodeCacheMockGet.mockImplementation(() => {
+          return "cached value";
+        });
+        await myCache.update("key", "new value");
+      });
+      it("should save new value in cache", () => {
+        expect(nodeCacheMockSet).toHaveBeenCalledWith("key", "new value");
+      });
+    });
+    describe("Given update throws an error", () => {
+      beforeEach(async () => {
+        nodeCacheMockSet.mockImplementation(() => {
+          throw new Error("some error");
+        });
+        await myCache.update("key", "new value");
+      });
+      afterEach(() => {
+        nodeCacheMockSet.mockImplementation(() => undefined);
+      });
+      it("should catch and swallow the error", () => {
+        // no exception indicates success
+      });
+    });
   });
   describe("Given library throws an error", () => {
     let myCache = getCache(60, 120, getValueCallback, {});
@@ -102,11 +127,37 @@ describe("cache", () => {
       expect(error.message).toBe("unexpected exception");
     });
   });
+  describe("Given get is called with new params", () => {
+    const oldParams = { id: "123" };
+    const newParams = { id: "321" };
+    let myCache = getCache(60, 120, getValueCallback, oldParams);
+    let value;
+    beforeEach(async () => {
+      nodeCacheMockGet.mockImplementation(() => {
+        return undefined;
+      });
+      value = await myCache.get("key", newParams);
+    });
+    it("should attempt to get value from cache first", () => {
+      expect(nodeCacheMockGet).toHaveBeenCalledTimes(1);
+    });
+    it("should call provided callback function with newParams", () => {
+      expect(getValueCallback).toHaveBeenCalledTimes(1);
+      expect(getValueCallback).toHaveBeenCalledWith(newParams);
+    });
+    it("should return getValueCallback value", () => {
+      expect(value).toBe("some value");
+    });
+    it("should save retrieved value in cache", () => {
+      expect(nodeCacheMockSet).toHaveBeenCalledWith("key", "some value");
+    });
+  });
   describe("Given cached value expires and getValue fails", () => {
     beforeEach(async () => {
       getValueCallback.mockImplementation(() => {
         throw new Error("some error");
       });
+
       getCache(60, 120, getValueCallback, {});
     });
     it("should call provided callback function and swallow exception", () => {
