@@ -1,6 +1,6 @@
 const mongo = require("mongodb");
-const { IOT_DB_URL } = require("../../config");
-const logger = require("../../services/logging")("iot-db");
+const { IOT_DB_URL } = require("../config");
+const logger = require("../services/logging")("iot-db");
 
 let client;
 let db;

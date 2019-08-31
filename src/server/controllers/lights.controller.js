@@ -4,7 +4,7 @@ const {
   getLightsIds,
   getLightDataById,
   updateLightData
-} = require("../connectors/db/iot-db");
+} = require("../connectors/iot-db");
 const { getCache } = require("../services/cache");
 
 const supportedColorsCache = getCache(0, 0, getConfigItems, {
