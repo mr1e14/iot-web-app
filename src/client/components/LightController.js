@@ -58,6 +58,15 @@ class LightController extends React.Component {
     );
   };
 
+  handleNameChange = newName => {
+    this.setState({ name: newName }, () =>
+      axios.post("/api/lights/updateLightData", {
+        id: this.props.id,
+        ...this.state
+      })
+    );
+  };
+
   render() {
     const { classes, isXs, supportedColors } = this.props;
     const { on, connected, name, color, brightness } = this.state;
@@ -98,7 +107,11 @@ class LightController extends React.Component {
           >
             <div style={{ width: containerWidth, opacity: on ? 1 : 0.2 }}>
               <Grid item xs={12} className={classes.child}>
-                <RoomNameField name={name} classes={classes} />
+                <RoomNameField
+                  name={name}
+                  classes={classes}
+                  handleChange={this.handleNameChange}
+                />
               </Grid>
               <Grid item xs={12} className={classes.child}>
                 <ColorPicker

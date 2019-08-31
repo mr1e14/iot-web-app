@@ -6,18 +6,25 @@ import { MAX_ROOM_NAME_LENGTH } from "../config";
 class RoomNameField extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { name: props.name, isValid: validateRoomName(props.name) };
+    this.state = { isValid: validateRoomName(props.name) };
   }
 
   onNameChange(event) {
-    this.setState({
-      name: event.target.value,
-      isValid: validateRoomName(event.target.value)
-    });
-    // TODO API request to save value
+    const newName = event.target.value;
+    this.setState(
+      {
+        isValid: validateRoomName(newName)
+      },
+      () => {
+        if (this.state.isValid) {
+          this.props.handleChange(newName);
+        }
+      }
+    );
   }
   render() {
-    const { name, isValid } = this.state;
+    const { isValid } = this.state;
+    const { name } = this.props;
     return (
       <TextField
         defaultValue={name}
