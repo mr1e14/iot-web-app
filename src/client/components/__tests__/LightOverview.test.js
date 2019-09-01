@@ -2,7 +2,6 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { mount } from "enzyme";
 
-jest.mock("../mediaQuery");
 jest.mock("axios");
 
 import LightOverview from "../LightOverview";
@@ -53,11 +52,11 @@ describe("LightOverview", () => {
   let component;
   let wrapper;
   const loadData = wrapper => {
-    global.fetch().then(data => wrapper.setState({...data}))
+    global.fetch().then(data => data.json()).then(data => wrapper.setState({...data}))
   }
   describe("when light is enabled", () => {
     beforeEach(() => {
-      global.fetch = jest.fn(() => Promise.resolve(dataEnabled));
+      global.fetch = jest.fn(() => Promise.resolve({json: () => Promise.resolve(dataEnabled)}));
       component = renderer.create(
         <LightOverview
           classes={exampleClasses}
@@ -106,10 +105,14 @@ describe("LightOverview", () => {
         "power_settings_new"
       );
     });
+    it("has a slider which can adjust brightness", () => {
+      wrapper.find("Slider").props().onChange({}, 50);
+      expect(wrapper.instance().state.brightness).toBe(50);
+    })
   });
   describe("when light is disabled", () => {
     beforeEach(() => {
-      global.fetch = jest.fn(() => Promise.resolve(dataDisabled));
+      global.fetch = jest.fn(() => Promise.resolve({json: () => Promise.resolve(dataDisabled)}));
       component = renderer.create(
         <LightOverview
           classes={exampleClasses}
@@ -159,7 +162,7 @@ describe("LightOverview", () => {
   });
   describe("when light is disconnected", () => {
     beforeEach(() => {
-      global.fetch = jest.fn(() => Promise.resolve(dataDisconnected));
+      global.fetch = jest.fn(() => Promise.resolve({json: () => Promise.resolve(dataDisconnected)}));
       component = renderer.create(
         <LightOverview
           classes={exampleClasses}

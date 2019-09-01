@@ -20,18 +20,21 @@ describe("LightsPanel", () => {
   let component;
   let wrapper;
   const loadData = wrapper => {
-    global.fetch().then(ids => wrapper.setState({lightIds: ids}))
-  }
+    global
+      .fetch()
+      .then(data => data.json())
+      .then(data => wrapper.setState({ ...data }));
+  };
   describe("when one light is provided", () => {
     beforeEach(() => {
-      global.fetch = jest.fn(() => Promise.resolve(["1"]));
+      global.fetch = jest.fn(() =>
+        Promise.resolve({ json: () => Promise.resolve({lightIds: ["1"]}) })
+      );
       component = renderer.create(
         <LightPanel classes={exampleClasses} isMd={true} />
       );
       tree = component.toJSON();
-      wrapper = mount(
-        <LightPanel classes={exampleClasses} isMd={true} />
-      );
+      wrapper = mount(<LightPanel classes={exampleClasses} isMd={true} />);
       loadData(wrapper);
       wrapper.update();
     });
@@ -84,14 +87,14 @@ describe("LightsPanel", () => {
   });
   describe("when two lights are provided", () => {
     beforeEach(() => {
-      global.fetch = jest.fn(() => Promise.resolve(["1", "2"]));
+      global.fetch = jest.fn(() =>
+        Promise.resolve({ json: () => Promise.resolve({lightIds: ["1", "2"]}) })
+      );
       component = renderer.create(
         <LightPanel classes={exampleClasses} isMd={true} />
       );
       tree = component.toJSON();
-      wrapper = mount(
-        <LightPanel classes={exampleClasses} isMd={true} />
-      );
+      wrapper = mount(<LightPanel classes={exampleClasses} isMd={true} />);
       loadData(wrapper);
       wrapper.update();
     });
@@ -144,7 +147,9 @@ describe("LightsPanel", () => {
   });
   describe("when no lights are provided", () => {
     beforeEach(() => {
-      global.fetch = jest.fn(() => Promise.resolve([]));
+      global.fetch = jest.fn(() =>
+        Promise.resolve({ json: () => Promise.resolve({lightIds: []}) })
+      );
       component = renderer.create(
         <LightPanel classes={exampleClasses} isMd={true} />
       );
@@ -194,12 +199,14 @@ describe("LightsPanel", () => {
   });
   describe("on sm and smaller devices", () => {
     beforeEach(() => {
-      global.fetch = jest.fn(() => Promise.resolve([]));
+      global.fetch = jest.fn(() =>
+        Promise.resolve({ json: () => Promise.resolve({lightIds: []}) })
+      );
       component = renderer.create(
         <LightPanel classes={exampleClasses} isMd={false} />
       );
       tree = component.toJSON();
-      wrapper = mount(<LightPanel classes={exampleClasses} isMd={false}/>);
+      wrapper = mount(<LightPanel classes={exampleClasses} isMd={false} />);
       loadData(wrapper);
       wrapper.update();
     });
@@ -217,7 +224,9 @@ describe("LightsPanel", () => {
   });
   describe("on larger devices", () => {
     beforeEach(() => {
-      global.fetch = jest.fn(() => Promise.resolve([]));
+      global.fetch = jest.fn(() =>
+         Promise.resolve({ json: () => Promise.resolve({lightIds: []}) })
+      );
       component = renderer.create(
         <LightPanel classes={exampleClasses} isMd={true} />
       );
