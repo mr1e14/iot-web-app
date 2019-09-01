@@ -20,7 +20,7 @@ const lightsDataCache = getCache(0, 0, getLightDataById);
 const lightIdsController = async () => {
   logger.info("lightIdsController", "invoked");
 
-  let lightIds = [];
+  let lightIds = null;
   try {
     lightIds = await lightIdsCache.get("lightIds");
   } catch (err) {
@@ -58,7 +58,7 @@ const updateController = async lightData => {
 
 const supportedColorsController = async () => {
   logger.info("supportedColorsController", "invoked");
-  let supportedColors = null;
+  let supportedColors = [];
   try {
     supportedColors = await supportedColorsCache.get("supportedColors");
   } catch (err) {
@@ -74,7 +74,7 @@ const supportedColorsController = async () => {
 
 const supportedEffectsController = async () => {
   logger.info("supportedEffectsController", "invoked");
-  let supportedEffects = null;
+  let supportedEffects = [];
   try {
     supportedEffects = await supportedEffectsCache.get("supportedEffects");
   } catch (err) {
