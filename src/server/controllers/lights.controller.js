@@ -47,8 +47,13 @@ const lightDataController = async id => {
 
 const updateController = async lightData => {
   logger.info("updateController", "invoked");
-  lightsDataCache.update(lightData.id, lightData);
-  updateLightData(lightData);
+  await lightsDataCache
+    .update(lightData.id, lightData)
+    .then(async () => await updateLightData(lightData))
+    .catch(err => {
+      logger.error("updateController", "Failed to update lights data", err);
+      throw err;
+    });
 };
 
 const supportedColorsController = async () => {

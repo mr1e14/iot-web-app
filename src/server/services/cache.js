@@ -56,15 +56,7 @@ const getCache = (
 
   const update = async (key, value) => {
     logger.info(`update(${key}, ${JSON.stringify(value)})`, "invoked");
-    try {
-      nodeCache.set(key, value);
-    } catch (err) {
-      logger.error(
-        `update(${key}, ${JSON.stringify(value)})`,
-        "Could not set value",
-        err
-      );
-    }
+    nodeCache.set(key, value);
   };
 
   const cache = { get, update };

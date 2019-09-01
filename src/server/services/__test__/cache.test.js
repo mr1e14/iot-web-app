@@ -92,17 +92,22 @@ describe("cache", () => {
       });
     });
     describe("Given update throws an error", () => {
+      let throwsError = false;
       beforeEach(async () => {
         nodeCacheMockSet.mockImplementation(() => {
           throw new Error("some error");
         });
-        await myCache.update("key", "new value");
+        try {
+          await myCache.update("key", "new value");
+        } catch (err) {
+          throwsError = true;
+        }
       });
       afterEach(() => {
         nodeCacheMockSet.mockImplementation(() => undefined);
       });
-      it("should catch and swallow the error", () => {
-        // no exception indicates success
+      it("should throw an error", () => {
+        expect(throwsError).toBe(true);
       });
     });
   });

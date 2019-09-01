@@ -44,8 +44,18 @@ const lightsRouter = () => {
 
   router.post("/updateLightData", async (req, res) => {
     logger.info("/api/lights/updateLightData", "route called");
-    updateController(req.body);
-    res.sendStatus(200);
+    await updateController(req.body)
+      .then(() => res.sendStatus(200))
+      .catch(err => {
+        logger.error(
+          "/api/lights/updateLightData",
+          `Failed to update data for light ID: ${
+            req.body ? req.body.id : null
+          }`,
+          err
+        );
+        res.sendStatus(500);
+      });
   });
 
   router.get("/getSupportedColors", async (req, res) => {
