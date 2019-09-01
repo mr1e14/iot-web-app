@@ -11,6 +11,8 @@ const classes = {
   }
 };
 
+const handleChange = jest.fn();
+
 describe("RoomNameField", () => {
   it("renders correctly", () => {
     const component = renderer.create(
@@ -20,22 +22,40 @@ describe("RoomNameField", () => {
     expect(tree).toMatchSnapshot();
   });
   it("flags errors when invalid name is given", () => {
-    const wrapper = mount(<RoomNameField name="" classes={classes} />);
+    const wrapper = mount(
+      <RoomNameField name="" classes={classes} handleChange={handleChange} />
+    );
     const textField = wrapper.find(TextField);
     expect(textField.prop("error")).toBe(true);
     expect(textField.prop("helperText").length).toBeGreaterThan(0);
   });
   it("does not flag errors when valid name is given", () => {
-    const wrapper = mount(<RoomNameField name="bedroom" classes={classes} />);
+    const wrapper = mount(
+      <RoomNameField
+        name="bedroom"
+        classes={classes}
+        handleChange={handleChange}
+      />
+    );
     const textField = wrapper.find(TextField);
     expect(textField.prop("error")).toBe(false);
     expect(textField.prop("helperText").length).toBe(0);
   });
-  it("may be used to change name", () => {
-    const wrapper = mount(<RoomNameField name="bedroom" classes={classes} />);
+  it("changes isValid state changes based on input", () => {
+    const wrapper = mount(
+      <RoomNameField
+        name="bedroom"
+        classes={classes}
+        handleChange={handleChange}
+      />
+    );
     const textField = wrapper.find(TextField);
-    textField.props().onChange({ target: { value: "new name" } });
+    textField.props().onChange({ target: { value: "" } });
     wrapper.update();
-    expect(wrapper.instance().state.name).toEqual("new name");
+    expect(wrapper.instance().state.isValid).toEqual(false);
+
+    textField.props().onChange({ target: { value: "hallway" } });
+    wrapper.update();
+    expect(wrapper.instance().state.isValid).toEqual(true);
   });
 });
