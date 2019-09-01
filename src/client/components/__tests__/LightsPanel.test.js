@@ -4,62 +4,36 @@ import { mount } from "enzyme";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
-jest.mock("../mediaQuery");
 jest.mock("react-router-dom", () => ({
   Link: "button"
 }));
 
 import LightPanel from "../LightsPanel";
-import matches from "../mediaQuery";
 
 const exampleClasses = {
   lightsPanel: "lightsPanel",
   child: "child"
 };
 
-const oneLight = [
-  {
-    name: "Bedroom",
-    connected: true,
-    on: true,
-    brightness: 100,
-    effect: null,
-    color: "#42f48f"
-  }
-];
-
-const twoLights = [
-  {
-    name: "Bedroom",
-    connected: true,
-    on: true,
-    brightness: 100,
-    effect: null,
-    color: "#42f48f"
-  },
-  {
-    name: "Hall",
-    connected: true,
-    on: false,
-    brightness: 14,
-    effect: null,
-    color: "#ff8026"
-  }
-];
-
 describe("LightsPanel", () => {
   let tree;
   let component;
   let wrapper;
+  const loadData = wrapper => {
+    global.fetch().then(ids => wrapper.setState({lightIds: ids}))
+  }
   describe("when one light is provided", () => {
     beforeEach(() => {
+      global.fetch = jest.fn(() => Promise.resolve(["1"]));
       component = renderer.create(
-        <LightPanel classes={exampleClasses} lightsData={oneLight} />
+        <LightPanel classes={exampleClasses} isMd={true} />
       );
       tree = component.toJSON();
       wrapper = mount(
-        <LightPanel classes={exampleClasses} lightsData={oneLight} />
+        <LightPanel classes={exampleClasses} isMd={true} />
       );
+      loadData(wrapper);
+      wrapper.update();
     });
     it("renders correctly", () => {
       expect(tree).toMatchSnapshot();
@@ -110,13 +84,16 @@ describe("LightsPanel", () => {
   });
   describe("when two lights are provided", () => {
     beforeEach(() => {
+      global.fetch = jest.fn(() => Promise.resolve(["1", "2"]));
       component = renderer.create(
-        <LightPanel classes={exampleClasses} lightsData={twoLights} />
+        <LightPanel classes={exampleClasses} isMd={true} />
       );
       tree = component.toJSON();
       wrapper = mount(
-        <LightPanel classes={exampleClasses} lightsData={twoLights} />
+        <LightPanel classes={exampleClasses} isMd={true} />
       );
+      loadData(wrapper);
+      wrapper.update();
     });
     it("renders correctly", () => {
       expect(tree).toMatchSnapshot();
@@ -167,11 +144,14 @@ describe("LightsPanel", () => {
   });
   describe("when no lights are provided", () => {
     beforeEach(() => {
+      global.fetch = jest.fn(() => Promise.resolve([]));
       component = renderer.create(
-        <LightPanel classes={exampleClasses} lightsData={[]} />
+        <LightPanel classes={exampleClasses} isMd={true} />
       );
       tree = component.toJSON();
-      wrapper = mount(<LightPanel classes={exampleClasses} lightsData={[]} />);
+      wrapper = mount(<LightPanel classes={exampleClasses} isMd={true} />);
+      loadData(wrapper);
+      wrapper.update();
     });
     it("renders correctly", () => {
       expect(tree).toMatchSnapshot();
@@ -212,14 +192,16 @@ describe("LightsPanel", () => {
       expect(wrapper.find("LightOverview").length).toBe(0);
     });
   });
-  describe("on md and smaller devices", () => {
+  describe("on sm and smaller devices", () => {
     beforeEach(() => {
-      matches.mockReturnValue(false);
+      global.fetch = jest.fn(() => Promise.resolve([]));
       component = renderer.create(
-        <LightPanel classes={exampleClasses} lightsData={[]} />
+        <LightPanel classes={exampleClasses} isMd={false} />
       );
       tree = component.toJSON();
-      wrapper = mount(<LightPanel classes={exampleClasses} lightsData={[]} />);
+      wrapper = mount(<LightPanel classes={exampleClasses} isMd={false}/>);
+      loadData(wrapper);
+      wrapper.update();
     });
     it("renders correctly", () => {
       expect(tree).toMatchSnapshot();
@@ -235,12 +217,14 @@ describe("LightsPanel", () => {
   });
   describe("on larger devices", () => {
     beforeEach(() => {
-      matches.mockReturnValue(true);
+      global.fetch = jest.fn(() => Promise.resolve([]));
       component = renderer.create(
-        <LightPanel classes={exampleClasses} lightsData={[]} />
+        <LightPanel classes={exampleClasses} isMd={true} />
       );
       tree = component.toJSON();
-      wrapper = mount(<LightPanel classes={exampleClasses} lightsData={[]} />);
+      wrapper = mount(<LightPanel classes={exampleClasses} isMd={true} />);
+      loadData(wrapper);
+      wrapper.update();
     });
     it("renders correctly", () => {
       expect(tree).toMatchSnapshot();

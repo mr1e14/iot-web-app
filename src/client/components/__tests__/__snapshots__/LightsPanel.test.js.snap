@@ -2,901 +2,160 @@
 
 exports[`LightsPanel on larger devices renders correctly 1`] = `
 <div
-  className="MuiGrid-root lightsPanel MuiGrid-container"
+  className="LoadingSpinner-spinnerContainer-1"
 >
   <div
-    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    className="MuiCircularProgress-root MuiCircularProgress-colorSecondary MuiCircularProgress-indeterminate"
+    role="progressbar"
+    style={
+      Object {
+        "height": 40,
+        "width": 40,
+      }
+    }
   >
-    <h6
-      className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary"
+    <svg
+      className="MuiCircularProgress-svg"
+      viewBox="22 22 44 44"
     >
-      Manage lights
-    </h6>
+      <circle
+        className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+        cx={44}
+        cy={44}
+        fill="none"
+        r={20.2}
+        strokeWidth={3.6}
+        style={Object {}}
+      />
+    </svg>
   </div>
-  <div
-    className="MuiGrid-root child MuiGrid-container MuiGrid-align-items-xs-flex-start MuiGrid-justify-xs-space-between"
-  >
-    <div
-      className="MuiGrid-root MuiGrid-item"
-    >
-      <button
-        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragEnd={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        to="/"
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <span
-            aria-hidden={true}
-            className="material-icons MuiIcon-root md-40"
-          >
-            arrow_back
-          </span>
-        </span>
-      </button>
-    </div>
-    <div
-      className="MuiGrid-root MuiGrid-item"
-    >
-      <button
-        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragEnd={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <span
-            aria-hidden={true}
-            className="material-icons MuiIcon-root md-40"
-          >
-            add_circle
-          </span>
-        </span>
-      </button>
-    </div>
-  </div>
-  <div
-    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-justify-xs-center"
-  />
 </div>
 `;
 
-exports[`LightsPanel on md and smaller devices renders correctly 1`] = `
+exports[`LightsPanel on sm and smaller devices renders correctly 1`] = `
 <div
-  className="MuiGrid-root lightsPanel MuiGrid-container"
+  className="LoadingSpinner-spinnerContainer-1"
 >
   <div
-    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    className="MuiCircularProgress-root MuiCircularProgress-colorSecondary MuiCircularProgress-indeterminate"
+    role="progressbar"
+    style={
+      Object {
+        "height": 40,
+        "width": 40,
+      }
+    }
   >
-    <h6
-      className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary"
+    <svg
+      className="MuiCircularProgress-svg"
+      viewBox="22 22 44 44"
     >
-      Manage lights
-    </h6>
+      <circle
+        className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+        cx={44}
+        cy={44}
+        fill="none"
+        r={20.2}
+        strokeWidth={3.6}
+        style={Object {}}
+      />
+    </svg>
   </div>
-  <div
-    className="MuiGrid-root child MuiGrid-container MuiGrid-align-items-xs-flex-start MuiGrid-justify-xs-space-between"
-  >
-    <div
-      className="MuiGrid-root MuiGrid-item"
-    >
-      <button
-        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragEnd={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        to="/"
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <span
-            aria-hidden={true}
-            className="material-icons MuiIcon-root md-28"
-          >
-            arrow_back
-          </span>
-        </span>
-      </button>
-    </div>
-    <div
-      className="MuiGrid-root MuiGrid-item"
-    >
-      <button
-        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragEnd={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <span
-            aria-hidden={true}
-            className="material-icons MuiIcon-root md-28"
-          >
-            add_circle
-          </span>
-        </span>
-      </button>
-    </div>
-  </div>
-  <div
-    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-justify-xs-center"
-  />
 </div>
 `;
 
 exports[`LightsPanel when no lights are provided renders correctly 1`] = `
 <div
-  className="MuiGrid-root lightsPanel MuiGrid-container"
+  className="LoadingSpinner-spinnerContainer-1"
 >
   <div
-    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    className="MuiCircularProgress-root MuiCircularProgress-colorSecondary MuiCircularProgress-indeterminate"
+    role="progressbar"
+    style={
+      Object {
+        "height": 40,
+        "width": 40,
+      }
+    }
   >
-    <h6
-      className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary"
+    <svg
+      className="MuiCircularProgress-svg"
+      viewBox="22 22 44 44"
     >
-      Manage lights
-    </h6>
+      <circle
+        className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+        cx={44}
+        cy={44}
+        fill="none"
+        r={20.2}
+        strokeWidth={3.6}
+        style={Object {}}
+      />
+    </svg>
   </div>
-  <div
-    className="MuiGrid-root child MuiGrid-container MuiGrid-align-items-xs-flex-start MuiGrid-justify-xs-space-between"
-  >
-    <div
-      className="MuiGrid-root MuiGrid-item"
-    >
-      <button
-        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragEnd={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        to="/"
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <span
-            aria-hidden={true}
-            className="material-icons MuiIcon-root md-28"
-          >
-            arrow_back
-          </span>
-        </span>
-      </button>
-    </div>
-    <div
-      className="MuiGrid-root MuiGrid-item"
-    >
-      <button
-        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragEnd={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <span
-            aria-hidden={true}
-            className="material-icons MuiIcon-root md-28"
-          >
-            add_circle
-          </span>
-        </span>
-      </button>
-    </div>
-  </div>
-  <div
-    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-justify-xs-center"
-  />
 </div>
 `;
 
 exports[`LightsPanel when one light is provided renders correctly 1`] = `
 <div
-  className="MuiGrid-root lightsPanel MuiGrid-container"
+  className="LoadingSpinner-spinnerContainer-1"
 >
   <div
-    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    className="MuiCircularProgress-root MuiCircularProgress-colorSecondary MuiCircularProgress-indeterminate"
+    role="progressbar"
+    style={
+      Object {
+        "height": 40,
+        "width": 40,
+      }
+    }
   >
-    <h6
-      className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary"
+    <svg
+      className="MuiCircularProgress-svg"
+      viewBox="22 22 44 44"
     >
-      Manage lights
-    </h6>
-  </div>
-  <div
-    className="MuiGrid-root child MuiGrid-container MuiGrid-align-items-xs-flex-start MuiGrid-justify-xs-space-between"
-  >
-    <div
-      className="MuiGrid-root MuiGrid-item"
-    >
-      <button
-        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragEnd={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        to="/"
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <span
-            aria-hidden={true}
-            className="material-icons MuiIcon-root md-28"
-          >
-            arrow_back
-          </span>
-        </span>
-      </button>
-    </div>
-    <div
-      className="MuiGrid-root MuiGrid-item"
-    >
-      <button
-        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragEnd={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <span
-            aria-hidden={true}
-            className="material-icons MuiIcon-root md-28"
-          >
-            add_circle
-          </span>
-        </span>
-      </button>
-    </div>
-  </div>
-  <div
-    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-justify-xs-center"
-  >
-    <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6"
-    >
-      <div
-        className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center"
-        style={
-          Object {
-            "background": "linear-gradient(45deg, #42f48f 35%, rgb(242,242,242) 90%)",
-            "cursor": "pointer",
-            "opacity": 1,
-          }
-        }
-      >
-        <div
-          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10"
-        >
-          <button
-            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
-            disabled={false}
-            onBlur={[Function]}
-            onDragEnd={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            style={
-              Object {
-                "color": "#ffffff",
-              }
-            }
-            tabIndex={0}
-            to="/light/undefined"
-            type="button"
-          >
-            <span
-              className="MuiButton-label"
-            >
-              <p
-                className="MuiTypography-root MuiTypography-body1"
-              >
-                Bedroom
-              </p>
-            </span>
-          </button>
-        </div>
-        <div
-          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
-        >
-          <button
-            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragEnd={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiIconButton-label"
-            >
-              <span
-                aria-hidden={true}
-                className="material-icons MuiIcon-root md-28"
-              >
-                power_settings_new
-              </span>
-            </span>
-          </button>
-        </div>
-        <div
-          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-        >
-          <div
-            className="LightBrightnessSlider-root-1"
-          >
-            <div
-              className="MuiSlider-root LightBrightnessSlider-slider-2"
-              onClick={[Function]}
-              onMouseDown={[Function]}
-              onTouchMove={[Function]}
-              onTouchStartCapture={[Function]}
-            >
-              <div
-                className="MuiSlider-container"
-              >
-                <div
-                  className="MuiSlider-track LightBrightnessSlider-track-3 MuiSlider-trackBefore"
-                  style={
-                    Object {
-                      "transform": "translateY(-50%) scaleX(1)",
-                    }
-                  }
-                />
-                <div
-                  className="MuiSlider-thumbWrapper"
-                  style={
-                    Object {
-                      "transform": "translateX(100%)",
-                    }
-                  }
-                >
-                  <button
-                    aria-orientation="horizontal"
-                    aria-valuemax={100}
-                    aria-valuemin={1}
-                    aria-valuenow={100}
-                    className="MuiButtonBase-root MuiSlider-thumb LightBrightnessSlider-thumb-4"
-                    disabled={false}
-                    onBlur={[Function]}
-                    onDragEnd={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseLeave={[Function]}
-                    onMouseUp={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchMove={[Function]}
-                    onTouchStart={[Function]}
-                    onTouchStartCapture={[Function]}
-                    role="slider"
-                    tabIndex={0}
-                    type="button"
-                  />
-                </div>
-                <div
-                  className="MuiSlider-track LightBrightnessSlider-track-3 MuiSlider-trackAfter"
-                  style={
-                    Object {
-                      "transform": "translateY(-50%) scaleX(0)",
-                    }
-                  }
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      <circle
+        className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+        cx={44}
+        cy={44}
+        fill="none"
+        r={20.2}
+        strokeWidth={3.6}
+        style={Object {}}
+      />
+    </svg>
   </div>
 </div>
 `;
 
 exports[`LightsPanel when two lights are provided renders correctly 1`] = `
 <div
-  className="MuiGrid-root lightsPanel MuiGrid-container"
+  className="LoadingSpinner-spinnerContainer-1"
 >
   <div
-    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    className="MuiCircularProgress-root MuiCircularProgress-colorSecondary MuiCircularProgress-indeterminate"
+    role="progressbar"
+    style={
+      Object {
+        "height": 40,
+        "width": 40,
+      }
+    }
   >
-    <h6
-      className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextPrimary"
+    <svg
+      className="MuiCircularProgress-svg"
+      viewBox="22 22 44 44"
     >
-      Manage lights
-    </h6>
-  </div>
-  <div
-    className="MuiGrid-root child MuiGrid-container MuiGrid-align-items-xs-flex-start MuiGrid-justify-xs-space-between"
-  >
-    <div
-      className="MuiGrid-root MuiGrid-item"
-    >
-      <button
-        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragEnd={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        to="/"
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <span
-            aria-hidden={true}
-            className="material-icons MuiIcon-root md-28"
-          >
-            arrow_back
-          </span>
-        </span>
-      </button>
-    </div>
-    <div
-      className="MuiGrid-root MuiGrid-item"
-    >
-      <button
-        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragEnd={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <span
-            aria-hidden={true}
-            className="material-icons MuiIcon-root md-28"
-          >
-            add_circle
-          </span>
-        </span>
-      </button>
-    </div>
-  </div>
-  <div
-    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1"
-  >
-    <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6"
-    >
-      <div
-        className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center"
-        style={
-          Object {
-            "background": "linear-gradient(45deg, #42f48f 35%, rgb(242,242,242) 90%)",
-            "cursor": "pointer",
-            "opacity": 1,
-          }
-        }
-      >
-        <div
-          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10"
-        >
-          <button
-            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
-            disabled={false}
-            onBlur={[Function]}
-            onDragEnd={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            style={
-              Object {
-                "color": "#ffffff",
-              }
-            }
-            tabIndex={0}
-            to="/light/undefined"
-            type="button"
-          >
-            <span
-              className="MuiButton-label"
-            >
-              <p
-                className="MuiTypography-root MuiTypography-body1"
-              >
-                Bedroom
-              </p>
-            </span>
-          </button>
-        </div>
-        <div
-          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
-        >
-          <button
-            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragEnd={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiIconButton-label"
-            >
-              <span
-                aria-hidden={true}
-                className="material-icons MuiIcon-root md-28"
-              >
-                power_settings_new
-              </span>
-            </span>
-          </button>
-        </div>
-        <div
-          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-        >
-          <div
-            className="LightBrightnessSlider-root-1"
-          >
-            <div
-              className="MuiSlider-root LightBrightnessSlider-slider-2"
-              onClick={[Function]}
-              onMouseDown={[Function]}
-              onTouchMove={[Function]}
-              onTouchStartCapture={[Function]}
-            >
-              <div
-                className="MuiSlider-container"
-              >
-                <div
-                  className="MuiSlider-track LightBrightnessSlider-track-3 MuiSlider-trackBefore"
-                  style={
-                    Object {
-                      "transform": "translateY(-50%) scaleX(1)",
-                    }
-                  }
-                />
-                <div
-                  className="MuiSlider-thumbWrapper"
-                  style={
-                    Object {
-                      "transform": "translateX(100%)",
-                    }
-                  }
-                >
-                  <button
-                    aria-orientation="horizontal"
-                    aria-valuemax={100}
-                    aria-valuemin={1}
-                    aria-valuenow={100}
-                    className="MuiButtonBase-root MuiSlider-thumb LightBrightnessSlider-thumb-4"
-                    disabled={false}
-                    onBlur={[Function]}
-                    onDragEnd={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseLeave={[Function]}
-                    onMouseUp={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchMove={[Function]}
-                    onTouchStart={[Function]}
-                    onTouchStartCapture={[Function]}
-                    role="slider"
-                    tabIndex={0}
-                    type="button"
-                  />
-                </div>
-                <div
-                  className="MuiSlider-track LightBrightnessSlider-track-3 MuiSlider-trackAfter"
-                  style={
-                    Object {
-                      "transform": "translateY(-50%) scaleX(0)",
-                    }
-                  }
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6"
-    >
-      <div
-        className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center"
-        style={
-          Object {
-            "background": "linear-gradient(45deg, #ff8026 35%, rgb(242,242,242) 90%)",
-            "cursor": "pointer",
-            "opacity": 0.2,
-          }
-        }
-      >
-        <div
-          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10"
-        >
-          <button
-            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
-            disabled={false}
-            onBlur={[Function]}
-            onDragEnd={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            style={
-              Object {
-                "color": "#ffffff",
-              }
-            }
-            tabIndex={0}
-            to="/light/undefined"
-            type="button"
-          >
-            <span
-              className="MuiButton-label"
-            >
-              <p
-                className="MuiTypography-root MuiTypography-body1"
-              >
-                Hall
-              </p>
-            </span>
-          </button>
-        </div>
-        <div
-          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
-        >
-          <button
-            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragEnd={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiIconButton-label"
-            >
-              <span
-                aria-hidden={true}
-                className="material-icons MuiIcon-root md-28"
-              >
-                power_settings_new
-              </span>
-            </span>
-          </button>
-        </div>
-        <div
-          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-        >
-          <div
-            className="LightBrightnessSlider-root-1"
-          >
-            <div
-              className="MuiSlider-root Mui-disabled LightBrightnessSlider-slider-2"
-              onClick={[Function]}
-              onMouseDown={[Function]}
-              onTouchMove={[Function]}
-              onTouchStartCapture={[Function]}
-            >
-              <div
-                className="MuiSlider-container"
-              >
-                <div
-                  className="MuiSlider-track LightBrightnessSlider-track-3 MuiSlider-trackBefore Mui-disabled"
-                  style={
-                    Object {
-                      "width": "calc(13.131313131313131% - 6px)",
-                    }
-                  }
-                />
-                <div
-                  className="MuiSlider-thumbWrapper Mui-disabled"
-                  style={
-                    Object {
-                      "transform": "translateX(13.131313131313131%)",
-                    }
-                  }
-                >
-                  <button
-                    aria-orientation="horizontal"
-                    aria-valuemax={100}
-                    aria-valuemin={1}
-                    aria-valuenow={14}
-                    className="MuiButtonBase-root MuiSlider-thumb LightBrightnessSlider-thumb-4 Mui-disabled Mui-disabled"
-                    disabled={true}
-                    onBlur={[Function]}
-                    onDragEnd={[Function]}
-                    onFocus={[Function]}
-                    onKeyDown={[Function]}
-                    onKeyUp={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseLeave={[Function]}
-                    onMouseUp={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchMove={[Function]}
-                    onTouchStart={[Function]}
-                    onTouchStartCapture={[Function]}
-                    role="slider"
-                    tabIndex={-1}
-                    type="button"
-                  />
-                </div>
-                <div
-                  className="MuiSlider-track LightBrightnessSlider-track-3 MuiSlider-trackAfter Mui-disabled"
-                  style={
-                    Object {
-                      "width": "calc(86.86868686868686% - 6px)",
-                    }
-                  }
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      <circle
+        className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+        cx={44}
+        cy={44}
+        fill="none"
+        r={20.2}
+        strokeWidth={3.6}
+        style={Object {}}
+      />
+    </svg>
   </div>
 </div>
 `;
