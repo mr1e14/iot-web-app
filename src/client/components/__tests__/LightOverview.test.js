@@ -3,6 +3,7 @@ import renderer from "react-test-renderer";
 import { mount } from "enzyme";
 
 jest.mock("../mediaQuery");
+jest.mock("axios");
 
 import LightOverview from "../LightOverview";
 import Grid from "@material-ui/core/Grid";
@@ -17,15 +18,8 @@ const exampleClasses = {
   lightRow: "lightRow"
 };
 
-const exampleTheme = {
-  palette: {
-    primary: {
-      main: "#fff"
-    }
-  }
-};
-
-const propsEnabled = {
+const dataEnabled = {
+  id: "1",
   name: "Bedroom",
   connected: true,
   on: true,
@@ -34,7 +28,8 @@ const propsEnabled = {
   color: "#42f48f"
 };
 
-const propsDisabled = {
+const dataDisabled = {
+  id: "2",
   name: "Bedroom",
   connected: true,
   on: false,
@@ -43,7 +38,8 @@ const propsDisabled = {
   color: "#42f48f"
 };
 
-const propsDisconnected = {
+const dataDisconnected = {
+  id: "3",
   name: "Bedroom",
   connected: false,
   on: undefined,
@@ -56,23 +52,27 @@ describe("LightOverview", () => {
   let tree;
   let component;
   let wrapper;
+  const loadData = wrapper => {
+    global.fetch().then(data => wrapper.setState({...data}))
+  }
   describe("when light is enabled", () => {
     beforeEach(() => {
+      global.fetch = jest.fn(() => Promise.resolve(dataEnabled));
       component = renderer.create(
         <LightOverview
           classes={exampleClasses}
-          theme={exampleTheme}
-          data={propsEnabled}
+          id="1"
         />
       );
       tree = component.toJSON();
       wrapper = mount(
         <LightOverview
           classes={exampleClasses}
-          theme={exampleTheme}
-          data={propsEnabled}
+          id="1"
         />
       );
+      loadData(wrapper);
+      wrapper.update();
     });
     it("renders correctly", () => {
       expect(tree).toMatchSnapshot();
@@ -109,21 +109,22 @@ describe("LightOverview", () => {
   });
   describe("when light is disabled", () => {
     beforeEach(() => {
+      global.fetch = jest.fn(() => Promise.resolve(dataDisabled));
       component = renderer.create(
         <LightOverview
           classes={exampleClasses}
-          theme={exampleTheme}
-          data={propsDisabled}
+          id="2"
         />
       );
       tree = component.toJSON();
       wrapper = mount(
         <LightOverview
           classes={exampleClasses}
-          theme={exampleTheme}
-          data={propsDisabled}
+          id="2"
         />
       );
+      loadData(wrapper);
+      wrapper.update();
     });
     it("renders correctly", () => {
       expect(tree).toMatchSnapshot();
@@ -158,21 +159,22 @@ describe("LightOverview", () => {
   });
   describe("when light is disconnected", () => {
     beforeEach(() => {
+      global.fetch = jest.fn(() => Promise.resolve(dataDisconnected));
       component = renderer.create(
         <LightOverview
           classes={exampleClasses}
-          theme={exampleTheme}
-          data={propsDisconnected}
+          id="3"
         />
       );
       tree = component.toJSON();
       wrapper = mount(
         <LightOverview
           classes={exampleClasses}
-          theme={exampleTheme}
-          data={propsDisconnected}
+          id="3"
         />
       );
+      loadData(wrapper);
+      wrapper.update();
     });
     it("renders correctly", () => {
       expect(tree).toMatchSnapshot();
