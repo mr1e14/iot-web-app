@@ -22,15 +22,21 @@ const propsDisconnected = {
   brightness: undefined
 };
 
+const handleChange = jest.fn();
+
 describe("LightBrightnessSlider", () => {
   let tree;
   let component;
   let wrapper;
   describe("when light is enabled", () => {
     beforeEach(() => {
-      component = renderer.create(<LightBrightnessSlider {...propsEnabled} />);
+      component = renderer.create(
+        <LightBrightnessSlider {...propsEnabled} handleChange={handleChange} />
+      );
       tree = component.toJSON();
-      wrapper = mount(<LightBrightnessSlider {...propsEnabled} />);
+      wrapper = mount(
+        <LightBrightnessSlider {...propsEnabled} handleChange={handleChange} />
+      );
     });
     it("renders correctly", () => {
       expect(tree).toMatchSnapshot();
@@ -38,22 +44,16 @@ describe("LightBrightnessSlider", () => {
     it("is enabled", () => {
       expect(wrapper.find("Slider").prop("disabled")).toBe(false);
     });
-    it("may be used to adjust brightness", () => {
-      const newBrightness = 75;
-      wrapper
-        .find("Slider")
-        .props()
-        .onChange({}, newBrightness);
-      expect(wrapper.find("LightBrightnessSlider").instance().state).toEqual({
-        value: newBrightness
-      });
-    });
   });
   describe("when light is disabled", () => {
     beforeEach(() => {
-      component = renderer.create(<LightBrightnessSlider {...propsDisabled} />);
+      component = renderer.create(
+        <LightBrightnessSlider {...propsDisabled} handleChange={handleChange} />
+      );
       tree = component.toJSON();
-      wrapper = mount(<LightBrightnessSlider {...propsDisabled} />);
+      wrapper = mount(
+        <LightBrightnessSlider {...propsDisabled} handleChange={handleChange} />
+      );
     });
     it("renders correctly", () => {
       expect(tree).toMatchSnapshot();
@@ -65,10 +65,18 @@ describe("LightBrightnessSlider", () => {
   describe("when light is disconnected", () => {
     beforeEach(() => {
       component = renderer.create(
-        <LightBrightnessSlider {...propsDisconnected} />
+        <LightBrightnessSlider
+          {...propsDisconnected}
+          handleChange={handleChange}
+        />
       );
       tree = component.toJSON();
-      wrapper = mount(<LightBrightnessSlider {...propsDisconnected} />);
+      wrapper = mount(
+        <LightBrightnessSlider
+          {...propsDisconnected}
+          handleChange={handleChange}
+        />
+      );
     });
     it("renders correctly", () => {
       expect(tree).toMatchSnapshot();
