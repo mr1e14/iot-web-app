@@ -3,6 +3,7 @@ import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import LightBrightnessSlider from "./LightBrigtnessSlider";
 import IconButton from "@material-ui/core/IconButton";
+import Button from "@material-ui/core/Button";
 import MaterialIcon from "./MaterialIcon";
 import LoadingSpinner from "./LoadingSpinner";
 import ColorPicker from "./ColorPicker";
@@ -21,6 +22,7 @@ class LightController extends React.Component {
     this.handleBrightnessChange = this.handleBrightnessChange.bind(this);
     this.handleToggleClick = this.handleToggleClick.bind(this);
     this.handleColorChange = this.handleColorChange.bind(this);
+    this.handleEffectChange = this.handleEffectChange.bind(this);
   }
 
   componentDidMount() {
@@ -67,9 +69,20 @@ class LightController extends React.Component {
     );
   };
 
+  handleEffectChange = sourceEffect => {
+    // clear if same as current
+    const newEffect = this.state.effect !== sourceEffect ? sourceEffect : null;
+    this.setState({ effect: newEffect }, () =>
+      axios.post("/api/lights/updateLightData", {
+        id: this.props.id,
+        ...this.state
+      })
+    );
+  };
+
   render() {
-    const { classes, isXs, supportedColors } = this.props;
-    const { on, connected, name, color, brightness } = this.state;
+    const { classes, isXs, supportedColors, supportedEffects } = this.props;
+    const { on, connected, name, color, brightness, effect } = this.state;
     const containerWidth = isXs ? "260px" : "520px";
     if (!connected || !supportedColors) {
       return <LoadingSpinner />;
@@ -121,20 +134,35 @@ class LightController extends React.Component {
                   handleColorChange={this.handleColorChange}
                 />
               </Grid>
-              <Grid
-                item
-                xs={12}
-                className={classes.sliderBackground}
-                style={{
-                  background: `linear-gradient(45deg, ${color} 35%, rgb(242,242,242) 90%)`
-                }}
-              >
-                <LightBrightnessSlider
-                  on={on}
-                  connected={connected}
-                  brightness={brightness}
-                  handleChange={this.handleBrightnessChange}
-                />
+              <Grid item xs={12} className={classes.child}>
+                <div
+                  className={classes.sliderBackground}
+                  style={{
+                    background: `linear-gradient(45deg, ${color} 35%, rgb(242,242,242) 90%)`
+                  }}
+                >
+                  <LightBrightnessSlider
+                    on={on}
+                    connected={connected}
+                    brightness={brightness}
+                    handleChange={this.handleBrightnessChange}
+                  />
+                </div>
+              </Grid>
+              <Grid item xs={12} className={classes.child}>
+                {supportedEffects.map((supportedEffect, key) => (
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    key={key}
+                    className={
+                      supportedEffect === effect ? classes.selectedEffect : null
+                    }
+                    onClick={() => this.handleEffectChange(supportedEffect)}
+                  >
+                    {supportedEffect}
+                  </Button>
+                ))}
               </Grid>
             </div>
           </Grid>

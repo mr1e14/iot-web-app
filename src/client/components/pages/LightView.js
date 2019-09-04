@@ -10,7 +10,8 @@ const LightView = props => {
     match: {
       params: { id }
     },
-    supportedColors
+    supportedColors,
+    supportedEffects
   } = props;
   return (
     <div className="page">
@@ -21,6 +22,7 @@ const LightView = props => {
           id={id}
           isXs={!matches("sm")}
           supportedColors={supportedColors}
+          supportedEffects={supportedEffects}
         />
       </Grid>
     </div>
