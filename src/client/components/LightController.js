@@ -4,6 +4,8 @@ import Grid from "@material-ui/core/Grid";
 import LightBrightnessSlider from "./LightBrigtnessSlider";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Tooltip from "@material-ui/core/Tooltip";
 import MaterialIcon from "./MaterialIcon";
 import LoadingSpinner from "./LoadingSpinner";
 import ColorPicker from "./ColorPicker";
@@ -17,7 +19,8 @@ class LightController extends React.Component {
     this.state = {
       name: "",
       color: "#1a1a1a",
-      brightness: 0
+      brightness: 0,
+      refreshInProgress: false
     };
     this.handleBrightnessChange = this.handleBrightnessChange.bind(this);
     this.handleToggleClick = this.handleToggleClick.bind(this);
@@ -26,12 +29,17 @@ class LightController extends React.Component {
   }
 
   componentDidMount() {
-    const { id } = this.props;
-    // always update after render
-    fetch(`/api/lights/getLightDataById/${id}`)
-      .then(res => res.json())
-      .then(res => this.setState({ ...res.lightData }));
+    this.refreshData();
   }
+
+  refreshData = () => {
+    this.setState({ refreshInProgress: true });
+    fetch(`/api/lights/getLightDataById/${this.props.id}`)
+      .then(res => res.json())
+      .then(res =>
+        this.setState({ ...res.lightData, refreshInProgress: false })
+      );
+  };
 
   handleToggleClick = event => {
     this.setState({ on: !this.state.on }, () =>
@@ -82,7 +90,15 @@ class LightController extends React.Component {
 
   render() {
     const { classes, isXs, supportedColors, supportedEffects } = this.props;
-    const { on, connected, name, color, brightness, effect } = this.state;
+    const {
+      on,
+      connected,
+      name,
+      color,
+      brightness,
+      effect,
+      refreshInProgress
+    } = this.state;
     const containerWidth = isXs ? "260px" : "520px";
     if (!connected || !supportedColors) {
       return <LoadingSpinner />;
@@ -97,18 +113,22 @@ class LightController extends React.Component {
             className={classes.child}
           >
             <Grid item>
-              <IconButton component={Link} to="/lights" color="secondary">
-                <MaterialIcon iconName="arrow_back" />
-              </IconButton>
+              <Tooltip title="Back">
+                <IconButton component={Link} to="/lights" color="secondary">
+                  <MaterialIcon iconName="arrow_back" />
+                </IconButton>
+              </Tooltip>
             </Grid>
             <Grid item>
-              <IconButton
-                color="primary"
-                disabled={!connected}
-                onClick={this.handleToggleClick}
-              >
-                <MaterialIcon iconName="power_settings_new" />
-              </IconButton>
+              {refreshInProgress ? (
+                <CircularProgress color="secondary" />
+              ) : (
+                <Tooltip title="Refresh">
+                  <IconButton color="secondary" onClick={this.refreshData}>
+                    <MaterialIcon iconName="refresh" />
+                  </IconButton>
+                </Tooltip>
+              )}
             </Grid>
           </Grid>
           <Grid
@@ -163,6 +183,32 @@ class LightController extends React.Component {
                     {supportedEffect}
                   </Button>
                 ))}
+              </Grid>
+              <Grid
+                container
+                justify="space-between"
+                item
+                xs={12}
+                className={classes.child}
+              >
+                <Tooltip title="Schedule">
+                  <IconButton color="secondary" onClick={null}>
+                    <MaterialIcon iconName="access_time" />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title={`Turn ${on ? "off" : "on"}`}>
+                  <IconButton
+                    color="secondary"
+                    onClick={this.handleToggleClick}
+                  >
+                    <MaterialIcon iconName="power_settings_new" />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Delete light">
+                  <IconButton color="secondary" onClick={null}>
+                    <MaterialIcon iconName="delete_outline" />
+                  </IconButton>
+                </Tooltip>
               </Grid>
             </div>
           </Grid>
