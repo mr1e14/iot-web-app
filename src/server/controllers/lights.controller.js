@@ -3,7 +3,8 @@ const {
   getConfigItems,
   getLightsIds,
   getLightDataById,
-  updateLightData
+  updateLightData,
+  deleteLightById
 } = require("../connectors/iot-db");
 const { getCache } = require("../services/cache");
 
@@ -88,10 +89,22 @@ const supportedEffectsController = async () => {
   return supportedEffects;
 };
 
+const deleteLightController = async ({ id }) => {
+  logger.info("deleteLightController", "invoked");
+  await deleteLightById(id)
+    .then(async () => await lightIdsCache.deleteByKey("lightIds"))
+    .then(async () => await lightsDataCache.deleteByKey(id))
+    .catch(err => {
+      logger.error("deleteLightController", "Failed to delete light", err);
+      throw err;
+    });
+};
+
 module.exports = {
   lightIdsController,
   lightDataController,
   updateController,
   supportedColorsController,
-  supportedEffectsController
+  supportedEffectsController,
+  deleteLightController
 };

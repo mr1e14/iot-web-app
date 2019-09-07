@@ -10,6 +10,7 @@ import MaterialIcon from "./MaterialIcon";
 import LoadingSpinner from "./LoadingSpinner";
 import ColorPicker from "./ColorPicker";
 import RoomNameField from "./RoomNameField";
+import DeleteLightButton from "./DeleteLightButton";
 import { Link } from "react-router-dom";
 
 class LightController extends React.Component {
@@ -97,7 +98,8 @@ class LightController extends React.Component {
       color,
       brightness,
       effect,
-      refreshInProgress
+      refreshInProgress,
+      _id
     } = this.state;
     const containerWidth = isXs ? "260px" : "520px";
     if (!connected || !supportedColors) {
@@ -204,11 +206,7 @@ class LightController extends React.Component {
                     <MaterialIcon iconName="power_settings_new" />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="Delete light">
-                  <IconButton color="secondary" onClick={null}>
-                    <MaterialIcon iconName="delete_outline" />
-                  </IconButton>
-                </Tooltip>
+                <DeleteLightButton lightId={_id} />
               </Grid>
             </div>
           </Grid>

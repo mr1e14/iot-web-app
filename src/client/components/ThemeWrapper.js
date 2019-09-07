@@ -52,6 +52,12 @@ const styles = theme => ({
       [theme.breakpoints.up("md")]: {
         fontSize: 20
       }
+    },
+    ".MuiDialogContentText-root": {
+      color: "#737373"
+    },
+    ".MuiDialogTitle-root": {
+      color: "#1a1a1a"
     }
   },
   root: {

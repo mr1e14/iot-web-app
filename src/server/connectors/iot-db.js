@@ -98,9 +98,25 @@ const updateLightData = async lightData => {
   }
 };
 
+const deleteLightById = async id => {
+  logger.info(`deleteLightById(${id})`, "invoked");
+
+  try {
+    await establishConnection();
+
+    await lightsDataCollection.deleteOne({
+      _id: id
+    });
+  } catch (err) {
+    logger.error(`deleteLightById(${id})`, "Failed to delete data", err);
+    throw err;
+  }
+};
+
 module.exports = {
   getConfigItems,
   getLightsIds,
   getLightDataById,
-  updateLightData
+  updateLightData,
+  deleteLightById
 };

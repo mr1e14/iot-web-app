@@ -5,7 +5,8 @@ const {
   lightDataController,
   updateController,
   supportedColorsController,
-  supportedEffectsController
+  supportedEffectsController,
+  deleteLightController
 } = require("../controllers/lights.controller");
 
 const lightsRouter = () => {
@@ -54,6 +55,20 @@ const lightsRouter = () => {
     await supportedEffectsController().then(supportedEffects =>
       res.send({ supportedEffects })
     );
+  });
+
+  router.post("/deleteLight", async (req, res) => {
+    logger.info("/api/lights/deleteLight", "route called");
+    await deleteLightController(req.body)
+      .then(() => res.sendStatus(200))
+      .catch(err => {
+        logger.error(
+          "/api/lights/deleteLight",
+          `Failed to delete light ID: ${req.body ? req.body.id : null}`,
+          err
+        );
+        res.sendStatus(500);
+      });
   });
 
   return router;

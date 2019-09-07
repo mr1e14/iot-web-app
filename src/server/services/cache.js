@@ -59,7 +59,12 @@ const getCache = (
     nodeCache.set(key, value);
   };
 
-  const cache = { get, update };
+  const deleteByKey = async key => {
+    logger.info(`deleteByKey(${key}`, "invoked");
+    nodeCache.del(key);
+  };
+
+  const cache = { get, update, deleteByKey };
   return cache;
 };
 
