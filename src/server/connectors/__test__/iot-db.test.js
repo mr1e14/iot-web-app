@@ -11,7 +11,8 @@ const {
   getConfigItems,
   getLightDataById,
   getLightsIds,
-  updateLightData
+  updateLightData,
+  deleteLightById
 } = require("../iot-db");
 const mongo = require("mongodb");
 
@@ -206,6 +207,40 @@ describe("updateLightData", () => {
       });
       try {
         await updateLightData(exampleLightData);
+      } catch (err) {
+        result = err;
+      }
+    });
+    it("should throw an error", () => {
+      expect(result.message).toEqual("can't connect");
+    });
+  });
+});
+describe("deleteLightById", () => {
+  let result;
+  const deleteOneMock = jest.fn();
+  describe("given the request is successful", () => {
+    beforeEach(async () => {
+      mongo.MongoClient.connect.mockImplementation(() => ({
+        db: () => ({
+          collection: () => ({
+            deleteOne: deleteOneMock
+          })
+        })
+      }));
+      await deleteLightById("id123");
+    });
+    it("should call the mock function", () => {
+      expect(deleteOneMock).toHaveBeenCalledTimes(1);
+    });
+  });
+  describe("given the request results in an error", () => {
+    beforeEach(async () => {
+      mongo.MongoClient.connect.mockImplementation(() => {
+        throw new Error("can't connect");
+      });
+      try {
+        await deleteLightById("id123");
       } catch (err) {
         result = err;
       }
