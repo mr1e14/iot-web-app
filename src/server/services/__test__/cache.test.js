@@ -1,10 +1,12 @@
 const nodeCacheMockGet = jest.fn();
 const nodeCacheMockSet = jest.fn();
+const nodeCacheMockDel = jest.fn();
 const nodeCacheMock = jest.mock("node-cache", () => {
   return jest.fn().mockImplementation(() => {
     return {
       get: nodeCacheMockGet,
       set: nodeCacheMockSet,
+      del: nodeCacheMockDel,
       on: (event, cb) => {
         try {
           cb();
@@ -80,6 +82,15 @@ describe("cache", () => {
     it("should not attempt to save retrieved value in cache", () => {
       expect(nodeCacheMockSet).toHaveBeenCalledTimes(0);
     });
+    describe("When delete is called", () => {
+      let myCache = getCache(60, 120, getValueCallback, {});
+      beforeEach(async () => {
+        await myCache.deleteByKey("key");
+      });
+      it("should call del with key provided", () => {
+        expect(nodeCacheMockDel).toHaveBeenCalledWith("key");
+      });
+    });
     describe("Given update is called", () => {
       beforeEach(async () => {
         nodeCacheMockGet.mockImplementation(() => {
@@ -91,6 +102,7 @@ describe("cache", () => {
         expect(nodeCacheMockSet).toHaveBeenCalledWith("key", "new value");
       });
     });
+
     describe("Given update throws an error", () => {
       let throwsError = false;
       beforeEach(async () => {
