@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core/styles";
 import PageSwitch from "./PageSwitch";
 import matches from "./mediaQuery";
+import { fade } from "@material-ui/core/styles/colorManipulator";
 
 const deviceButtonHoverColor = "#bdbdbd";
 
@@ -123,8 +124,7 @@ const styles = theme => ({
     textAlign: "center"
   },
   selectedEffect: {
-    textDecoration: "underline",
-    color: "#ffffff"
+    background: fade("#52cafe", 0.4)
   }
 });
 
