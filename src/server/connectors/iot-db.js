@@ -117,6 +117,35 @@ const updateLightData = async lightData => {
   }
 };
 
+const updateLightSettings = async lightSettings => {
+  logger.info(
+    `updateLightSettings(${JSON.stringify(lightSettings)}`,
+    "invoked"
+  );
+
+  try {
+    await establishConnection();
+
+    await lightSettingsCollection.updateOne(
+      {
+        _id: lightSettings.id
+      },
+      {
+        $set: {
+          ...lightSettings
+        }
+      }
+    );
+  } catch (err) {
+    logger.error(
+      `updateLightSettings(${JSON.stringify(lightSettings)})`,
+      "Failed to update settings",
+      err
+    );
+    throw err;
+  }
+};
+
 const deleteLightById = async id => {
   logger.info(`deleteLightById(${id})`, "invoked");
 
@@ -138,5 +167,6 @@ module.exports = {
   getLightDataById,
   getLightSettingsById,
   updateLightData,
+  updateLightSettings,
   deleteLightById
 };

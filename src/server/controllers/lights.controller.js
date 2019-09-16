@@ -5,6 +5,7 @@ const {
   getLightDataById,
   getLightSettingsById,
   updateLightData,
+  updateLightSettings,
   deleteLightById
 } = require("../connectors/iot-db");
 const { getCache } = require("../services/cache");
@@ -53,7 +54,6 @@ const lightDataController = async id => {
 
 const lightSettingsController = async id => {
   logger.info("lightSettingsController", "invoked");
-
   let lightSettings = null;
   try {
     lightSettings = await lightsSettingsCache.get(id, { id });
@@ -74,6 +74,21 @@ const updateController = async lightData => {
     .then(async () => await updateLightData(lightData))
     .catch(err => {
       logger.error("updateController", "Failed to update lights data", err);
+      throw err;
+    });
+};
+
+const updateSettingsController = async lightSettings => {
+  logger.info("updateSettingsController", "invoked");
+  await lightsSettingsCache
+    .update(lightSettings.id, lightSettings)
+    .then(async () => await updateLightSettings(lightSettings))
+    .catch(err => {
+      logger.error(
+        "updateSettingsController",
+        "Failed to update lights settings",
+        err
+      );
       throw err;
     });
 };
@@ -144,6 +159,7 @@ module.exports = {
   lightDataController,
   lightSettingsController,
   updateController,
+  updateSettingsController,
   supportedColorsController,
   supportedEffectsController,
   effectsConfigurationController,

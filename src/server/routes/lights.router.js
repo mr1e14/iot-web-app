@@ -5,6 +5,7 @@ const {
   lightDataController,
   lightSettingsController,
   updateController,
+  updateSettingsController,
   supportedColorsController,
   supportedEffectsController,
   effectsConfigurationController,
@@ -47,6 +48,22 @@ const lightsRouter = () => {
         logger.error(
           "/api/lights/updateLightData",
           `Failed to update data for light ID: ${
+            req.body ? req.body.id : null
+          }`,
+          err
+        );
+        res.sendStatus(500);
+      });
+  });
+
+  router.post("/updateLightSettings", async (req, res) => {
+    logger.info("/api/lights/updateLightSettings", "route called");
+    await updateSettingsController(req.body)
+      .then(() => res.sendStatus(200))
+      .catch(err => {
+        logger.error(
+          "/api/lights/updateLightSettings",
+          `Failed to update settings for light ID: ${
             req.body ? req.body.id : null
           }`,
           err
