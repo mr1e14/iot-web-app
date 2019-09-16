@@ -206,6 +206,16 @@ class LightController extends React.Component {
                     <MaterialIcon iconName="power_settings_new" />
                   </IconButton>
                 </Tooltip>
+                <Tooltip title="Settings">
+                  <IconButton
+                    component={Link}
+                    to={`/light/${_id}/settings`}
+                    color="secondary"
+                    onClick={null}
+                  >
+                    <MaterialIcon iconName="settings" />
+                  </IconButton>
+                </Tooltip>
                 <DeleteLightButton lightId={_id} />
               </Grid>
             </div>
