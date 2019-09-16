@@ -4,6 +4,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Home from "./pages/Home";
 import Lights from "./pages/Lights";
 import LightView from "./pages/LightView";
+import LightSettings from "./pages/LightSettings";
 
 class PageSwitch extends React.Component {
   constructor(props) {
@@ -12,7 +13,8 @@ class PageSwitch extends React.Component {
       previousDepth: this.getPathDepth(this.props.location),
       weatherData: null,
       supportedColors: null,
-      supportedEffects: null
+      supportedEffects: null,
+      effectsConfiguration: null
     };
   }
 
@@ -28,6 +30,12 @@ class PageSwitch extends React.Component {
     fetch("/api/lights/getSupportedEffects")
       .then(res => res.json())
       .then(res => this.setState({ supportedEffects: res.supportedEffects }));
+
+    fetch("/api/lights/getEffectsConfiguration")
+      .then(res => res.json())
+      .then(res =>
+        this.setState({ effectsConfiguration: res.effectsConfiguration })
+      );
   }
 
   componentWillReceiveProps() {
@@ -41,7 +49,12 @@ class PageSwitch extends React.Component {
 
   render() {
     const { location, classes, isMobileDevice } = this.props;
-    const { weatherData, supportedColors, supportedEffects } = this.state;
+    const {
+      weatherData,
+      supportedColors,
+      supportedEffects,
+      effectsConfiguration
+    } = this.state;
     const transitionProperties = isMobileDevice
       ? { timeout: { enter: 700, exit: 350 }, class: "slide" }
       : { timeout: { enter: 300, exit: 150 }, class: "fade" };
@@ -74,6 +87,16 @@ class PageSwitch extends React.Component {
                 path="/lights"
                 render={() => (
                   <Lights classes={classes} weatherData={weatherData} />
+                )}
+              />
+              <Route
+                path="/light/:id/settings"
+                render={props => (
+                  <LightSettings
+                    classes={classes}
+                    match={props.match}
+                    config={effectsConfiguration}
+                  />
                 )}
               />
               <Route
