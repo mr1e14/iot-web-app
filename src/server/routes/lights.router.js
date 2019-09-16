@@ -3,9 +3,11 @@ const logger = require("../services/logging")("lights.router");
 const {
   lightIdsController,
   lightDataController,
+  lightSettingsController,
   updateController,
   supportedColorsController,
   supportedEffectsController,
+  effectsConfigurationController,
   deleteLightController
 } = require("../controllers/lights.controller");
 
@@ -24,6 +26,16 @@ const lightsRouter = () => {
     );
     await lightDataController(req.params.id).then(lightData =>
       res.send({ lightData })
+    );
+  });
+
+  router.get("/getLightSettingsById/:id", async (req, res) => {
+    logger.info(
+      `/api/lights/getLightSettingsById/${req.params.id}`,
+      "route called"
+    );
+    await lightSettingsController(req.params.id).then(lightSettings =>
+      res.send({ lightSettings })
     );
   });
 
@@ -54,6 +66,13 @@ const lightsRouter = () => {
     logger.info("/api/lights/getSupportedEffects", "invoked");
     await supportedEffectsController().then(supportedEffects =>
       res.send({ supportedEffects })
+    );
+  });
+
+  router.get("/getEffectsConfiguration", async (req, res) => {
+    logger.info("/api/lights/getEffectsConfiguration", "invoked");
+    await effectsConfigurationController().then(effectsConfiguration =>
+      res.send({ effectsConfiguration })
     );
   });
 

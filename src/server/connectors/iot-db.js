@@ -6,6 +6,7 @@ let client;
 let db;
 let configCollection;
 let lightsDataCollection;
+let lightSettingsCollection;
 
 const establishConnection = async () => {
   logger.info("establishConnection", "invoked");
@@ -17,6 +18,7 @@ const establishConnection = async () => {
   db = client.db("iot_db");
   configCollection = db.collection("config");
   lightsDataCollection = db.collection("lights_data");
+  lightSettingsCollection = db.collection("light_settings");
 };
 
 const getConfigItems = async ({ id }) => {
@@ -72,6 +74,23 @@ const getLightDataById = async ({ id }) => {
   }
 };
 
+const getLightSettingsById = async ({ id }) => {
+  logger.info(`getLightSettingsById(${id})`, "invoked");
+
+  try {
+    await establishConnection();
+
+    const lightsSettings = await lightSettingsCollection.findOne({
+      _id: id
+    });
+
+    return lightsSettings;
+  } catch (err) {
+    logger.error(`getLightSettingsById(${id})`, "Failed to retrieve data", err);
+    throw err;
+  }
+};
+
 const updateLightData = async lightData => {
   logger.info(`updateLightData(${JSON.stringify(lightData)}`, "invoked");
 
@@ -117,6 +136,7 @@ module.exports = {
   getConfigItems,
   getLightsIds,
   getLightDataById,
+  getLightSettingsById,
   updateLightData,
   deleteLightById
 };

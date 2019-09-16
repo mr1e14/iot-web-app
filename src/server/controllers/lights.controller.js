@@ -3,6 +3,7 @@ const {
   getConfigItems,
   getLightsIds,
   getLightDataById,
+  getLightSettingsById,
   updateLightData,
   deleteLightById
 } = require("../connectors/iot-db");
@@ -14,9 +15,13 @@ const supportedColorsCache = getCache(0, 0, getConfigItems, {
 const supportedEffectsCache = getCache(0, 0, getConfigItems, {
   id: "supportedEffects"
 });
+const effectsConfigurationCache = getCache(0, 0, getConfigItems, {
+  id: "effectsConfiguration"
+});
 
 const lightIdsCache = getCache(0, 0, getLightsIds);
 const lightsDataCache = getCache(0, 0, getLightDataById);
+const lightsSettingsCache = getCache(0, 0, getLightSettingsById);
 
 const lightIdsController = async () => {
   logger.info("lightIdsController", "invoked");
@@ -44,6 +49,22 @@ const lightDataController = async id => {
     );
   }
   return lightData;
+};
+
+const lightSettingsController = async id => {
+  logger.info("lightSettingsController", "invoked");
+
+  let lightSettings = null;
+  try {
+    lightSettings = await lightsSettingsCache.get(id, { id });
+  } catch (err) {
+    logger.error(
+      "lightSettingsController",
+      "Failed to retrieve light settings",
+      err
+    );
+  }
+  return lightSettings;
 };
 
 const updateController = async lightData => {
@@ -89,6 +110,24 @@ const supportedEffectsController = async () => {
   return supportedEffects;
 };
 
+const effectsConfigurationController = async () => {
+  logger.info("effectsConfigurationController", "invoked");
+  let effectsConfiguration = [];
+  try {
+    effectsConfiguration = await effectsConfigurationCache.get(
+      "effectsConfiguration"
+    );
+  } catch (err) {
+    logger.error(
+      "effectsConfigurationController",
+      "Failed to retrieve effects configuration",
+      err
+    );
+    throw err;
+  }
+  return effectsConfiguration;
+};
+
 const deleteLightController = async ({ id }) => {
   logger.info("deleteLightController", "invoked");
   await deleteLightById(id)
@@ -103,8 +142,10 @@ const deleteLightController = async ({ id }) => {
 module.exports = {
   lightIdsController,
   lightDataController,
+  lightSettingsController,
   updateController,
   supportedColorsController,
   supportedEffectsController,
+  effectsConfigurationController,
   deleteLightController
 };
