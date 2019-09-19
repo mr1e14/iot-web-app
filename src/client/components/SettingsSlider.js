@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SettingsSlider = props => {
-  const { min, max, value, onChange } = props;
+  const { min, max, value, onChange, step } = props;
   const [currentValue, setValue] = useState(value);
   const classes = useStyles();
 
@@ -49,6 +49,7 @@ const SettingsSlider = props => {
           onDragEnd={onChange}
           min={min}
           max={max}
+          step={step}
         />
       </div>
       <Typography
