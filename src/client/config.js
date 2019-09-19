@@ -1,3 +1,3 @@
 module.exports = {
-  MAX_ROOM_NAME_LENGTH: 32
+  MAX_LIGHT_NAME_LENGTH: 32
 };

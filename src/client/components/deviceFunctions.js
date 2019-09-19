@@ -1,12 +1,12 @@
-const { MAX_ROOM_NAME_LENGTH } = require("../config");
+const { MAX_LIGHT_NAME_LENGTH } = require("../config");
 
-const validateRoomName = name => {
+const validateLightName = name => {
   if (typeof name === "string") {
     const trimmedName = name.trim();
     if (trimmedName.length === 0) {
       return false;
     }
-    return name.length > MAX_ROOM_NAME_LENGTH ? false : true;
+    return name.length > MAX_LIGHT_NAME_LENGTH ? false : true;
   }
   return false;
 };
@@ -22,4 +22,4 @@ const splitSecondsToParts = value => {
   return { h: h, m: m, s: s };
 };
 
-module.exports = { validateRoomName, splitSecondsToParts };
+module.exports = { validateLightName, splitSecondsToParts };

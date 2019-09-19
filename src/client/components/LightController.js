@@ -9,7 +9,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import MaterialIcon from "./MaterialIcon";
 import LoadingSpinner from "./LoadingSpinner";
 import ColorPicker from "./ColorPicker";
-import RoomNameField from "./RoomNameField";
+import LightNameField from "./LightNameField";
 import DeleteLightButton from "./DeleteLightButton";
 import { Link } from "react-router-dom";
 
@@ -142,7 +142,7 @@ class LightController extends React.Component {
           >
             <div style={{ width: containerWidth, opacity: on ? 1 : 0.2 }}>
               <Grid item xs={12} className={classes.child}>
-                <RoomNameField
+                <LightNameField
                   name={name}
                   classes={classes}
                   handleChange={this.handleNameChange}

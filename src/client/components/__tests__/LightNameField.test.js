@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import { mount } from "enzyme";
 import TextField from "@material-ui/core/TextField";
 
-import RoomNameField from "../RoomNameField";
+import LightNameField from "../LightNameField";
 
 const classes = {
   textCenter: {
@@ -13,17 +13,17 @@ const classes = {
 
 const handleChange = jest.fn();
 
-describe("RoomNameField", () => {
+describe("LightNameField", () => {
   it("renders correctly", () => {
     const component = renderer.create(
-      <RoomNameField classes={classes} name="bedroom" />
+      <LightNameField classes={classes} name="bedroom" />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   it("flags errors when invalid name is given", () => {
     const wrapper = mount(
-      <RoomNameField name="" classes={classes} handleChange={handleChange} />
+      <LightNameField name="" classes={classes} handleChange={handleChange} />
     );
     const textField = wrapper.find(TextField);
     expect(textField.prop("error")).toBe(true);
@@ -31,7 +31,7 @@ describe("RoomNameField", () => {
   });
   it("does not flag errors when valid name is given", () => {
     const wrapper = mount(
-      <RoomNameField
+      <LightNameField
         name="bedroom"
         classes={classes}
         handleChange={handleChange}
@@ -43,7 +43,7 @@ describe("RoomNameField", () => {
   });
   it("changes isValid state changes based on input", () => {
     const wrapper = mount(
-      <RoomNameField
+      <LightNameField
         name="bedroom"
         classes={classes}
         handleChange={handleChange}

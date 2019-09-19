@@ -1,28 +1,28 @@
-import { validateRoomName, splitSecondsToParts } from "../deviceFunctions";
+import { validateLightName, splitSecondsToParts } from "../deviceFunctions";
 
 describe("deviceFunctions", () => {
-  describe("validateRoomName", () => {
+  describe("validateLightName", () => {
     it("fails validation for non-string values", () => {
       const invalidValues = [undefined, null, 5, NaN, ["name"], true];
       invalidValues.forEach(value => {
-        expect(validateRoomName(value)).toBe(false);
+        expect(validateLightName(value)).toBe(false);
       });
     });
     it("fails validation for empty string and whitespaces", () => {
       const invalidValues = ["", "    ", " "];
       invalidValues.forEach(value => {
-        expect(validateRoomName(value)).toBe(false);
+        expect(validateLightName(value)).toBe(false);
       });
     });
     it("fails validation for very lengthy strings", () => {
       expect(
-        validateRoomName(
+        validateLightName(
           "Unnecessarily long name you should not be giving to a light"
         )
       ).toBe(false);
     });
     it("passes validation for reasonable name", () => {
-      expect(validateRoomName("Bedroom")).toBe(true);
+      expect(validateLightName("Bedroom")).toBe(true);
     });
   });
   describe("splitSecondsToParts", () => {
