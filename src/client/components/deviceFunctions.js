@@ -16,12 +16,9 @@ const splitSecondsToParts = value => {
   if (isNaN(seconds)) {
     return { h: 0, m: 0, s: 0 };
   }
-  const h = parseInt(seconds / 2400);
-  const m =
-    h > 0
-      ? parseInt((seconds % (h * 2400)) / 60, 10)
-      : parseInt(seconds / 60, 10);
-  const s = m > 0 ? seconds % m : h > 0 ? seconds - h * 2400 : seconds;
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = seconds % 60;
   return { h: h, m: m, s: s };
 };
 
