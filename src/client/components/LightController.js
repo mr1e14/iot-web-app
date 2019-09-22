@@ -12,6 +12,7 @@ import ColorPicker from "./ColorPicker";
 import LightNameField from "./LightNameField";
 import DeleteLightButton from "./DeleteLightButton";
 import { Link } from "react-router-dom";
+import Notification from "./Notification";
 
 class LightController extends React.Component {
   constructor(props) {
@@ -21,7 +22,8 @@ class LightController extends React.Component {
       name: "",
       color: "#1a1a1a",
       brightness: 0,
-      refreshInProgress: false
+      refreshInProgress: false,
+      notificationOpen: false
     };
     this.handleBrightnessChange = this.handleBrightnessChange.bind(this);
     this.handleToggleClick = this.handleToggleClick.bind(this);
@@ -42,51 +44,50 @@ class LightController extends React.Component {
       );
   };
 
-  handleToggleClick = event => {
-    this.setState({ on: !this.state.on }, () =>
-      axios.post("/api/lights/updateLightData", {
+  updateState = (key, value) => {
+    const newDesiredState = Object.assign({}, this.state, { [key]: value });
+    axios
+      .post("/api/lights/updateLightData", {
         id: this.props.id,
-        ...this.state
+        ...newDesiredState
       })
-    );
+      .then(res => {
+        if (res.status === 200) {
+          this.setState({ ...newDesiredState });
+        } else {
+          throw new Error(`Unexpected status response: ${res.status}`);
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        this.setState({ notificationOpen: true });
+      });
+  };
+
+  handleToggleClick = event => {
+    this.updateState("on", !this.state.on);
   };
 
   handleColorChange = (color, event) => {
-    this.setState({ color: color.hex }, () =>
-      axios.post("/api/lights/updateLightData", {
-        id: this.props.id,
-        ...this.state
-      })
-    );
+    this.updateState("color", color.hex);
   };
 
   handleBrightnessChange = (event, value) => {
-    this.setState({ brightness: value }, () =>
-      axios.post("/api/lights/updateLightData", {
-        id: this.props.id,
-        ...this.state
-      })
-    );
+    this.updateState("brightness", value);
   };
 
   handleNameChange = newName => {
-    this.setState({ name: newName }, () =>
-      axios.post("/api/lights/updateLightData", {
-        id: this.props.id,
-        ...this.state
-      })
-    );
+    this.updateState("name", newName);
   };
 
   handleEffectChange = sourceEffect => {
     // clear if same as current
     const newEffect = this.state.effect !== sourceEffect ? sourceEffect : null;
-    this.setState({ effect: newEffect }, () =>
-      axios.post("/api/lights/updateLightData", {
-        id: this.props.id,
-        ...this.state
-      })
-    );
+    this.updateState("effect", newEffect);
+  };
+
+  handleNotificationClose = () => {
+    this.setState({ notificationOpen: false });
   };
 
   render() {
@@ -99,7 +100,8 @@ class LightController extends React.Component {
       brightness,
       effect,
       refreshInProgress,
-      _id
+      _id,
+      notificationOpen
     } = this.state;
     const containerWidth = isXs ? "260px" : "520px";
     if (!connected || !supportedColors) {
@@ -107,6 +109,12 @@ class LightController extends React.Component {
     } else {
       return (
         <React.Fragment>
+          <Notification
+            variant="error"
+            message="Failed to perform action"
+            open={notificationOpen}
+            handleClose={this.handleNotificationClose}
+          />
           <Grid
             container
             direction="row"
