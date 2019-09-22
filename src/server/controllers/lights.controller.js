@@ -105,7 +105,6 @@ const supportedColorsController = async () => {
       "Failed to retrieve supported colors",
       err
     );
-    throw err;
   }
   return supportedColors;
 };
