@@ -106,7 +106,7 @@ describe("LightOverview", () => {
       );
     });
     it("has a slider which can adjust brightness", () => {
-      wrapper.find("Slider").props().onChange({}, 50);
+      wrapper.find("Slider").props().onDragEnd({}, 50);
       expect(wrapper.instance().state.brightness).toBe(50);
     })
   });

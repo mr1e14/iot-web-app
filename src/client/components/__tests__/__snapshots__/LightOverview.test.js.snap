@@ -81,72 +81,7 @@ exports[`LightOverview when light is disabled renders correctly 1`] = `
   </div>
   <div
     className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-  >
-    <div
-      className="LightBrightnessSlider-root-1"
-    >
-      <div
-        className="MuiSlider-root Mui-disabled LightBrightnessSlider-slider-2"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onTouchMove={[Function]}
-        onTouchStartCapture={[Function]}
-      >
-        <div
-          className="MuiSlider-container"
-        >
-          <div
-            className="MuiSlider-track LightBrightnessSlider-track-3 MuiSlider-trackBefore Mui-disabled"
-            style={
-              Object {
-                "width": "calc(0% - 6px)",
-              }
-            }
-          />
-          <div
-            className="MuiSlider-thumbWrapper Mui-disabled"
-            style={
-              Object {
-                "transform": "translateX(0%)",
-              }
-            }
-          >
-            <button
-              aria-orientation="horizontal"
-              aria-valuemax={100}
-              aria-valuemin={1}
-              aria-valuenow={0}
-              className="MuiButtonBase-root MuiSlider-thumb LightBrightnessSlider-thumb-4 Mui-disabled Mui-disabled"
-              disabled={true}
-              onBlur={[Function]}
-              onDragEnd={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              onTouchStartCapture={[Function]}
-              role="slider"
-              tabIndex={-1}
-              type="button"
-            />
-          </div>
-          <div
-            className="MuiSlider-track LightBrightnessSlider-track-3 MuiSlider-trackAfter Mui-disabled"
-            style={
-              Object {
-                "width": "calc(100% - 6px)",
-              }
-            }
-          />
-        </div>
-      </div>
-    </div>
-  </div>
+  />
 </div>
 `;
 
@@ -231,72 +166,7 @@ exports[`LightOverview when light is disconnected renders correctly 1`] = `
   </div>
   <div
     className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-  >
-    <div
-      className="LightBrightnessSlider-root-1"
-    >
-      <div
-        className="MuiSlider-root Mui-disabled LightBrightnessSlider-slider-2"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onTouchMove={[Function]}
-        onTouchStartCapture={[Function]}
-      >
-        <div
-          className="MuiSlider-container"
-        >
-          <div
-            className="MuiSlider-track LightBrightnessSlider-track-3 MuiSlider-trackBefore Mui-disabled"
-            style={
-              Object {
-                "width": "calc(0% - 6px)",
-              }
-            }
-          />
-          <div
-            className="MuiSlider-thumbWrapper Mui-disabled"
-            style={
-              Object {
-                "transform": "translateX(0%)",
-              }
-            }
-          >
-            <button
-              aria-orientation="horizontal"
-              aria-valuemax={100}
-              aria-valuemin={1}
-              aria-valuenow={0}
-              className="MuiButtonBase-root MuiSlider-thumb LightBrightnessSlider-thumb-4 Mui-disabled Mui-disabled"
-              disabled={true}
-              onBlur={[Function]}
-              onDragEnd={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              onTouchStartCapture={[Function]}
-              role="slider"
-              tabIndex={-1}
-              type="button"
-            />
-          </div>
-          <div
-            className="MuiSlider-track LightBrightnessSlider-track-3 MuiSlider-trackAfter Mui-disabled"
-            style={
-              Object {
-                "width": "calc(100% - 6px)",
-              }
-            }
-          />
-        </div>
-      </div>
-    </div>
-  </div>
+  />
 </div>
 `;
 
@@ -381,71 +251,6 @@ exports[`LightOverview when light is enabled renders correctly 1`] = `
   </div>
   <div
     className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-  >
-    <div
-      className="LightBrightnessSlider-root-1"
-    >
-      <div
-        className="MuiSlider-root Mui-disabled LightBrightnessSlider-slider-2"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onTouchMove={[Function]}
-        onTouchStartCapture={[Function]}
-      >
-        <div
-          className="MuiSlider-container"
-        >
-          <div
-            className="MuiSlider-track LightBrightnessSlider-track-3 MuiSlider-trackBefore Mui-disabled"
-            style={
-              Object {
-                "width": "calc(0% - 6px)",
-              }
-            }
-          />
-          <div
-            className="MuiSlider-thumbWrapper Mui-disabled"
-            style={
-              Object {
-                "transform": "translateX(0%)",
-              }
-            }
-          >
-            <button
-              aria-orientation="horizontal"
-              aria-valuemax={100}
-              aria-valuemin={1}
-              aria-valuenow={0}
-              className="MuiButtonBase-root MuiSlider-thumb LightBrightnessSlider-thumb-4 Mui-disabled Mui-disabled"
-              disabled={true}
-              onBlur={[Function]}
-              onDragEnd={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              onTouchStartCapture={[Function]}
-              role="slider"
-              tabIndex={-1}
-              type="button"
-            />
-          </div>
-          <div
-            className="MuiSlider-track LightBrightnessSlider-track-3 MuiSlider-trackAfter Mui-disabled"
-            style={
-              Object {
-                "width": "calc(100% - 6px)",
-              }
-            }
-          />
-        </div>
-      </div>
-    </div>
-  </div>
+  />
 </div>
 `;

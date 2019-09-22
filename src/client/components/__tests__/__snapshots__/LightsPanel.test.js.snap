@@ -2,7 +2,7 @@
 
 exports[`LightsPanel on larger devices renders correctly 1`] = `
 <div
-  className="LoadingSpinner-spinnerContainer-27"
+  className="LoadingSpinner-spinnerContainer-23"
 >
   <div
     className="MuiCircularProgress-root MuiCircularProgress-colorSecondary MuiCircularProgress-indeterminate"
@@ -34,7 +34,7 @@ exports[`LightsPanel on larger devices renders correctly 1`] = `
 
 exports[`LightsPanel on sm and smaller devices renders correctly 1`] = `
 <div
-  className="LoadingSpinner-spinnerContainer-25"
+  className="LoadingSpinner-spinnerContainer-21"
 >
   <div
     className="MuiCircularProgress-root MuiCircularProgress-colorSecondary MuiCircularProgress-indeterminate"
@@ -66,7 +66,7 @@ exports[`LightsPanel on sm and smaller devices renders correctly 1`] = `
 
 exports[`LightsPanel when no lights are provided renders correctly 1`] = `
 <div
-  className="LoadingSpinner-spinnerContainer-19"
+  className="LoadingSpinner-spinnerContainer-15"
 >
   <div
     className="MuiCircularProgress-root MuiCircularProgress-colorSecondary MuiCircularProgress-indeterminate"
@@ -130,7 +130,7 @@ exports[`LightsPanel when one light is provided renders correctly 1`] = `
 
 exports[`LightsPanel when two lights are provided renders correctly 1`] = `
 <div
-  className="LoadingSpinner-spinnerContainer-12"
+  className="LoadingSpinner-spinnerContainer-8"
 >
   <div
     className="MuiCircularProgress-root MuiCircularProgress-colorSecondary MuiCircularProgress-indeterminate"
