@@ -37,19 +37,19 @@ const lightIdsController = async () => {
 };
 
 const lightDataController = async id => {
-  logger.info("lightDataController", "invoked");
+  logger.info(`lightDataController${id}`, "invoked");
 
-  let lightData = null;
   try {
-    lightData = await lightsDataCache.get(id, { id });
+    const lightData = await lightsDataCache.get(id, { id });
+    return lightData;
   } catch (err) {
     logger.error(
-      "lightDataController",
-      "Failed to retrieve all lights data",
+      `lightDataController${id}`,
+      "Failed to retrieve light's data",
       err
     );
+    throw err;
   }
-  return lightData;
 };
 
 const lightSettingsController = async id => {
