@@ -4,11 +4,12 @@ import Grid from "@material-ui/core/Grid";
 import LoadingSpinner from "./LoadingSpinner";
 import LightEffectsSettingsOptions from "./LightEffectSettingsOptions";
 import Typography from "@material-ui/core/Typography";
+import Notification from "./Notification";
 
 class LightEffectsSettings extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { notificationOpen: false };
   }
 
   componentDidMount() {
@@ -19,11 +20,20 @@ class LightEffectsSettings extends React.Component {
 
   handleChange = (optionName, value) => {
     this.setState({ [optionName]: value }, () =>
-      axios.post("/api/lights/updateLightSettings", {
-        id: this.props.id,
-        ...this.state
-      })
+      axios
+        .post("/api/lights/updateLightSettings", {
+          id: this.props.id,
+          ...this.state
+        })
+        .catch(err => {
+          console.error(err);
+          this.setState({ notificationOpen: true });
+        })
     );
+  };
+
+  handleNotificationClose = () => {
+    this.setState({ notificationOpen: false });
   };
 
   render() {
@@ -40,6 +50,12 @@ class LightEffectsSettings extends React.Component {
           spacing={2}
           className={classes.root}
         >
+          <Notification
+            variant="error"
+            message="Could not update settings"
+            open={this.state.notificationOpen}
+            handleClose={this.handleNotificationClose}
+          />
           <Grid container className={customClasses.panelContainer}>
             {config.map((effect, key) => (
               <React.Fragment key={key}>
