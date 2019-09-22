@@ -105,9 +105,12 @@ describe("LightOverview", () => {
         "power_settings_new"
       );
     });
-    it("has a slider which can adjust brightness", () => {
-      wrapper.find("Slider").props().onDragEnd({}, 50);
-      expect(wrapper.instance().state.brightness).toBe(50);
+    it("has a slider which can adjust brightness state efficiently", () => {
+      wrapper.find("Slider").props().onChange({}, 50);
+      expect(wrapper.find("Slider").prop("value")).toBe(75); // should update visually
+
+      wrapper.find("Slider").props().onDragEnd({}, 50); // should update state
+      expect(wrapper.instance().state.brightness).toBe(50); 
     })
   });
   describe("when light is disabled", () => {
