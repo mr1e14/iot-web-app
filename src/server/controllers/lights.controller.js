@@ -120,7 +120,6 @@ const supportedEffectsController = async () => {
       "Failed to retrieve supported effects",
       err
     );
-    throw err;
   }
   return supportedEffects;
 };
