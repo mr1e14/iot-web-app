@@ -15,11 +15,7 @@ class LightOverview extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      connected: false,
-      on: false,
-      brightness: 0
-    };
+    this.state = {};
     this.handleBrightnessChange = this.handleBrightnessChange.bind(this);
     this.handleToggleClick = this.handleToggleClick.bind(this);
   }
@@ -49,7 +45,7 @@ class LightOverview extends React.Component {
   }
 
   render() {
-    const { on, connected, brightness, color, name } = this.state;
+    const { on, connected, brightness, color, name, _id } = this.state;
     const { classes, id } = this.props;
     return (
       <Grid
@@ -92,12 +88,14 @@ class LightOverview extends React.Component {
           </IconButton>
         </Grid>
         <Grid item xs={12}>
-          <LightBrightnessSlider
-            on={on}
-            connected={connected}
-            brightness={brightness}
-            handleChange={this.handleBrightnessChange}
-          />
+          {_id ? (
+            <LightBrightnessSlider
+              on={on}
+              connected={connected}
+              brightness={brightness}
+              handleChange={this.handleBrightnessChange}
+            />
+          ) : null}
         </Grid>
       </Grid>
     );
