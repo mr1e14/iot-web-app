@@ -30,10 +30,11 @@ const lightIdsController = async () => {
   let lightIds = null;
   try {
     lightIds = await lightIdsCache.get("lightIds");
+    return lightIds;
   } catch (err) {
     logger.error("lightIdsController", "Failed to retrieve lights' IDs", err);
+    throw err;
   }
-  return lightIds;
 };
 
 const lightDataController = async id => {

@@ -17,7 +17,16 @@ const lightsRouter = () => {
 
   router.get("/getLightIds", async (req, res) => {
     logger.info("/api/lights/getLightIds", "route called");
-    await lightIdsController().then(lightIds => res.send({ lightIds }));
+    await lightIdsController()
+      .then(lightIds => res.send({ lightIds }))
+      .catch(err => {
+        logger.error(
+          "/api/lights/getLightIds",
+          "Failed to retrieve light IDs",
+          err
+        );
+        res.sendStatus(500);
+      });
   });
 
   router.get("/getLightDataById/:id", async (req, res) => {
