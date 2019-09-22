@@ -25,9 +25,16 @@ const lightsRouter = () => {
       `/api/lights/getLightDataById/${req.params.id}`,
       "route called"
     );
-    await lightDataController(req.params.id).then(lightData =>
-      res.send({ lightData })
-    );
+    await lightDataController(req.params.id)
+      .then(lightData => res.send({ lightData }))
+      .catch(err => {
+        logger.error(
+          "/api/lights/getLightDataById",
+          `Failed to get data for light ID: ${req.params.id}`,
+          err
+        );
+        res.sendStatus(500);
+      });
   });
 
   router.get("/getLightSettingsById/:id", async (req, res) => {
