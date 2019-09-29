@@ -16,7 +16,7 @@ import Notification from "./Notification";
 class LightController extends React.Component {
   constructor(props) {
     super(props);
-    // initialize if cached
+
     this.state = {
       refreshInProgress: false,
       notificationOpen: false
