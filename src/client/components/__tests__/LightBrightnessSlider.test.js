@@ -3,6 +3,7 @@ import renderer from "react-test-renderer";
 import { mount } from "enzyme";
 
 import LightBrightnessSlider from "../LightBrigtnessSlider";
+import Slider from "@material-ui/core/Slider";
 
 const propsEnabled = {
   on: true,
@@ -28,38 +29,29 @@ describe("LightBrightnessSlider", () => {
   let tree;
   let component;
   let wrapper;
+  it("renders correctly", () => {
+    component = renderer.create(<LightBrightnessSlider />);
+    tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
   describe("when light is enabled", () => {
     beforeEach(() => {
-      component = renderer.create(
-        <LightBrightnessSlider {...propsEnabled} handleChange={handleChange} />
-      );
-      tree = component.toJSON();
       wrapper = mount(
         <LightBrightnessSlider {...propsEnabled} handleChange={handleChange} />
       );
     });
-    it("renders correctly", () => {
-      expect(tree).toMatchSnapshot();
-    });
     it("is enabled", () => {
-      expect(wrapper.find("Slider").prop("disabled")).toBe(false);
+      expect(wrapper.find(Slider).prop("disabled")).toBe(false);
     });
   });
   describe("when light is disabled", () => {
     beforeEach(() => {
-      component = renderer.create(
-        <LightBrightnessSlider {...propsDisabled} handleChange={handleChange} />
-      );
-      tree = component.toJSON();
       wrapper = mount(
         <LightBrightnessSlider {...propsDisabled} handleChange={handleChange} />
       );
     });
-    it("renders correctly", () => {
-      expect(tree).toMatchSnapshot();
-    });
     it("is disabled", () => {
-      expect(wrapper.find("Slider").prop("disabled")).toBe(true);
+      expect(wrapper.find(Slider).prop("disabled")).toBe(true);
     });
   });
   describe("when light is disconnected", () => {
@@ -82,7 +74,7 @@ describe("LightBrightnessSlider", () => {
       expect(tree).toMatchSnapshot();
     });
     it("is disabled", () => {
-      expect(wrapper.find("Slider").prop("disabled")).toBe(true);
+      expect(wrapper.find(Slider).prop("disabled")).toBe(true);
     });
   });
 });

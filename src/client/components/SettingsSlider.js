@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Slider from "@material-ui/lab/Slider";
+import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
 import { splitSecondsToParts } from "./deviceFunctions";
 
@@ -46,7 +46,8 @@ const SettingsSlider = props => {
           }}
           value={currentValue}
           onChange={(e, v) => setValue(v)}
-          onDragEnd={onChange}
+          onChangeCommitted={onChange}
+          color="secondary"
           min={min}
           max={max}
           step={step}

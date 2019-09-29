@@ -1,6 +1,6 @@
 import React from "react";
 import { withStyles } from "@material-ui/styles";
-import Slider from "@material-ui/lab/Slider";
+import Slider from "@material-ui/core/Slider";
 
 const styles = {
   root: {
@@ -41,7 +41,7 @@ class LightBrightnessSlider extends React.Component {
           }}
           value={currentValue}
           onChange={this.handleCurrentValueChange}
-          onDragEnd={handleChange}
+          onChangeCommitted={handleChange}
           disabled={!on || !connected}
           min={1}
         />

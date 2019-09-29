@@ -13,6 +13,7 @@ exports[`LightNameField renders correctly 1`] = `
       className="MuiInputBase-input MuiInput-input textAlign"
       defaultValue="bedroom"
       disabled={false}
+      onAnimationStart={[Function]}
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}

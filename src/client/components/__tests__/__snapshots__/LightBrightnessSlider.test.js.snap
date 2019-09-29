@@ -1,69 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LightBrightnessSlider when light is disabled renders correctly 1`] = `
+exports[`LightBrightnessSlider renders correctly 1`] = `
 <div
   className="LightBrightnessSlider-root-1"
 >
-  <div
-    className="MuiSlider-root Mui-disabled LightBrightnessSlider-slider-2"
-    onClick={[Function]}
+  <span
+    className="MuiSlider-root MuiSlider-colorPrimary LightBrightnessSlider-slider-2 Mui-disabled"
     onMouseDown={[Function]}
-    onTouchMove={[Function]}
-    onTouchStartCapture={[Function]}
   >
-    <div
-      className="MuiSlider-container"
-    >
-      <div
-        className="MuiSlider-track LightBrightnessSlider-track-3 MuiSlider-trackBefore Mui-disabled"
-        style={
-          Object {
-            "width": "calc(24.242424242424242% - 6px)",
-          }
+    <span
+      className="MuiSlider-rail"
+    />
+    <span
+      className="MuiSlider-track LightBrightnessSlider-track-3"
+      style={
+        Object {
+          "left": "0%",
+          "width": "0%",
         }
-      />
-      <div
-        className="MuiSlider-thumbWrapper Mui-disabled"
-        style={
-          Object {
-            "transform": "translateX(24.242424242424242%)",
-          }
+      }
+    />
+    <input
+      type="hidden"
+      value="1"
+    />
+    <span
+      aria-orientation="horizontal"
+      aria-valuemax={100}
+      aria-valuemin={1}
+      aria-valuenow={1}
+      className="MuiSlider-thumb LightBrightnessSlider-thumb-4 MuiSlider-thumbColorPrimary"
+      data-index={0}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      role="slider"
+      style={
+        Object {
+          "left": "0%",
         }
-      >
-        <button
-          aria-orientation="horizontal"
-          aria-valuemax={100}
-          aria-valuemin={1}
-          aria-valuenow={25}
-          className="MuiButtonBase-root MuiSlider-thumb LightBrightnessSlider-thumb-4 Mui-disabled Mui-disabled"
-          disabled={true}
-          onBlur={[Function]}
-          onDragEnd={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          onTouchStartCapture={[Function]}
-          role="slider"
-          tabIndex={-1}
-          type="button"
-        />
-      </div>
-      <div
-        className="MuiSlider-track LightBrightnessSlider-track-3 MuiSlider-trackAfter Mui-disabled"
-        style={
-          Object {
-            "width": "calc(75.75757575757575% - 6px)",
-          }
-        }
-      />
-    </div>
-  </div>
+      }
+      tabIndex={null}
+    />
+  </span>
 </div>
 `;
 
@@ -71,132 +52,46 @@ exports[`LightBrightnessSlider when light is disconnected renders correctly 1`] 
 <div
   className="LightBrightnessSlider-root-1"
 >
-  <div
-    className="MuiSlider-root Mui-disabled LightBrightnessSlider-slider-2"
-    onClick={[Function]}
+  <span
+    className="MuiSlider-root MuiSlider-colorPrimary LightBrightnessSlider-slider-2 Mui-disabled"
     onMouseDown={[Function]}
-    onTouchMove={[Function]}
-    onTouchStartCapture={[Function]}
   >
-    <div
-      className="MuiSlider-container"
-    >
-      <div
-        className="MuiSlider-track LightBrightnessSlider-track-3 MuiSlider-trackBefore Mui-disabled"
-        style={
-          Object {
-            "width": "calc(0% - 6px)",
-          }
+    <span
+      className="MuiSlider-rail"
+    />
+    <span
+      className="MuiSlider-track LightBrightnessSlider-track-3"
+      style={
+        Object {
+          "left": "0%",
+          "width": "0%",
         }
-      />
-      <div
-        className="MuiSlider-thumbWrapper Mui-disabled"
-        style={
-          Object {
-            "transform": "translateX(0%)",
-          }
+      }
+    />
+    <input
+      type="hidden"
+      value="1"
+    />
+    <span
+      aria-orientation="horizontal"
+      aria-valuemax={100}
+      aria-valuemin={1}
+      aria-valuenow={1}
+      className="MuiSlider-thumb LightBrightnessSlider-thumb-4 MuiSlider-thumbColorPrimary"
+      data-index={0}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      role="slider"
+      style={
+        Object {
+          "left": "0%",
         }
-      >
-        <button
-          aria-orientation="horizontal"
-          aria-valuemax={100}
-          aria-valuemin={1}
-          aria-valuenow={1}
-          className="MuiButtonBase-root MuiSlider-thumb LightBrightnessSlider-thumb-4 Mui-disabled Mui-disabled"
-          disabled={true}
-          onBlur={[Function]}
-          onDragEnd={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          onTouchStartCapture={[Function]}
-          role="slider"
-          tabIndex={-1}
-          type="button"
-        />
-      </div>
-      <div
-        className="MuiSlider-track LightBrightnessSlider-track-3 MuiSlider-trackAfter Mui-disabled"
-        style={
-          Object {
-            "width": "calc(100% - 6px)",
-          }
-        }
-      />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`LightBrightnessSlider when light is enabled renders correctly 1`] = `
-<div
-  className="LightBrightnessSlider-root-1"
->
-  <div
-    className="MuiSlider-root LightBrightnessSlider-slider-2"
-    onClick={[Function]}
-    onMouseDown={[Function]}
-    onTouchMove={[Function]}
-    onTouchStartCapture={[Function]}
-  >
-    <div
-      className="MuiSlider-container"
-    >
-      <div
-        className="MuiSlider-track LightBrightnessSlider-track-3 MuiSlider-trackBefore"
-        style={
-          Object {
-            "transform": "translateY(-50%) scaleX(0.24242424242424243)",
-          }
-        }
-      />
-      <div
-        className="MuiSlider-thumbWrapper"
-        style={
-          Object {
-            "transform": "translateX(24.242424242424242%)",
-          }
-        }
-      >
-        <button
-          aria-orientation="horizontal"
-          aria-valuemax={100}
-          aria-valuemin={1}
-          aria-valuenow={25}
-          className="MuiButtonBase-root MuiSlider-thumb LightBrightnessSlider-thumb-4"
-          disabled={false}
-          onBlur={[Function]}
-          onDragEnd={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          onTouchStartCapture={[Function]}
-          role="slider"
-          tabIndex={0}
-          type="button"
-        />
-      </div>
-      <div
-        className="MuiSlider-track LightBrightnessSlider-track-3 MuiSlider-trackAfter"
-        style={
-          Object {
-            "transform": "translateY(-50%) scaleX(0.7575757575757575)",
-          }
-        }
-      />
-    </div>
-  </div>
+      }
+      tabIndex={null}
+    />
+  </span>
 </div>
 `;

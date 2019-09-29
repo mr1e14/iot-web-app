@@ -8,6 +8,7 @@ import LightOverview from "../LightOverview";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
+import Slider from "@material-ui/core/Slider";
 
 jest.mock("react-router-dom", () => ({
   Link: "button"
@@ -52,24 +53,21 @@ describe("LightOverview", () => {
   let component;
   let wrapper;
   const loadData = wrapper => {
-    global.fetch().then(data => data.json()).then(data => wrapper.setState({...data}))
-  }
+    global
+      .fetch()
+      .then(data => data.json())
+      .then(data => wrapper.setState({ ...data }));
+  };
   describe("when light is enabled", () => {
     beforeEach(() => {
-      global.fetch = jest.fn(() => Promise.resolve({json: () => Promise.resolve(dataEnabled)}));
+      global.fetch = jest.fn(() =>
+        Promise.resolve({ json: () => Promise.resolve(dataEnabled) })
+      );
       component = renderer.create(
-        <LightOverview
-          classes={exampleClasses}
-          id="1"
-        />
+        <LightOverview classes={exampleClasses} id="1" />
       );
       tree = component.toJSON();
-      wrapper = mount(
-        <LightOverview
-          classes={exampleClasses}
-          id="1"
-        />
-      );
+      wrapper = mount(<LightOverview classes={exampleClasses} id="1" />);
       loadData(wrapper);
       wrapper.update();
     });
@@ -79,7 +77,7 @@ describe("LightOverview", () => {
     it("has all elements enabled", () => {
       expect(wrapper.find(IconButton).prop("disabled")).toBe(false);
       expect(wrapper.find(Button).prop("disabled")).toBe(false);
-      expect(wrapper.find("Slider").prop("disabled")).toBe(false);
+      expect(wrapper.find(Slider).prop("disabled")).toBe(false);
     });
     it("has a Grid container with correct attributes", () => {
       const gridStyle = wrapper
@@ -106,29 +104,29 @@ describe("LightOverview", () => {
       );
     });
     it("has a slider which can adjust brightness state efficiently", () => {
-      wrapper.find("Slider").props().onChange({}, 50);
-      expect(wrapper.find("Slider").prop("value")).toBe(75); // should update visually
+      wrapper
+        .find(Slider)
+        .props()
+        .onChange({}, 50);
+      expect(wrapper.find(Slider).prop("value")).toBe(75); // should update visually
 
-      wrapper.find("Slider").props().onDragEnd({}, 50); // should update state
-      expect(wrapper.instance().state.brightness).toBe(50); 
-    })
+      wrapper
+        .find(Slider)
+        .props()
+        .onChangeCommitted({}, 50); // should update state
+      expect(wrapper.instance().state.brightness).toBe(50);
+    });
   });
   describe("when light is disabled", () => {
     beforeEach(() => {
-      global.fetch = jest.fn(() => Promise.resolve({json: () => Promise.resolve(dataDisabled)}));
+      global.fetch = jest.fn(() =>
+        Promise.resolve({ json: () => Promise.resolve(dataDisabled) })
+      );
       component = renderer.create(
-        <LightOverview
-          classes={exampleClasses}
-          id="2"
-        />
+        <LightOverview classes={exampleClasses} id="2" />
       );
       tree = component.toJSON();
-      wrapper = mount(
-        <LightOverview
-          classes={exampleClasses}
-          id="2"
-        />
-      );
+      wrapper = mount(<LightOverview classes={exampleClasses} id="2" />);
       loadData(wrapper);
       wrapper.update();
     });
@@ -140,7 +138,7 @@ describe("LightOverview", () => {
       expect(wrapper.find(Button).prop("disabled")).toBe(false);
     });
     it("has a disabled Slider", () => {
-      expect(wrapper.find("Slider").prop("disabled")).toBe(true);
+      expect(wrapper.find(Slider).prop("disabled")).toBe(true);
     });
     it("has a Grid container with correct attributes", () => {
       const gridStyle = wrapper
@@ -165,20 +163,14 @@ describe("LightOverview", () => {
   });
   describe("when light is disconnected", () => {
     beforeEach(() => {
-      global.fetch = jest.fn(() => Promise.resolve({json: () => Promise.resolve(dataDisconnected)}));
+      global.fetch = jest.fn(() =>
+        Promise.resolve({ json: () => Promise.resolve(dataDisconnected) })
+      );
       component = renderer.create(
-        <LightOverview
-          classes={exampleClasses}
-          id="3"
-        />
+        <LightOverview classes={exampleClasses} id="3" />
       );
       tree = component.toJSON();
-      wrapper = mount(
-        <LightOverview
-          classes={exampleClasses}
-          id="3"
-        />
-      );
+      wrapper = mount(<LightOverview classes={exampleClasses} id="3" />);
       loadData(wrapper);
       wrapper.update();
     });
@@ -188,7 +180,7 @@ describe("LightOverview", () => {
     it("has all elements disabled", () => {
       expect(wrapper.find(IconButton).prop("disabled")).toBe(true);
       expect(wrapper.find(Button).prop("disabled")).toBe(true);
-      expect(wrapper.find("Slider").prop("disabled")).toBe(true);
+      expect(wrapper.find(Slider).prop("disabled")).toBe(true);
     });
     it("has a Grid container with correct attributes", () => {
       const gridStyle = wrapper
