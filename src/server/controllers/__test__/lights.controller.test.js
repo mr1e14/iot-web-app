@@ -32,7 +32,7 @@ describe("lights.controller", () => {
       }
     ]
   };
-  const mockLightData = { id: 1, color: "red", brightness: 100 };
+  const lightData = { id: 1, color: "red", brightness: 100 };
   const lightSettings = { transitionSpeed: 30, duration: 120 };
   const lightIds = [1, 2, 3];
   beforeEach(() => {
@@ -44,13 +44,13 @@ describe("lights.controller", () => {
       let result;
       beforeEach(async () => {
         mockGetCache.mockImplementation(() => ({
-           get: async () => mockLightData
+           get: async () => lightData
         }))
         const { lightDataController } = require("../lights.controller");
         result = await lightDataController();
       });
       it("returns light data", () => {
-        expect(result).toEqual(mockLightData);
+        expect(result).toEqual(lightData);
       });
     });
     describe("when cache service fails", () => {
@@ -244,15 +244,15 @@ describe("lights.controller", () => {
             update: cacheUpdate
           }));
           const { updateController } = require("../lights.controller");
-          await updateController(mockLightData);
+          await updateController(lightData);
         });
         it("calls cache update", () => {
           expect(cacheUpdate).toHaveBeenCalledTimes(1);
-          expect(cacheUpdate).toHaveBeenCalledWith(mockLightData.id, mockLightData);
+          expect(cacheUpdate).toHaveBeenCalledWith(lightData.id, lightData);
         });
         it("calls updateLightData", () => {
           expect(mockUpdateLightData).toHaveBeenCalledTimes(1);
-          expect(mockUpdateLightData).toHaveBeenCalledWith(mockLightData);
+          expect(mockUpdateLightData).toHaveBeenCalledWith(lightData);
         });
       });
       describe("when db update fails", () => {
@@ -266,18 +266,18 @@ describe("lights.controller", () => {
           }));
           const { updateController } = require("../lights.controller");
           try {
-            await updateController(mockLightData);
+            await updateController(lightData);
           } catch (error) {
             result = error;
           }
         });
         it("calls cache update", () => {
           expect(cacheUpdate).toHaveBeenCalledTimes(1);
-          expect(cacheUpdate).toHaveBeenCalledWith(mockLightData.id, mockLightData);
+          expect(cacheUpdate).toHaveBeenCalledWith(lightData.id, lightData);
         });
         it("calls updateLightData", () => {
           expect(mockUpdateLightData).toHaveBeenCalledTimes(1);
-          expect(mockUpdateLightData).toHaveBeenCalledWith(mockLightData);
+          expect(mockUpdateLightData).toHaveBeenCalledWith(lightData);
         });
         it("throws exception", () => {
           expect(result.message).toEqual("db update failed");
@@ -295,14 +295,14 @@ describe("lights.controller", () => {
         }));
         const { updateController } = require("../lights.controller");
         try {
-          await updateController(mockLightData);
+          await updateController(lightData);
         } catch (err) {
           result = err;
         }
       });
       it("calls cache update", () => {
         expect(cacheUpdate).toHaveBeenCalledTimes(1);
-        expect(cacheUpdate).toHaveBeenCalledWith(mockLightData.id, mockLightData);
+        expect(cacheUpdate).toHaveBeenCalledWith(lightData.id, lightData);
       });
       it("doesn't call updateLightData", () => {
         expect(mockUpdateLightData).toHaveBeenCalledTimes(0);
