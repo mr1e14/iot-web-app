@@ -43,22 +43,25 @@ class LightController extends React.Component {
 
   updateState = (key, value) => {
     const newDesiredState = Object.assign({}, this.state, { [key]: value });
-    axios
-      .post("/api/lights/updateLightData", {
-        id: this.props.id,
-        ...newDesiredState
-      })
-      .then(res => {
-        if (res.status === 200) {
-          this.setState({ ...newDesiredState });
-        } else {
-          throw new Error(`Unexpected status response: ${res.status}`);
-        }
-      })
-      .catch(err => {
-        console.error(err);
-        this.setState({ notificationOpen: true });
-      });
+    this.setState({ refreshInProgress: true }, () =>
+      axios
+        .post("/api/lights/updateLightData", {
+          id: this.props.id,
+          ...newDesiredState
+        })
+        .then(res => {
+          if (res.status === 200) {
+            this.setState({ ...newDesiredState });
+          } else {
+            throw new Error(`Unexpected status response: ${res.status}`);
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          this.setState({ notificationOpen: true });
+        })
+        .finally(() => this.setState({ refreshInProgress: false }))
+    );
   };
 
   handleToggleClick = event => {
@@ -101,11 +104,13 @@ class LightController extends React.Component {
       notificationOpen
     } = this.state;
     const containerWidth = isXs ? "260px" : "520px";
+    const containerOpacity = refreshInProgress ? 0.4 : on ? 1 : 0.2;
     if (!connected || !supportedColors) {
       return <LoadingSpinner />;
     } else {
       return (
         <React.Fragment>
+          {refreshInProgress ? <LoadingSpinner /> : null}
           <Notification
             variant="error"
             message="Failed to perform action"
@@ -127,15 +132,15 @@ class LightController extends React.Component {
               </Tooltip>
             </Grid>
             <Grid item>
-              {refreshInProgress ? (
-                <CircularProgress color="secondary" />
-              ) : (
-                <Tooltip title="Refresh">
-                  <IconButton color="secondary" onClick={this.refreshData}>
-                    <MaterialIcon iconName="refresh" />
-                  </IconButton>
-                </Tooltip>
-              )}
+              <Tooltip title="Refresh">
+                <IconButton
+                  disabled={refreshInProgress}
+                  color="secondary"
+                  onClick={this.refreshData}
+                >
+                  <MaterialIcon iconName="refresh" />
+                </IconButton>
+              </Tooltip>
             </Grid>
           </Grid>
           <Grid
@@ -146,7 +151,7 @@ class LightController extends React.Component {
             className={classes.root}
           >
             <div style={{ width: containerWidth }}>
-              <div style={{ opacity: on ? 1 : 0.2 }}>
+              <div style={{ opacity: containerOpacity }}>
                 <Grid item xs={12} className={classes.child}>
                   <LightNameField
                     name={name}
