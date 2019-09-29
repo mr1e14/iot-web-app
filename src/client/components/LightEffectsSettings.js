@@ -5,6 +5,7 @@ import LoadingSpinner from "./LoadingSpinner";
 import LightEffectsSettingsOptions from "./LightEffectSettingsOptions";
 import Typography from "@material-ui/core/Typography";
 import Notification from "./Notification";
+import { LIGHT_UPDATE_REQUEST_TIMEOUT } from "../config";
 
 class LightEffectsSettings extends React.Component {
   constructor(props) {
@@ -21,10 +22,14 @@ class LightEffectsSettings extends React.Component {
   handleChange = (optionName, value) => {
     this.setState({ [optionName]: value }, () =>
       axios
-        .post("/api/lights/updateLightSettings", {
-          id: this.props.id,
-          ...this.state
-        })
+        .post(
+          "/api/lights/updateLightSettings",
+          {
+            id: this.props.id,
+            ...this.state
+          },
+          { timeout: LIGHT_UPDATE_REQUEST_TIMEOUT }
+        )
         .catch(err => {
           console.error(err);
           this.setState({ notificationOpen: true });
