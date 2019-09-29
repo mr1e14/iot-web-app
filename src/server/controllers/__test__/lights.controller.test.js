@@ -2,28 +2,24 @@ jest.mock("../../services/logging", () => {
   return jest.fn(() => ({
     info: jest.fn(),
     warn: jest.fn(),
-    error: jest.fn()
+    error:   jest.fn()
   }));
 });
-/*
-jest.mock("../../connectors/iot-db");
-const {
-  updateLightData,
-  updateLightSettings,
-  deleteLightById
-} = require("../../connectors/iot-db");*/
 
-/*const {
-  lightDataController,
-  lightIdsController,
-  lightSettingsController,
-  deleteLightController,
-  updateController,
-  updateSettingsController,
-  supportedColorsController,
-  supportedEffectsController,
-  effectsConfigurationController
-} = require("../lights.controller");*/
+const mockGetCache = jest.fn();
+jest.mock("../../services/cache", () => ({
+  getCache: mockGetCache
+}));
+
+const mockUpdateLightData = jest.fn(),
+  mockUpdateLightSettings = jest.fn(),
+  mockDeleteByLightId = jest.fn();
+
+jest.mock("../../connectors/iot-db", () => ({
+  updateLightData: mockUpdateLightData,
+  updateLightSettings: mockUpdateLightSettings,
+  deleteLightById: mockDeleteByLightId
+}));
 
 describe("lights.controller", () => {
   const configItems = {
@@ -36,7 +32,7 @@ describe("lights.controller", () => {
       }
     ]
   };
-  const lightData = { id: 1, color: "red", brightness: 100 };
+  const mockLightData = { id: 1, color: "red", brightness: 100 };
   const lightSettings = { transitionSpeed: 30, duration: 120 };
   const lightIds = [1, 2, 3];
   beforeEach(() => {
@@ -47,22 +43,20 @@ describe("lights.controller", () => {
     describe("when cache service gets data", () => {
       let result;
       beforeEach(async () => {
-        const cache = require("../../services/cache");
-        cache.getCache = jest.fn(() => ({
-          get: async () => lightData
-        }));
+        mockGetCache.mockImplementation(() => ({
+           get: async () => mockLightData
+        }))
         const { lightDataController } = require("../lights.controller");
         result = await lightDataController();
       });
       it("returns light data", () => {
-        expect(result).toEqual(lightData);
+        expect(result).toEqual(mockLightData);
       });
     });
     describe("when cache service fails", () => {
       let result;
       beforeEach(async () => {
-        const cache = require("../../services/cache");
-        cache.getCache = jest.fn(() => ({
+        mockGetCache.mockImplementation(() => ({
           get: async () => {
             throw new Error("no data");
           }
@@ -83,8 +77,7 @@ describe("lights.controller", () => {
     describe("when cache service gets data", () => {
       let result;
       beforeEach(async () => {
-        const cache = require("../../services/cache");
-        cache.getCache = jest.fn(() => ({
+        mockGetCache.mockImplementation(() => ({
           get: async () => lightIds
         }));
         const { lightIdsController } = require("../lights.controller");
@@ -97,8 +90,7 @@ describe("lights.controller", () => {
     describe("when cache service fails", () => {
       let result;
       beforeEach(async () => {
-        const cache = require("../../services/cache");
-        cache.getCache = jest.fn(() => ({
+        mockGetCache.mockImplementation(() => ({
           get: async () => {
             throw new Error("couldn't get ids");
           }
@@ -119,8 +111,7 @@ describe("lights.controller", () => {
     describe("when cache service gets data", () => {
       let result;
       beforeEach(async () => {
-        const cache = require("../../services/cache");
-        cache.getCache = jest.fn(() => ({
+        mockGetCache.mockImplementation(() => ({
           get: async () => lightSettings
         }));
         const { lightSettingsController } = require("../lights.controller");
@@ -133,8 +124,7 @@ describe("lights.controller", () => {
     describe("when cache service fails", () => {
       let result;
       beforeEach(async () => {
-        const cache = require("../../services/cache");
-        cache.getCache = jest.fn(() => ({
+        mockGetCache.mockImplementation(() => ({
           get: async () => {
             throw new Error("couldn't get settings");
           }
@@ -151,8 +141,7 @@ describe("lights.controller", () => {
     describe("when cache service gets data", () => {
       let result;
       beforeEach(async () => {
-        const cache = require("../../services/cache");
-        cache.getCache = jest.fn(() => ({
+        mockGetCache.mockImplementation(() => ({
           get: async () => configItems.supportedColors
         }));
         const { supportedColorsController } = require("../lights.controller");
@@ -165,8 +154,7 @@ describe("lights.controller", () => {
     describe("when cache service fails", () => {
       let result;
       beforeEach(async () => {
-        const cache = require("../../services/cache");
-        cache.getCache = jest.fn(() => ({
+        mockGetCache.mockImplementation(() => ({
           get: async () => {
             throw new Error("couldn't get supported colors");
           }
@@ -183,8 +171,7 @@ describe("lights.controller", () => {
     describe("when cache service gets data", () => {
       let result;
       beforeEach(async () => {
-        const cache = require("../../services/cache");
-        cache.getCache = jest.fn(() => ({
+        mockGetCache.mockImplementation(() => ({
           get: async () => configItems.supportedEffects
         }));
         const { supportedEffectsController } = require("../lights.controller");
@@ -197,8 +184,7 @@ describe("lights.controller", () => {
     describe("when cache service fails", () => {
       let result;
       beforeEach(async () => {
-        const cache = require("../../services/cache");
-        cache.getCache = jest.fn(() => ({
+        mockGetCache.mockImplementation(() => ({
           get: async () => {
             throw new Error("couldn't get supported effects");
           }
@@ -215,8 +201,7 @@ describe("lights.controller", () => {
     describe("when cache service gets data", () => {
       let result;
       beforeEach(async () => {
-        const cache = require("../../services/cache");
-        cache.getCache = jest.fn(() => ({
+        mockGetCache.mockImplementation(() => ({
           get: async () => configItems.effectsConfiguration
         }));
         const {
@@ -231,8 +216,7 @@ describe("lights.controller", () => {
     describe("when cache service fails", () => {
       let result;
       beforeEach(async () => {
-        const cache = require("../../services/cache");
-        cache.getCache = jest.fn(() => ({
+        mockGetCache.mockImplementation(() => ({
           get: async () => {
             throw new Error("couldn't get configuration");
           }
@@ -255,54 +239,45 @@ describe("lights.controller", () => {
     describe("when cache update is successful", () => {
       const cacheUpdate = jest.fn(async () => undefined);
       describe("when db update is successful", () => {
-        const iotDbUpdate = jest.fn(async () => undefined);
         beforeEach(async () => {
-          const cache = require("../../services/cache");
-          cache.getCache = jest.fn(() => ({
+          mockGetCache.mockImplementation(() => ({
             update: cacheUpdate
           }));
-          jest.mock("../../connectors/iot-db");
-          const iotDb = require("../../connectors/iot-db");
-          iotDb.updateLightData = iotDbUpdate;
           const { updateController } = require("../lights.controller");
-          await updateController(lightData);
+          await updateController(mockLightData);
         });
         it("calls cache update", () => {
           expect(cacheUpdate).toHaveBeenCalledTimes(1);
-          expect(cacheUpdate).toHaveBeenCalledWith(lightData.id, lightData);
+          expect(cacheUpdate).toHaveBeenCalledWith(mockLightData.id, mockLightData);
         });
         it("calls updateLightData", () => {
-          expect(iotDbUpdate).toHaveBeenCalledTimes(1);
-          expect(iotDbUpdate).toHaveBeenCalledWith(lightData);
+          expect(mockUpdateLightData).toHaveBeenCalledTimes(1);
+          expect(mockUpdateLightData).toHaveBeenCalledWith(mockLightData);
         });
       });
       describe("when db update fails", () => {
-        const iotDbUpdate = jest.fn(async () => {
-          throw new Error("db update failed");
-        });
         let result;
         beforeEach(async () => {
-          const cache = require("../../services/cache");
-          cache.getCache = jest.fn(() => ({
+          mockGetCache.mockImplementation(() => ({
             update: cacheUpdate
           }));
-          jest.mock("../../connectors/iot-db");
-          const iotDb = require("../../connectors/iot-db");
-          iotDb.updateLightData = iotDbUpdate;
+          mockUpdateLightData.mockImplementation((async () => {
+            throw new Error("db update failed");
+          }));
           const { updateController } = require("../lights.controller");
           try {
-            await updateController(lightData);
+            await updateController(mockLightData);
           } catch (error) {
             result = error;
           }
         });
         it("calls cache update", () => {
           expect(cacheUpdate).toHaveBeenCalledTimes(1);
-          expect(cacheUpdate).toHaveBeenCalledWith(lightData.id, lightData);
+          expect(cacheUpdate).toHaveBeenCalledWith(mockLightData.id, mockLightData);
         });
         it("calls updateLightData", () => {
-          expect(iotDbUpdate).toHaveBeenCalledTimes(1);
-          expect(iotDbUpdate).toHaveBeenCalledWith(lightData);
+          expect(mockUpdateLightData).toHaveBeenCalledTimes(1);
+          expect(mockUpdateLightData).toHaveBeenCalledWith(mockLightData);
         });
         it("throws exception", () => {
           expect(result.message).toEqual("db update failed");
@@ -313,29 +288,24 @@ describe("lights.controller", () => {
       const cacheUpdate = jest.fn(async () => {
         throw new Error("cache update failed");
       });
-      const iotDbUpdate = jest.fn(async () => undefined);
       let result;
       beforeEach(async () => {
-        const cache = require("../../services/cache");
-        cache.getCache = jest.fn(() => ({
+        mockGetCache.mockImplementation(() => ({
           update: cacheUpdate
         }));
-        jest.mock("../../connectors/iot-db");
-        const iotDb = require("../../connectors/iot-db");
-        iotDb.updateLightData = iotDbUpdate;
         const { updateController } = require("../lights.controller");
         try {
-          await updateController(lightData);
+          await updateController(mockLightData);
         } catch (err) {
           result = err;
         }
       });
       it("calls cache update", () => {
         expect(cacheUpdate).toHaveBeenCalledTimes(1);
-        expect(cacheUpdate).toHaveBeenCalledWith(lightData.id, lightData);
+        expect(cacheUpdate).toHaveBeenCalledWith(mockLightData.id, mockLightData);
       });
       it("doesn't call updateLightData", () => {
-        expect(iotDbUpdate).toHaveBeenCalledTimes(0);
+        expect(mockUpdateLightData).toHaveBeenCalledTimes(0);
       });
       it("throws exception", () => {
         expect(result.message).toEqual("cache update failed");
@@ -346,15 +316,10 @@ describe("lights.controller", () => {
     describe("when cache update is successful", () => {
       const cacheUpdate = jest.fn(async () => undefined);
       describe("when db update is successful", () => {
-        const iotDbUpdate = jest.fn(async () => undefined);
         beforeEach(async () => {
-          const cache = require("../../services/cache");
-          cache.getCache = jest.fn(() => ({
+          mockGetCache.mockImplementation(() => ({
             update: cacheUpdate
           }));
-          jest.mock("../../connectors/iot-db");
-          const iotDb = require("../../connectors/iot-db");
-          iotDb.updateLightSettings = iotDbUpdate;
           const { updateSettingsController } = require("../lights.controller");
           await updateSettingsController(lightSettings);
         });
@@ -363,23 +328,19 @@ describe("lights.controller", () => {
           expect(cacheUpdate).toHaveBeenCalledWith(lightSettings.id, lightSettings);
         });
         it("calls updateLightSettings", () => {
-          expect(iotDbUpdate).toHaveBeenCalledTimes(1);
-          expect(iotDbUpdate).toHaveBeenCalledWith(lightSettings);
+          expect(mockUpdateLightSettings).toHaveBeenCalledTimes(1);
+          expect(mockUpdateLightSettings).toHaveBeenCalledWith(lightSettings);
         });
       });
       describe("when db update fails", () => {
-        const iotDbUpdate = jest.fn(async () => {
-          throw new Error("db update failed");
-        });
         let result;
         beforeEach(async () => {
-          const cache = require("../../services/cache");
-          cache.getCache = jest.fn(() => ({
+          mockGetCache.mockImplementation(() => ({
             update: cacheUpdate
           }));
-          jest.mock("../../connectors/iot-db");
-          const iotDb = require("../../connectors/iot-db");
-          iotDb.updateLightSettings = iotDbUpdate;
+          mockUpdateLightSettings.mockImplementation(async () => {
+            throw new Error("db update failed");
+          });
           const { updateSettingsController } = require("../lights.controller");
           try {
             await updateSettingsController(lightSettings);
@@ -392,8 +353,8 @@ describe("lights.controller", () => {
           expect(cacheUpdate).toHaveBeenCalledWith(lightSettings.id, lightSettings);
         });
         it("calls updateLightSettings", () => {
-          expect(iotDbUpdate).toHaveBeenCalledTimes(1);
-          expect(iotDbUpdate).toHaveBeenCalledWith(lightSettings);
+          expect(mockUpdateLightSettings).toHaveBeenCalledTimes(1);
+          expect(mockUpdateLightSettings).toHaveBeenCalledWith(lightSettings);
         });
         it("throws exception", () => {
           expect(result.message).toEqual("db update failed");
@@ -404,16 +365,11 @@ describe("lights.controller", () => {
       const cacheUpdate = jest.fn(async () => {
         throw new Error("cache update failed");
       });
-      const iotDbUpdate = jest.fn(async () => undefined);
       let result;
       beforeEach(async () => {
-        const cache = require("../../services/cache");
-        cache.getCache = jest.fn(() => ({
+        mockGetCache.mockImplementation(() => ({
           update: cacheUpdate
         }));
-        jest.mock("../../connectors/iot-db");
-        const iotDb = require("../../connectors/iot-db");
-        iotDb.updateLightSettings = iotDbUpdate;
         const { updateSettingsController } = require("../lights.controller");
         try {
           await updateSettingsController(lightSettings);
@@ -426,7 +382,7 @@ describe("lights.controller", () => {
         expect(cacheUpdate).toHaveBeenCalledWith(lightSettings.id, lightSettings);
       });
       it("doesn't call updateLightSettings", () => {
-        expect(iotDbUpdate).toHaveBeenCalledTimes(0);
+        expect(mockUpdateLightSettings).toHaveBeenCalledTimes(0);
       });
       it("throws exception", () => {
         expect(result.message).toEqual("cache update failed");
@@ -435,17 +391,13 @@ describe("lights.controller", () => {
   });
   describe("deleteLightController", () => {
     describe("when db delete is successful", () => {
-      const iotDbDelete = jest.fn(async () => undefined);
+      mockDeleteByLightId.mockImplementation(async () => undefined);
       describe("when cache delete is successful", () => {
         const cacheDelete = jest.fn(async () => undefined);
         beforeEach(async () => {
-          const cache = require("../../services/cache");
-          cache.getCache = jest.fn(() => ({
+          mockGetCache.mockImplementation(() => ({
             deleteByKey: cacheDelete
           }));
-          jest.mock("../../connectors/iot-db");
-          const iotDb = require("../../connectors/iot-db");
-          iotDb.deleteLightById = iotDbDelete;
           const { deleteLightController } = require("../lights.controller");
           await deleteLightController({id: "abc123"});
         });
@@ -455,8 +407,8 @@ describe("lights.controller", () => {
           expect(cacheDelete).toHaveBeenCalledWith("lightIds");
         });
         it("calls deleteLightById", () => {
-          expect(iotDbDelete).toHaveBeenCalledTimes(1);
-          expect(iotDbDelete).toHaveBeenCalledWith("abc123");
+          expect(mockDeleteByLightId).toHaveBeenCalledTimes(1);
+          expect(mockDeleteByLightId).toHaveBeenCalledWith("abc123");
         });
       });
       describe("when cache delete fails", () => {
@@ -465,13 +417,9 @@ describe("lights.controller", () => {
         });
         let result;
         beforeEach(async () => {
-          const cache = require("../../services/cache");
-          cache.getCache = jest.fn(() => ({
+          mockGetCache.mockImplementation(() => ({
             deleteByKey: cacheDelete
           }));
-          jest.mock("../../connectors/iot-db");
-          const iotDb = require("../../connectors/iot-db");
-          iotDb.deleteLightById = iotDbDelete;
           const { deleteLightController } = require("../lights.controller");
           try {
             await deleteLightController({id: "abc123"});
@@ -484,8 +432,8 @@ describe("lights.controller", () => {
           expect(cacheDelete).toHaveBeenCalledWith("lightIds");
         });
         it("calls deleteLightById", () => {
-          expect(iotDbDelete).toHaveBeenCalledTimes(1);
-          expect(iotDbDelete).toHaveBeenCalledWith("abc123");
+          expect(mockDeleteByLightId).toHaveBeenCalledTimes(1);
+          expect(mockDeleteByLightId).toHaveBeenCalledWith("abc123");
         });
         it("throws exception", () => {
           expect(result.message).toEqual("cache delete failed");
@@ -493,19 +441,15 @@ describe("lights.controller", () => {
       });
     });
     describe("when db delete fails", () => {
-      const iotDbDelete = jest.fn(async () => {
-        throw new Error("db delete failed");
-      });
       const cacheDelete = jest.fn(async () => undefined);
       let result;
       beforeEach(async () => {
-        const cache = require("../../services/cache");
-        cache.getCache = jest.fn(() => ({
+        mockGetCache.mockImplementation(() => ({
           deleteByKey: cacheDelete
         }));
-        jest.mock("../../connectors/iot-db");
-        const iotDb = require("../../connectors/iot-db");
-        iotDb.deleteLightById = iotDbDelete;
+        mockDeleteByLightId.mockImplementation(async () => {
+          throw new Error("db delete failed");
+        });
         const { deleteLightController } = require("../lights.controller");
         try {
           await deleteLightController({id: "abc123"});
@@ -517,8 +461,8 @@ describe("lights.controller", () => {
         expect(cacheDelete).toHaveBeenCalledTimes(0);
       });
       it("calls deleteLightById", () => {
-        expect(iotDbDelete).toHaveBeenCalledTimes(1);
-        expect(iotDbDelete).toHaveBeenCalledWith("abc123");
+        expect(mockDeleteByLightId).toHaveBeenCalledTimes(1);
+        expect(mockDeleteByLightId).toHaveBeenCalledWith("abc123");
       });
       it("throws exception", () => {
         expect(result.message).toEqual("db delete failed");
