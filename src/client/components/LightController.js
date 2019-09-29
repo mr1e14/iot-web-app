@@ -19,9 +19,6 @@ class LightController extends React.Component {
     super(props);
     // initialize if cached
     this.state = {
-      name: "",
-      color: "#1a1a1a",
-      brightness: 0,
       refreshInProgress: false,
       notificationOpen: false
     };

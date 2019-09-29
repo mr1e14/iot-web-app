@@ -41,4 +41,8 @@ class LightNameField extends React.Component {
   }
 }
 
+LightNameField.defaultProps = {
+  name: ""
+};
+
 export default LightNameField;
