@@ -148,52 +148,56 @@ class LightController extends React.Component {
             spacing={2}
             className={classes.root}
           >
-            <div style={{ width: containerWidth, opacity: on ? 1 : 0.2 }}>
-              <Grid item xs={12} className={classes.child}>
-                <LightNameField
-                  name={name}
-                  classes={classes}
-                  handleChange={this.handleNameChange}
-                />
-              </Grid>
-              <Grid item xs={12} className={classes.child}>
-                <ColorPicker
-                  colors={supportedColors}
-                  containerWidth={containerWidth}
-                  isXs={isXs}
-                  handleColorChange={this.handleColorChange}
-                />
-              </Grid>
-              <Grid item xs={12} className={classes.child}>
-                <div
-                  className={classes.sliderBackground}
-                  style={{
-                    background: `linear-gradient(45deg, ${color} 35%, rgb(242,242,242) 90%)`
-                  }}
-                >
-                  <LightBrightnessSlider
-                    on={on}
-                    connected={connected}
-                    brightness={brightness}
-                    handleChange={this.handleBrightnessChange}
+            <div style={{ width: containerWidth }}>
+              <div style={{ opacity: on ? 1 : 0.2 }}>
+                <Grid item xs={12} className={classes.child}>
+                  <LightNameField
+                    name={name}
+                    classes={classes}
+                    handleChange={this.handleNameChange}
                   />
-                </div>
-              </Grid>
-              <Grid item xs={12} className={classes.child}>
-                {supportedEffects.map((supportedEffect, key) => (
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    key={key}
-                    className={
-                      supportedEffect === effect ? classes.selectedEffect : null
-                    }
-                    onClick={() => this.handleEffectChange(supportedEffect)}
+                </Grid>
+                <Grid item xs={12} className={classes.child}>
+                  <ColorPicker
+                    colors={supportedColors}
+                    containerWidth={containerWidth}
+                    isXs={isXs}
+                    handleColorChange={this.handleColorChange}
+                  />
+                </Grid>
+                <Grid item xs={12} className={classes.child}>
+                  <div
+                    className={classes.sliderBackground}
+                    style={{
+                      background: `linear-gradient(45deg, ${color} 35%, rgb(242,242,242) 90%)`
+                    }}
                   >
-                    {supportedEffect}
-                  </Button>
-                ))}
-              </Grid>
+                    <LightBrightnessSlider
+                      on={on}
+                      connected={connected}
+                      brightness={brightness}
+                      handleChange={this.handleBrightnessChange}
+                    />
+                  </div>
+                </Grid>
+                <Grid item xs={12} className={classes.child}>
+                  {supportedEffects.map((supportedEffect, key) => (
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      key={key}
+                      className={
+                        supportedEffect === effect
+                          ? classes.selectedEffect
+                          : null
+                      }
+                      onClick={() => this.handleEffectChange(supportedEffect)}
+                    >
+                      {supportedEffect}
+                    </Button>
+                  ))}
+                </Grid>
+              </div>
               <Grid
                 container
                 justify="space-between"
