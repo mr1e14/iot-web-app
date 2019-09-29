@@ -4,7 +4,6 @@ import Grid from "@material-ui/core/Grid";
 import LightBrightnessSlider from "./LightBrigtnessSlider";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import Tooltip from "@material-ui/core/Tooltip";
 import MaterialIcon from "./MaterialIcon";
 import LoadingSpinner from "./LoadingSpinner";
