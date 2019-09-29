@@ -2,7 +2,7 @@ jest.mock("../../services/logging", () => {
   return jest.fn(() => ({
     info: jest.fn(),
     warn: jest.fn(),
-    error:   jest.fn()
+    error: jest.fn()
   }));
 });
 
@@ -33,7 +33,10 @@ describe("lights.controller", () => {
     ]
   };
   const lightData = { id: 1, color: "red", brightness: 100 };
-  const lightSettings = { transitionSpeed: 30, duration: 120 };
+  const lightSettings = {
+    transitionSpeed: 30,
+    duration: 120
+  };
   const lightIds = [1, 2, 3];
   beforeEach(() => {
     jest.resetModules();
@@ -44,8 +47,8 @@ describe("lights.controller", () => {
       let result;
       beforeEach(async () => {
         mockGetCache.mockImplementation(() => ({
-           get: async () => lightData
-        }))
+          get: async () => lightData
+        }));
         const { lightDataController } = require("../lights.controller");
         result = await lightDataController();
       });
@@ -261,9 +264,9 @@ describe("lights.controller", () => {
           mockGetCache.mockImplementation(() => ({
             update: cacheUpdate
           }));
-          mockUpdateLightData.mockImplementation((async () => {
+          mockUpdateLightData.mockImplementation(async () => {
             throw new Error("db update failed");
-          }));
+          });
           const { updateController } = require("../lights.controller");
           try {
             await updateController(lightData);
@@ -325,7 +328,10 @@ describe("lights.controller", () => {
         });
         it("calls cache update", () => {
           expect(cacheUpdate).toHaveBeenCalledTimes(1);
-          expect(cacheUpdate).toHaveBeenCalledWith(lightSettings.id, lightSettings);
+          expect(cacheUpdate).toHaveBeenCalledWith(
+            lightSettings.id,
+            lightSettings
+          );
         });
         it("calls updateLightSettings", () => {
           expect(mockUpdateLightSettings).toHaveBeenCalledTimes(1);
@@ -350,7 +356,10 @@ describe("lights.controller", () => {
         });
         it("calls cache update", () => {
           expect(cacheUpdate).toHaveBeenCalledTimes(1);
-          expect(cacheUpdate).toHaveBeenCalledWith(lightSettings.id, lightSettings);
+          expect(cacheUpdate).toHaveBeenCalledWith(
+            lightSettings.id,
+            lightSettings
+          );
         });
         it("calls updateLightSettings", () => {
           expect(mockUpdateLightSettings).toHaveBeenCalledTimes(1);
@@ -379,7 +388,10 @@ describe("lights.controller", () => {
       });
       it("calls cache update", () => {
         expect(cacheUpdate).toHaveBeenCalledTimes(1);
-        expect(cacheUpdate).toHaveBeenCalledWith(lightSettings.id, lightSettings);
+        expect(cacheUpdate).toHaveBeenCalledWith(
+          lightSettings.id,
+          lightSettings
+        );
       });
       it("doesn't call updateLightSettings", () => {
         expect(mockUpdateLightSettings).toHaveBeenCalledTimes(0);
@@ -399,7 +411,7 @@ describe("lights.controller", () => {
             deleteByKey: cacheDelete
           }));
           const { deleteLightController } = require("../lights.controller");
-          await deleteLightController({id: "abc123"});
+          await deleteLightController({ id: "abc123" });
         });
         it("calls cache delete", () => {
           expect(cacheDelete).toHaveBeenCalledTimes(2);
@@ -422,7 +434,7 @@ describe("lights.controller", () => {
           }));
           const { deleteLightController } = require("../lights.controller");
           try {
-            await deleteLightController({id: "abc123"});
+            await deleteLightController({ id: "abc123" });
           } catch (error) {
             result = error;
           }
@@ -452,7 +464,7 @@ describe("lights.controller", () => {
         });
         const { deleteLightController } = require("../lights.controller");
         try {
-          await deleteLightController({id: "abc123"});
+          await deleteLightController({ id: "abc123" });
         } catch (err) {
           result = err;
         }
