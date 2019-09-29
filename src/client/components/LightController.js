@@ -12,6 +12,7 @@ import LightNameField from "./LightNameField";
 import DeleteLightButton from "./DeleteLightButton";
 import { Link } from "react-router-dom";
 import Notification from "./Notification";
+import { LIGHT_UPDATE_REQUEST_TIMEOUT } from "../config";
 
 class LightController extends React.Component {
   constructor(props) {
@@ -44,10 +45,14 @@ class LightController extends React.Component {
     const newDesiredState = Object.assign({}, this.state, { [key]: value });
     this.setState({ refreshInProgress: true }, () =>
       axios
-        .post("/api/lights/updateLightData", {
-          id: this.props.id,
-          ...newDesiredState
-        })
+        .post(
+          "/api/lights/updateLightData",
+          {
+            id: this.props.id,
+            ...newDesiredState
+          },
+          { timeout: LIGHT_UPDATE_REQUEST_TIMEOUT }
+        )
         .then(res => {
           if (res.status === 200) {
             this.setState({ ...newDesiredState });
