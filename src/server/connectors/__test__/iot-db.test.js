@@ -23,6 +23,23 @@ describe("iot-db", () => {
   beforeEach(() => {
     clearConnection();
   });
+  describe("when multiple calls are made", () => {
+    const connect = jest.fn(() => ({
+      db: () => ({
+        collection: () => ({
+          findOne: () => ({ values: [] })
+        })
+      })
+    }));
+    beforeEach(async () => {
+      mongo.MongoClient.connect.mockImplementation(() => connect());
+      await getConfigItems("");
+      await getLightDataById(0);
+    });
+    it("should try to connect only once", () => {
+      expect(connect).toHaveBeenCalledTimes(1);
+    });
+  });
   describe("getConfigItems", () => {
     const validResponse = {
       _id: "supportedColors",
