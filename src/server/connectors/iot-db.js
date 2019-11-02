@@ -10,15 +10,18 @@ let lightSettingsCollection;
 
 const establishConnection = async () => {
   logger.info("establishConnection", "invoked");
-  client = await mongo.MongoClient.connect(IOT_DB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
 
-  db = client.db("iot_db");
-  configCollection = db.collection("config");
-  lightsDataCollection = db.collection("lights_data");
-  lightSettingsCollection = db.collection("light_settings");
+  if (!client) {
+    client = await mongo.MongoClient.connect(IOT_DB_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+
+    db = client.db("iot_db");
+    configCollection = db.collection("config");
+    lightsDataCollection = db.collection("lights_data");
+    lightSettingsCollection = db.collection("light_settings");
+  }
 };
 
 const getConfigItems = async ({ id }) => {
@@ -38,6 +41,7 @@ const getConfigItems = async ({ id }) => {
       "Failed to retrieve list of colors",
       err
     );
+    client = null;
     throw err;
   }
 };
@@ -53,6 +57,7 @@ const getLightsIds = async () => {
     return lightIds;
   } catch (err) {
     logger.error("getLightsIds", "Failed to retrieve data", err);
+    client = null;
     throw err;
   }
 };
@@ -70,6 +75,7 @@ const getLightDataById = async ({ id }) => {
     return lightData;
   } catch (err) {
     logger.error(`getLightDataById(${id})`, "Failed to retrieve data", err);
+    client = null;
     throw err;
   }
 };
@@ -87,6 +93,7 @@ const getLightSettingsById = async ({ id }) => {
     return lightsSettings;
   } catch (err) {
     logger.error(`getLightSettingsById(${id})`, "Failed to retrieve data", err);
+    client = null;
     throw err;
   }
 };
@@ -113,6 +120,7 @@ const updateLightData = async lightData => {
       "Failed to update data",
       err
     );
+    client = null;
     throw err;
   }
 };
@@ -142,6 +150,7 @@ const updateLightSettings = async lightSettings => {
       "Failed to update settings",
       err
     );
+    client = null;
     throw err;
   }
 };
@@ -156,9 +165,14 @@ const deleteLightById = async id => {
       _id: id
     });
   } catch (err) {
+    client = null;
     logger.error(`deleteLightById(${id})`, "Failed to delete data", err);
     throw err;
   }
+};
+
+const clearConnection = () => {
+  client = null;
 };
 
 module.exports = {
@@ -168,5 +182,6 @@ module.exports = {
   getLightSettingsById,
   updateLightData,
   updateLightSettings,
-  deleteLightById
+  deleteLightById,
+  clearConnection
 };

@@ -14,333 +14,339 @@ const {
   getLightSettingsById,
   updateLightData,
   updateLightSettings,
-  deleteLightById
+  deleteLightById,
+  clearConnection
 } = require("../iot-db");
 const mongo = require("mongodb");
 
-describe("getConfigItems", () => {
-  const validResponse = {
-    _id: "supportedColors",
-    values: ["red", "blue", "green"]
-  };
-  let result;
-  describe("given the request is successful", () => {
-    beforeEach(async () => {
-      mongo.MongoClient.connect.mockImplementation(() => ({
-        db: () => ({
-          collection: () => ({
-            findOne: () => validResponse
-          })
-        })
-      }));
-      result = await getConfigItems("supportedColorsItem");
-    });
-    it("should return valid response", () => {
-      expect(result).toEqual(validResponse.values);
-    });
+describe("iot-db", () => {
+  beforeEach(() => {
+    clearConnection();
   });
-  describe("given the request returns null", () => {
-    beforeEach(async () => {
-      mongo.MongoClient.connect.mockImplementation(() => ({
-        db: () => ({
-          collection: () => ({
-            findOne: () => null
+  describe("getConfigItems", () => {
+    const validResponse = {
+      _id: "supportedColors",
+      values: ["red", "blue", "green"]
+    };
+    let result;
+    describe("given the request is successful", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => ({
+          db: () => ({
+            collection: () => ({
+              findOne: () => validResponse
+            })
           })
-        })
-      }));
-      try {
-        await getConfigItems("supportedColorsItem");
-      } catch (err) {
-        result = err;
-      }
-    });
-    it("should throw an error", () => {
-      expect(result instanceof TypeError).toBe(true);
-    });
-  });
-  describe("given the request results in an error", () => {
-    beforeEach(async () => {
-      mongo.MongoClient.connect.mockImplementation(() => {
-        throw new Error("can't connect");
+        }));
+        result = await getConfigItems("supportedColorsItem");
       });
-      try {
-        await getConfigItems("supportedColorsItem");
-      } catch (err) {
-        result = err;
-      }
+      it("should return valid response", () => {
+        expect(result).toEqual(validResponse.values);
+      });
     });
-    it("should throw an error", () => {
-      expect(result.message).toEqual("can't connect");
+    describe("given the request returns null", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => ({
+          db: () => ({
+            collection: () => ({
+              findOne: () => null
+            })
+          })
+        }));
+        try {
+          await getConfigItems("supportedColorsItem");
+        } catch (err) {
+          result = err;
+        }
+      });
+      it("should throw an error", () => {
+        expect(result instanceof TypeError).toBe(true);
+      });
+    });
+    describe("given the request results in an error", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => {
+          throw new Error("can't connect");
+        });
+        try {
+          await getConfigItems("supportedColorsItem");
+        } catch (err) {
+          result = err;
+        }
+      });
+      it("should throw an error", () => {
+        expect(result.message).toEqual("can't connect");
+      });
     });
   });
-});
 
-describe("getLightDataById", () => {
-  const validResponse = {
-    _id: "asdfghjkl123456",
-    color: "red",
-    brightness: 10
-  };
-  let result;
-  describe("given the request is successful", () => {
-    beforeEach(async () => {
-      mongo.MongoClient.connect.mockImplementation(() => ({
-        db: () => ({
-          collection: () => ({
-            findOne: () => validResponse
+  describe("getLightDataById", () => {
+    const validResponse = {
+      _id: "asdfghjkl123456",
+      color: "red",
+      brightness: 10
+    };
+    let result;
+    describe("given the request is successful", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => ({
+          db: () => ({
+            collection: () => ({
+              findOne: () => validResponse
+            })
           })
-        })
-      }));
-      result = await getLightDataById("zxcvbnm0987");
+        }));
+        result = await getLightDataById("zxcvbnm0987");
+      });
+      it("should return valid response", () => {
+        expect(result).toEqual(validResponse);
+      });
     });
-    it("should return valid response", () => {
-      expect(result).toEqual(validResponse);
-    });
-  });
-  describe("given the request returns null", () => {
-    beforeEach(async () => {
-      mongo.MongoClient.connect.mockImplementation(() => ({
-        db: () => ({
-          collection: () => ({
-            findOne: () => null
+    describe("given the request returns null", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => ({
+          db: () => ({
+            collection: () => ({
+              findOne: () => null
+            })
           })
-        })
-      }));
+        }));
 
-      result = await getLightDataById("zxcvbnm0987");
-    });
-    it("should return null", () => {
-      expect(result).toBe(null);
-    });
-  });
-  describe("given the request results in an error", () => {
-    beforeEach(async () => {
-      mongo.MongoClient.connect.mockImplementation(() => {
-        throw new Error("can't connect");
+        result = await getLightDataById("zxcvbnm0987");
       });
-      try {
-        await getLightDataById("zxcvbnm0987");
-      } catch (err) {
-        result = err;
-      }
+      it("should return null", () => {
+        expect(result).toBe(null);
+      });
     });
-    it("should throw an error", () => {
-      expect(result.message).toEqual("can't connect");
-    });
-  });
-});
-describe("getLightsIds", () => {
-  const validResponse = ["asdfgh1234", "lkjhgfs09876"];
-  let result;
-  describe("given the request is successful", () => {
-    beforeEach(async () => {
-      mongo.MongoClient.connect.mockImplementation(() => ({
-        db: () => ({
-          collection: () => ({
-            distinct: () => validResponse
-          })
-        })
-      }));
-      result = await getLightsIds();
-    });
-    it("should return valid response", () => {
-      expect(result).toEqual(validResponse);
+    describe("given the request results in an error", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => {
+          throw new Error("can't connect");
+        });
+        try {
+          await getLightDataById("zxcvbnm0987");
+        } catch (err) {
+          result = err;
+        }
+      });
+      it("should throw an error", () => {
+        expect(result.message).toEqual("can't connect");
+      });
     });
   });
-  describe("given the request returns null", () => {
-    beforeEach(async () => {
-      mongo.MongoClient.connect.mockImplementation(() => ({
-        db: () => ({
-          collection: () => ({
-            distinct: () => null
+  describe("getLightsIds", () => {
+    const validResponse = ["asdfgh1234", "lkjhgfs09876"];
+    let result;
+    describe("given the request is successful", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => ({
+          db: () => ({
+            collection: () => ({
+              distinct: () => validResponse
+            })
           })
-        })
-      }));
+        }));
+        result = await getLightsIds();
+      });
+      it("should return valid response", () => {
+        expect(result).toEqual(validResponse);
+      });
+    });
+    describe("given the request returns null", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => ({
+          db: () => ({
+            collection: () => ({
+              distinct: () => null
+            })
+          })
+        }));
 
-      result = await getLightsIds();
-    });
-    it("should return null", () => {
-      expect(result).toBe(null);
-    });
-  });
-  describe("given the request results in an error", () => {
-    beforeEach(async () => {
-      mongo.MongoClient.connect.mockImplementation(() => {
-        throw new Error("can't connect");
+        result = await getLightsIds();
       });
-      try {
-        await getLightsIds();
-      } catch (err) {
-        result = err;
-      }
+      it("should return null", () => {
+        expect(result).toBe(null);
+      });
     });
-    it("should throw an error", () => {
-      expect(result.message).toEqual("can't connect");
+    describe("given the request results in an error", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => {
+          throw new Error("can't connect");
+        });
+        try {
+          await getLightsIds();
+        } catch (err) {
+          result = err;
+        }
+      });
+      it("should throw an error", () => {
+        expect(result.message).toEqual("can't connect");
+      });
     });
   });
-});
-describe("updateLightData", () => {
-  let result;
-  const exampleLightData = {
-    name: "bedroom",
-    color: "red",
-    brightness: "100"
-  };
-  const updateOneMock = jest.fn();
-  describe("given the request is successful", () => {
-    beforeEach(async () => {
-      mongo.MongoClient.connect.mockImplementation(() => ({
-        db: () => ({
-          collection: () => ({
-            updateOne: updateOneMock
+  describe("updateLightData", () => {
+    let result;
+    const exampleLightData = {
+      name: "bedroom",
+      color: "red",
+      brightness: "100"
+    };
+    const updateOneMock = jest.fn();
+    describe("given the request is successful", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => ({
+          db: () => ({
+            collection: () => ({
+              updateOne: updateOneMock
+            })
           })
-        })
-      }));
-      await updateLightData(exampleLightData);
-    });
-    it("should call the mock function", () => {
-      expect(updateOneMock).toHaveBeenCalledTimes(1);
-    });
-  });
-  describe("given the request results in an error", () => {
-    beforeEach(async () => {
-      mongo.MongoClient.connect.mockImplementation(() => {
-        throw new Error("can't connect");
-      });
-      try {
+        }));
         await updateLightData(exampleLightData);
-      } catch (err) {
-        result = err;
-      }
-    });
-    it("should throw an error", () => {
-      expect(result.message).toEqual("can't connect");
-    });
-  });
-});
-describe("deleteLightById", () => {
-  let result;
-  const deleteOneMock = jest.fn();
-  describe("given the request is successful", () => {
-    beforeEach(async () => {
-      mongo.MongoClient.connect.mockImplementation(() => ({
-        db: () => ({
-          collection: () => ({
-            deleteOne: deleteOneMock
-          })
-        })
-      }));
-      await deleteLightById("id123");
-    });
-    it("should call the mock function", () => {
-      expect(deleteOneMock).toHaveBeenCalledTimes(1);
-    });
-  });
-  describe("given the request results in an error", () => {
-    beforeEach(async () => {
-      mongo.MongoClient.connect.mockImplementation(() => {
-        throw new Error("can't connect");
       });
-      try {
+      it("should call the mock function", () => {
+        expect(updateOneMock).toHaveBeenCalledTimes(1);
+      });
+    });
+    describe("given the request results in an error", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => {
+          throw new Error("can't connect");
+        });
+        try {
+          await updateLightData(exampleLightData);
+        } catch (err) {
+          result = err;
+        }
+      });
+      it("should throw an error", () => {
+        expect(result.message).toEqual("can't connect");
+      });
+    });
+  });
+  describe("deleteLightById", () => {
+    let result;
+    const deleteOneMock = jest.fn();
+    describe("given the request is successful", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => ({
+          db: () => ({
+            collection: () => ({
+              deleteOne: deleteOneMock
+            })
+          })
+        }));
         await deleteLightById("id123");
-      } catch (err) {
-        result = err;
-      }
+      });
+      it("should call the mock function", () => {
+        expect(deleteOneMock).toHaveBeenCalledTimes(1);
+      });
     });
-    it("should throw an error", () => {
-      expect(result.message).toEqual("can't connect");
-    });
-  });
-});
-describe("getLightSettingsById", () => {
-  const validResponse = {
-    _id: "asdfghjkl123456",
-    transitionSpeed: 10,
-    strobeDuration: 5
-  };
-  let result;
-  describe("given the request is successful", () => {
-    beforeEach(async () => {
-      mongo.MongoClient.connect.mockImplementation(() => ({
-        db: () => ({
-          collection: () => ({
-            findOne: () => validResponse
-          })
-        })
-      }));
-      result = await getLightSettingsById("zxcvbnm0987");
-    });
-    it("should return valid response", () => {
-      expect(result).toEqual(validResponse);
+    describe("given the request results in an error", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => {
+          throw new Error("can't connect");
+        });
+        try {
+          await deleteLightById("id123");
+        } catch (err) {
+          result = err;
+        }
+      });
+      it("should throw an error", () => {
+        expect(result.message).toEqual("can't connect");
+      });
     });
   });
-  describe("given the request returns null", () => {
-    beforeEach(async () => {
-      mongo.MongoClient.connect.mockImplementation(() => ({
-        db: () => ({
-          collection: () => ({
-            findOne: () => null
+  describe("getLightSettingsById", () => {
+    const validResponse = {
+      _id: "asdfghjkl123456",
+      transitionSpeed: 10,
+      strobeDuration: 5
+    };
+    let result;
+    describe("given the request is successful", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => ({
+          db: () => ({
+            collection: () => ({
+              findOne: () => validResponse
+            })
           })
-        })
-      }));
+        }));
+        result = await getLightSettingsById("zxcvbnm0987");
+      });
+      it("should return valid response", () => {
+        expect(result).toEqual(validResponse);
+      });
+    });
+    describe("given the request returns null", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => ({
+          db: () => ({
+            collection: () => ({
+              findOne: () => null
+            })
+          })
+        }));
 
-      result = await getLightSettingsById("zxcvbnm0987");
-    });
-    it("should return null", () => {
-      expect(result).toBe(null);
-    });
-  });
-  describe("given the request results in an error", () => {
-    beforeEach(async () => {
-      mongo.MongoClient.connect.mockImplementation(() => {
-        throw new Error("can't connect");
+        result = await getLightSettingsById("zxcvbnm0987");
       });
-      try {
-        await getLightSettingsById("zxcvbnm0987");
-      } catch (err) {
-        result = err;
-      }
+      it("should return null", () => {
+        expect(result).toBe(null);
+      });
     });
-    it("should throw an error", () => {
-      expect(result.message).toEqual("can't connect");
+    describe("given the request results in an error", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => {
+          throw new Error("can't connect");
+        });
+        try {
+          await getLightSettingsById("zxcvbnm0987");
+        } catch (err) {
+          result = err;
+        }
+      });
+      it("should throw an error", () => {
+        expect(result.message).toEqual("can't connect");
+      });
     });
   });
-});
-describe("updateLightSettings", () => {
-  let result;
-  const exampleLightSettings = {
-    transitionSpeed: 10,
-    strobeDuration: 5
-  };
-  const updateOneMock = jest.fn();
-  describe("given the request is successful", () => {
-    beforeEach(async () => {
-      mongo.MongoClient.connect.mockImplementation(() => ({
-        db: () => ({
-          collection: () => ({
-            updateOne: updateOneMock
+  describe("updateLightSettings", () => {
+    let result;
+    const exampleLightSettings = {
+      transitionSpeed: 10,
+      strobeDuration: 5
+    };
+    const updateOneMock = jest.fn();
+    describe("given the request is successful", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => ({
+          db: () => ({
+            collection: () => ({
+              updateOne: updateOneMock
+            })
           })
-        })
-      }));
-      await updateLightSettings(exampleLightSettings);
-    });
-    it("should call the mock function", () => {
-      expect(updateOneMock).toHaveBeenCalledTimes(1);
-    });
-  });
-  describe("given the request results in an error", () => {
-    beforeEach(async () => {
-      mongo.MongoClient.connect.mockImplementation(() => {
-        throw new Error("can't connect");
-      });
-      try {
+        }));
         await updateLightSettings(exampleLightSettings);
-      } catch (err) {
-        result = err;
-      }
+      });
+      it("should call the mock function", () => {
+        expect(updateOneMock).toHaveBeenCalledTimes(1);
+      });
     });
-    it("should throw an error", () => {
-      expect(result.message).toEqual("can't connect");
+    describe("given the request results in an error", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => {
+          throw new Error("can't connect");
+        });
+        try {
+          await updateLightSettings(exampleLightSettings);
+        } catch (err) {
+          result = err;
+        }
+      });
+      it("should throw an error", () => {
+        expect(result.message).toEqual("can't connect");
+      });
     });
   });
 });
