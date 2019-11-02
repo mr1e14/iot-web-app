@@ -10,7 +10,6 @@ import {
   withStyles
 } from "@material-ui/core/styles";
 import PageSwitch from "./PageSwitch";
-import matches from "./mediaQuery";
 
 const deviceButtonHoverColor = "#bdbdbd";
 
@@ -131,7 +130,7 @@ const ThemeWrapper = props => (
   <React.Fragment>
     <CssBaseline />
     <MuiThemeProvider theme={theme}>
-      <PageSwitch isMobileDevice={!matches("lg")} {...props} />
+      <PageSwitch {...props} />
     </MuiThemeProvider>
   </React.Fragment>
 );

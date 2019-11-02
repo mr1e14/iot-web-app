@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Lights from "./pages/Lights";
 import LightView from "./pages/LightView";
 import LightSettings from "./pages/LightSettings";
+import Cookie from "js-cookie";
 
 class PageSwitch extends React.Component {
   constructor(props) {
@@ -14,7 +15,8 @@ class PageSwitch extends React.Component {
       weatherData: null,
       supportedColors: null,
       supportedEffects: null,
-      effectsConfiguration: null
+      effectsConfiguration: null,
+      isMobileDevice: Cookie.get("isMobile") === "true"
     };
   }
 
@@ -36,6 +38,16 @@ class PageSwitch extends React.Component {
       .then(res =>
         this.setState({ effectsConfiguration: res.effectsConfiguration })
       );
+
+    if (!Cookie.get("isMobile")) {
+      fetch("/api/detect-mobile")
+        .then(res => res.json())
+        .then(res =>
+          this.setState({ isMobileDevice: res.isMobileDevice }, () =>
+            Cookie.set("isMobile", res.isMobileDevice)
+          )
+        );
+    }
   }
 
   componentWillReceiveProps() {
@@ -48,12 +60,13 @@ class PageSwitch extends React.Component {
   }
 
   render() {
-    const { location, classes, isMobileDevice } = this.props;
+    const { location, classes } = this.props;
     const {
       weatherData,
       supportedColors,
       supportedEffects,
-      effectsConfiguration
+      effectsConfiguration,
+      isMobileDevice
     } = this.state;
     const transitionProperties = isMobileDevice
       ? { timeout: { enter: 700, exit: 350 }, class: "slide" }

@@ -6,6 +6,7 @@ const {
   WEATHER_CACHE_REFRESH_AFTER_SECONDS,
   WEATHER_CACHE_DELETE_AFTER_SECONDS
 } = require("../config");
+const isMobile = require("is-mobile");
 
 const weatherCache = getCache(
   WEATHER_CACHE_REFRESH_AFTER_SECONDS,
@@ -30,6 +31,11 @@ const apiRouter = () => {
       );
     }
     res.send({ weatherData });
+  });
+
+  router.get("/detect-mobile", (req, res) => {
+    logger.info("/api/detect-mobile", "route called");
+    res.send({ isMobileDevice: isMobile(req) });
   });
 
   router.use("/lights", lightsRouter());
