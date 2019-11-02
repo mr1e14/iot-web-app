@@ -3,6 +3,7 @@ import renderer from "react-test-renderer";
 import { mount } from "enzyme";
 import TextField from "@material-ui/core/TextField";
 
+jest.mock("awesome-debounce-promise", () => (cb, timeout) => async () => cb());
 import LightNameField from "../LightNameField";
 
 const classes = {
@@ -16,7 +17,11 @@ const handleChange = jest.fn();
 describe("LightNameField", () => {
   it("renders correctly", () => {
     const component = renderer.create(
-      <LightNameField classes={classes} name="bedroom" />
+      <LightNameField
+        handleChange={handleChange}
+        classes={classes}
+        name="bedroom"
+      />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -41,7 +46,7 @@ describe("LightNameField", () => {
     expect(textField.prop("error")).toBe(false);
     expect(textField.prop("helperText").length).toBe(0);
   });
-  it("changes isValid state changes based on input", () => {
+  it("changes isValid state based on input", () => {
     const wrapper = mount(
       <LightNameField
         name="bedroom"

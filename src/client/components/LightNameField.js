@@ -2,26 +2,31 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 import { validateLightName } from "./deviceFunctions";
 import { MAX_LIGHT_NAME_LENGTH } from "../config";
+import debounce from "awesome-debounce-promise";
 
 class LightNameField extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isValid: validateLightName(props.name) };
+    this.state = {
+      isValid: validateLightName(props.name)
+    };
+    this.saveName = debounce(name => this.props.handleChange(name), 500);
   }
 
-  onNameChange(event) {
+  onNameChange = event => {
     const newName = event.target.value;
+    const isValid = validateLightName(newName);
     this.setState(
       {
-        isValid: validateLightName(newName)
+        isValid
       },
-      () => {
-        if (this.state.isValid) {
-          this.props.handleChange(newName);
+      async () => {
+        if (isValid) {
+          await this.saveName(newName);
         }
       }
     );
-  }
+  };
   render() {
     const { isValid } = this.state;
     const { name } = this.props;
