@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/styles";
 import Slider from "@material-ui/core/Slider";
 import debounce from "awesome-debounce-promise";
@@ -23,7 +24,7 @@ const styles = {
 class LightBrightnessSlider extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { currentValue: this.props.brightness };
+    this.state = {};
     this.saveBrightness = debounce(
       newValue => this.props.handleChange(newValue),
       SLIDER_DEBOUNCE_TIME
@@ -38,7 +39,7 @@ class LightBrightnessSlider extends React.Component {
   };
 
   render() {
-    const { classes, on, connected } = this.props;
+    const { classes, on, brightness } = this.props;
     const { currentValue } = this.state;
     return (
       <div className={classes.root}>
@@ -48,9 +49,9 @@ class LightBrightnessSlider extends React.Component {
             track: classes.track,
             thumb: classes.thumb
           }}
-          value={currentValue}
+          value={currentValue || brightness}
           onChange={this.handleCurrentValueChange}
-          disabled={!on || !connected}
+          disabled={!on}
           min={1}
         />
       </div>
@@ -60,8 +61,14 @@ class LightBrightnessSlider extends React.Component {
 
 LightBrightnessSlider.defaultProps = {
   brightness: 1,
-  on: false,
-  connected: false
+  on: false
+};
+
+LightBrightnessSlider.propTypes = {
+  classes: PropTypes.object.isRequired,
+  on: PropTypes.bool,
+  connected: PropTypes.bool,
+  brightness: PropTypes.number
 };
 
 export default withStyles(styles)(LightBrightnessSlider);

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -14,7 +15,7 @@ const labelColor = "#ffffff";
 class LightOverview extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { brightness: null };
+    this.state = {};
   }
 
   handleToggleClick = event => {
@@ -42,7 +43,7 @@ class LightOverview extends React.Component {
   }
 
   render() {
-    const { on, connected, brightness, color, name, _id } = this.state;
+    const { on, connected, brightness, color, name } = this.state;
     const { classes, id } = this.props;
     return (
       <Grid
@@ -85,14 +86,11 @@ class LightOverview extends React.Component {
           </IconButton>
         </Grid>
         <Grid item xs={12}>
-          {brightness !== null ? (
-            <LightBrightnessSlider
-              on={on}
-              connected={connected}
-              brightness={brightness}
-              handleChange={this.handleBrightnessChange}
-            />
-          ) : null}
+          <LightBrightnessSlider
+            on={on}
+            brightness={brightness}
+            handleChange={this.handleBrightnessChange}
+          />
         </Grid>
       </Grid>
     );
