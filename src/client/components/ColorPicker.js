@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { CirclePicker } from "react-color";
 import { withStyles } from "@material-ui/styles";
 
@@ -10,14 +11,14 @@ const styles = {
 };
 
 const ColorPicker = props => {
-  const { isXs, containerWidth, handleColorChange } = props;
+  const { isXs, containerWidth, handleColorChange, colors } = props;
   const circleSpacing = isXs ? 6 : 8;
   const circleSize = isXs ? 20 : 26;
 
   return (
     <div className={props.classes.pickerContainer}>
       <CirclePicker
-        colors={props.colors}
+        colors={colors}
         width={containerWidth}
         circleSize={circleSize}
         circleSpacing={circleSpacing}
@@ -25,6 +26,13 @@ const ColorPicker = props => {
       />
     </div>
   );
+};
+
+ColorPicker.propTypes = {
+  isXs: PropTypes.bool.isRequired,
+  containerWidth: PropTypes.string.isRequired,
+  colors: PropTypes.arrayOf(PropTypes.string),
+  handleColorChange: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(ColorPicker);
