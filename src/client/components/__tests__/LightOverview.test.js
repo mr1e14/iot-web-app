@@ -109,12 +109,6 @@ describe("LightOverview", () => {
         .props()
         .onChange({}, 50);
       expect(wrapper.find(Slider).prop("value")).toBe(75); // should update visually
-
-      wrapper
-        .find(Slider)
-        .props()
-        .onChangeCommitted({}, 50); // should update state
-      expect(wrapper.instance().state.brightness).toBe(50);
     });
   });
   describe("when light is disabled", () => {

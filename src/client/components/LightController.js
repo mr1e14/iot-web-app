@@ -76,7 +76,7 @@ class LightController extends React.Component {
     this.updateState("color", color.hex);
   };
 
-  handleBrightnessChange = (event, value) => {
+  handleBrightnessChange = value => {
     this.updateState("brightness", value);
   };
 

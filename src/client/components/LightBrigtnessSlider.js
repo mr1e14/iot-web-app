@@ -1,6 +1,8 @@
 import React from "react";
 import { withStyles } from "@material-ui/styles";
 import Slider from "@material-ui/core/Slider";
+import debounce from "awesome-debounce-promise";
+import { SLIDER_DEBOUNCE_TIME } from "../config";
 
 const styles = {
   root: {
@@ -22,14 +24,21 @@ class LightBrightnessSlider extends React.Component {
   constructor(props) {
     super(props);
     this.state = { currentValue: this.props.brightness };
+    this.saveBrightness = debounce(
+      newValue => this.props.handleChange(newValue),
+      SLIDER_DEBOUNCE_TIME
+    );
   }
 
   handleCurrentValueChange = (event, value) => {
-    this.setState({ currentValue: value });
+    this.setState(
+      { currentValue: value },
+      async () => await this.saveBrightness(value)
+    );
   };
 
   render() {
-    const { classes, on, connected, handleChange } = this.props;
+    const { classes, on, connected } = this.props;
     const { currentValue } = this.state;
     return (
       <div className={classes.root}>
@@ -41,7 +50,6 @@ class LightBrightnessSlider extends React.Component {
           }}
           value={currentValue}
           onChange={this.handleCurrentValueChange}
-          onChangeCommitted={handleChange}
           disabled={!on || !connected}
           min={1}
         />
