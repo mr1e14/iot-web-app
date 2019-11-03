@@ -2,44 +2,11 @@ import React from "react";
 import "../css/app.css";
 import "../css/material-ui-icons.css";
 import "typeface-roboto";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import PropTypes from "prop-types";
-import {
-  MuiThemeProvider,
-  createMuiTheme,
-  withStyles
-} from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import PageSwitch from "./PageSwitch";
 
 const deviceButtonHoverColor = "#bdbdbd";
-
-const theme = createMuiTheme({
-  palette: {
-    primary: { main: "#1a1a1a" },
-    secondary: { main: "#52cafe" },
-    text: {
-      primary: "#ffffff",
-      secondary: "#52cafe"
-    }
-  },
-  typography: {
-    fontWeightLight: 300,
-    fontWeightRegular: 400,
-    fontWeightMedium: 500,
-    fontFamily: [
-      "-apple-system",
-      "BlinkMacSystemFont",
-      "\"Segoe UI\"",
-      "Roboto",
-      "\"Helvetica Neue\"",
-      "Arial",
-      "sans-serif",
-      "\"Apple Color Emoji\"",
-      "\"Segoe UI Emoji\"",
-      "\"Segoe UI Symbol\""
-    ].join(",")
-  }
-});
 
 const styles = theme => ({
   "@global": {
@@ -56,7 +23,7 @@ const styles = theme => ({
       color: "#737373"
     },
     ".MuiDialogTitle-root": {
-      color: "#1a1a1a"
+      color: theme.palette.primary.main
     }
   },
   root: {
@@ -126,14 +93,7 @@ const styles = theme => ({
   }
 });
 
-const ThemeWrapper = props => (
-  <React.Fragment>
-    <CssBaseline />
-    <MuiThemeProvider theme={theme}>
-      <PageSwitch {...props} />
-    </MuiThemeProvider>
-  </React.Fragment>
-);
+const ThemeWrapper = props => <PageSwitch {...props} />;
 
 ThemeWrapper.propTypes = {
   classes: PropTypes.object.isRequired
