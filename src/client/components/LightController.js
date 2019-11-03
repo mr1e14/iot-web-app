@@ -22,10 +22,6 @@ class LightController extends React.Component {
       refreshInProgress: false,
       notificationOpen: false
     };
-    this.handleBrightnessChange = this.handleBrightnessChange.bind(this);
-    this.handleToggleClick = this.handleToggleClick.bind(this);
-    this.handleColorChange = this.handleColorChange.bind(this);
-    this.handleEffectChange = this.handleEffectChange.bind(this);
   }
 
   componentDidMount() {
@@ -43,29 +39,26 @@ class LightController extends React.Component {
 
   updateState = (key, value) => {
     const newDesiredState = Object.assign({}, this.state, { [key]: value });
-    this.setState({ refreshInProgress: true }, () =>
-      axios
-        .post(
-          "/api/lights/updateLightData",
-          {
-            id: this.props.id,
-            ...newDesiredState
-          },
-          { timeout: LIGHT_UPDATE_REQUEST_TIMEOUT }
-        )
-        .then(res => {
-          if (res.status === 200) {
-            this.setState({ ...newDesiredState });
-          } else {
-            throw new Error(`Unexpected status response: ${res.status}`);
-          }
-        })
-        .catch(err => {
-          console.error(err);
-          this.setState({ notificationOpen: true });
-        })
-        .finally(() => this.setState({ refreshInProgress: false }))
-    );
+    axios
+      .post(
+        "/api/lights/updateLightData",
+        {
+          id: this.props.id,
+          ...newDesiredState
+        },
+        { timeout: LIGHT_UPDATE_REQUEST_TIMEOUT }
+      )
+      .then(res => {
+        if (res.status === 200) {
+          this.setState({ ...newDesiredState });
+        } else {
+          throw new Error(`Unexpected status response: ${res.status}`);
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        this.setState({ notificationOpen: true });
+      });
   };
 
   handleToggleClick = event => {
