@@ -12,7 +12,6 @@ class PageSwitch extends React.Component {
     super(props);
     this.state = {
       previousDepth: this.getPathDepth(this.props.location),
-      weatherData: null,
       supportedColors: null,
       supportedEffects: null,
       effectsConfiguration: null,

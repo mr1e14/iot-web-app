@@ -7,7 +7,7 @@ import LoadingSpinner from "../LoadingSpinner";
 
 const Home = props => {
   const { weatherData, classes } = props;
-  if (!weatherData) {
+  if (weatherData === undefined) {
     return <LoadingSpinner />;
   } else {
     return (

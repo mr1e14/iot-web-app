@@ -16,7 +16,7 @@ exports[`WeatherWidget when weatherData is not available renders correctly 1`] =
     }
   />
   <span>
-    °C
+    
   </span>
 </span>
 `;

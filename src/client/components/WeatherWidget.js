@@ -5,15 +5,19 @@ import matches from "./mediaQuery";
 
 const WeatherWidget = props => {
   const { weatherData } = props;
-  const temperature = weatherData ? parseInt(weatherData.temperature) : "";
-  const humidity = weatherData ? parseInt(weatherData.humidity * 100) : "";
+  const temperature = weatherData
+    ? parseInt(weatherData.temperature, 10).toString() + "°C"
+    : "";
+  const humidity = weatherData
+    ? " / " + (weatherData.humidity * 100).toString() + "%"
+    : "";
   return (
     <React.Fragment>
       <Typography color="textPrimary" component="span" variant="caption">
         <WeatherIcon {...props} />
         <span>
-          {`${temperature}°C`}
-          {matches("sm") ? ` / ${humidity}%` : null}
+          {temperature}
+          {matches("sm") && humidity}
         </span>
       </Typography>
     </React.Fragment>
