@@ -14,10 +14,7 @@ const labelColor = "#ffffff";
 class LightOverview extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = { brightness: null };
-    this.handleBrightnessChange = this.handleBrightnessChange.bind(this);
-    this.handleToggleClick = this.handleToggleClick.bind(this);
   }
 
   handleToggleClick = event => {
@@ -29,7 +26,7 @@ class LightOverview extends React.Component {
     );
   };
 
-  handleBrightnessChange = (event, value) => {
+  handleBrightnessChange = value => {
     this.setState({ brightness: value }, () =>
       axios.post("/api/lights/updateLightData", {
         id: this.props.id,

@@ -22,8 +22,6 @@ class DeleteLightButton extends React.Component {
       confirmed: false,
       apiResponsePending: false
     };
-
-    this.handleNotificationClose = this.handleNotificationClose.bind(this);
   }
 
   handleDialogOpen = () => {
