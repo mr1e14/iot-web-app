@@ -3,7 +3,6 @@ import renderer from "react-test-renderer";
 import { mount } from "enzyme";
 import TextField from "@material-ui/core/TextField";
 
-jest.mock("awesome-debounce-promise", () => (cb, timeout) => async () => cb());
 import LightNameField from "../LightNameField";
 
 const classes = {
