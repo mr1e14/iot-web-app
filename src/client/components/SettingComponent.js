@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import SettingsSlider from "./SettingsSlider";
 import Checkbox from "@material-ui/core/Checkbox";
 import TextField from "@material-ui/core/TextField";
@@ -57,6 +58,14 @@ const SettingComponent = props => {
       {...componentProps}
     />
   );
+};
+
+SettingComponent.propTypes = {
+  component: PropTypes.element.isRequired,
+  componentProps: PropTypes.object,
+  handleChange: PropTypes.func.isRequired,
+  stateKey: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired
 };
 
 export default SettingComponent;

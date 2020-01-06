@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes, { func } from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
@@ -64,8 +65,17 @@ const SettingsSlider = props => {
   );
 };
 
-export default SettingsSlider;
-
 SettingsSlider.defaultProps = {
   value: 0
 };
+
+SettingsSlider.propTypes = {
+  classes: PropTypes.object.isRequired,
+  min: PropTypes.number.isRequired,
+  max: PropTypes.number.isRequired,
+  value: PropTypes.number,
+  onChange: PropTypes.func.isRequired,
+  step: PropTypes.number.isRequired
+};
+
+export default SettingsSlider;

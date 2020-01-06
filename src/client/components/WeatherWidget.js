@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
 import WeatherIcon from "./WeatherIcon";
 import matches from "./mediaQuery";
@@ -22,6 +23,10 @@ const WeatherWidget = props => {
       </Typography>
     </React.Fragment>
   );
+};
+
+WeatherWidget.propTypes = {
+  weatherData: PropTypes.object
 };
 
 export default WeatherWidget;

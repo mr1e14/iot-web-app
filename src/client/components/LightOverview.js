@@ -97,4 +97,9 @@ class LightOverview extends React.Component {
   }
 }
 
+LightOverview.propTypes = {
+  classes: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired
+};
+
 export default LightOverview;

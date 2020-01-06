@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -26,5 +27,9 @@ const TopRow = props => (
     </Grid>
   </Grid>
 );
+
+TopRow.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 export default TopRow;

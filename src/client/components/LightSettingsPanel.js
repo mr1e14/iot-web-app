@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -65,6 +66,12 @@ const LightSettingsPanel = props => {
       />
     </React.Fragment>
   );
+};
+
+LightSettingsPanel.propTypes = {
+  classes: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
+  config: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default LightSettingsPanel;

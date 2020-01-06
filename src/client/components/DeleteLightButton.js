@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import Dialog from "@material-ui/core/Dialog";
@@ -111,5 +112,9 @@ class DeleteLightButton extends React.Component {
     );
   }
 }
+
+DeleteLightButton.propTypes = {
+  lightId: PropTypes.string.isRequired
+};
 
 export default DeleteLightButton;

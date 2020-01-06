@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import LightBrightnessSlider from "./LightBrigtnessSlider";
@@ -236,5 +237,12 @@ class LightController extends React.Component {
     }
   }
 }
+
+LightController.propTypes = {
+  classes: PropTypes.object.isRequired,
+  isXs: PropTypes.bool.isRequired,
+  supportedColors: PropTypes.arrayOf(PropTypes.string),
+  supportedEffects: PropTypes.arrayOf(PropTypes.string)
+};
 
 export default LightController;

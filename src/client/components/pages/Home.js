@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Logo from "../Logo";
 import TopRow from "../TopRow";
 import Devices from "../Devices";
@@ -20,6 +21,11 @@ const Home = props => {
       </div>
     );
   }
+};
+
+Home.propTypes = {
+  classes: PropTypes.object.isRequired,
+  weatherData: PropTypes.object
 };
 
 export default Home;

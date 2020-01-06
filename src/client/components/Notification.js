@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { amber, green, blue } from "@material-ui/core/colors";
 import IconButton from "@material-ui/core/IconButton";
 import Snackbar from "@material-ui/core/Snackbar";
@@ -77,6 +78,13 @@ const Notification = props => {
       />
     </Snackbar>
   );
+};
+
+Notification.propTypes = {
+  message: PropTypes.string.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  variant: PropTypes.string.isRequired,
+  open: PropTypes.bool
 };
 
 export default Notification;

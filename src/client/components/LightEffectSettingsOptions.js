@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
 import SettingComponent from "./SettingComponent";
 
@@ -24,6 +25,14 @@ const LightEffectsSettingsOptions = props => {
       ))}
     </div>
   );
+};
+
+LightEffectsSettingsOptions.propTypes = {
+  classes: PropTypes.object.isRequired,
+  configOptions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  handleChange: PropTypes.func.isRequired,
+  effectName: PropTypes.string.isRequired,
+  state: PropTypes.object.isRequired
 };
 
 export default LightEffectsSettingsOptions;

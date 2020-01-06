@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Route, Switch, withRouter } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Home from "./pages/Home";
@@ -129,4 +130,10 @@ class PageSwitch extends React.Component {
     );
   }
 }
+
+PageSwitch.propTypes = {
+  classes: PropTypes.object.isRequired,
+  location: PropTypes.objectOf(PropTypes.string)
+};
+
 export default withRouter(PageSwitch);

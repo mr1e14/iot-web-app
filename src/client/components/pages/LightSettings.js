@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Logo from "../Logo";
 import LightSettingsPanel from "../LightSettingsPanel";
 import Grid from "@material-ui/core/Grid";
@@ -19,6 +20,12 @@ const LightSettings = props => {
       </Grid>
     </div>
   );
+};
+
+LightSettings.propTypes = {
+  config: PropTypes.arrayOf(PropTypes.object).isRequired,
+  classes: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 export default LightSettings;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Logo from "../Logo";
 import LightController from "../LightController";
 import Grid from "@material-ui/core/Grid";
@@ -27,6 +28,13 @@ const LightView = props => {
       </Grid>
     </div>
   );
+};
+
+LightView.propTypes = {
+  classes: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+  supportedColors: PropTypes.arrayOf(PropTypes.string),
+  supportedEffects: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default LightView;

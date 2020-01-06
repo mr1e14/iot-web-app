@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import LoadingSpinner from "./LoadingSpinner";
@@ -90,5 +91,11 @@ class LightEffectsSettings extends React.Component {
     }
   }
 }
+
+LightEffectsSettings.propTypes = {
+  config: PropTypes.arrayOf(PropTypes.object).isRequired,
+  classes: PropTypes.object.isRequired,
+  customClasses: PropTypes.object.isRequired
+};
 
 export default LightEffectsSettings;

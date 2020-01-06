@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import lightIcon from "../img/light.png";
@@ -56,6 +57,10 @@ const Devices = props => {
       </Grid>
     </Grid>
   );
+};
+
+Devices.propTypes = {
+  classes: PropTypes.object.isRequired
 };
 
 export default Devices;

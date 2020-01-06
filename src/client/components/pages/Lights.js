@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Logo from "../Logo";
 import TopRow from "../TopRow";
 import LightsPanel from "../LightsPanel";
@@ -16,6 +17,11 @@ const Lights = props => {
       </Grid>
     </div>
   );
+};
+
+Lights.propTypes = {
+  classes: PropTypes.object.isRequired,
+  weatherData: PropTypes.object
 };
 
 export default Lights;

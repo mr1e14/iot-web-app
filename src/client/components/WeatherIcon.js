@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import matches from "./mediaQuery";
 import clearDay from "../img/clear-day.png";
 import clearNight from "../img/clear-night.png";
@@ -42,6 +43,10 @@ const WeatherIcon = props => {
       align="middle"
     />
   );
+};
+
+WeatherIcon.propTypes = {
+  weatherData: PropTypes.object
 };
 
 export default WeatherIcon;

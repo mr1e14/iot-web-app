@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
@@ -66,5 +67,10 @@ class LightsPanel extends React.Component {
     );
   }
 }
+
+LightsPanel.propTypes = {
+  classes: PropTypes.object.isRequired,
+  isMd: PropTypes.bool.isRequired
+};
 
 export default LightsPanel;
