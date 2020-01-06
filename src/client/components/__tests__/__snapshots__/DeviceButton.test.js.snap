@@ -16,6 +16,7 @@ exports[`DeviceButton when props are supplied renders correctly 1`] = `
   onTouchMove={[Function]}
   onTouchStart={[Function]}
   tabIndex={0}
+  to="/lights"
   type="button"
 >
   <span

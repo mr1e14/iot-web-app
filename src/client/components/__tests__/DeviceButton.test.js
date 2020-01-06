@@ -15,7 +15,7 @@ const exampleDeviceButtonProps = {
   text: "Manage lights",
   iconSrc: "../img/some_img.png",
   iconAlt: "lights-button",
-  to: "/lights"
+  linkTo: "/lights"
 };
 
 describe("DeviceButton", () => {
