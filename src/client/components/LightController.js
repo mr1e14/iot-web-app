@@ -90,6 +90,7 @@ class LightController extends React.Component {
   render() {
     const { classes, isXs, supportedColors, supportedEffects } = this.props;
     const {
+      id,
       on,
       connected,
       name,
@@ -97,7 +98,6 @@ class LightController extends React.Component {
       brightness,
       effect,
       refreshInProgress,
-      _id,
       notificationOpen
     } = this.state;
     const containerWidth = isXs ? "260px" : "520px";
@@ -220,14 +220,14 @@ class LightController extends React.Component {
                 <Tooltip title="Settings">
                   <IconButton
                     component={Link}
-                    to={`/light/${_id}/settings`}
+                    to={`/light/${id}/settings`}
                     color="secondary"
                     onClick={null}
                   >
                     <MaterialIcon iconName="settings" />
                   </IconButton>
                 </Tooltip>
-                <DeleteLightButton lightId={_id} />
+                <DeleteLightButton lightId={id} />
               </Grid>
             </div>
           </Grid>
