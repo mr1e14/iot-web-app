@@ -171,17 +171,18 @@ const findLightsController = async () => {
 
 const addLightController = async lightData => {
   logger.info("addLightController", "invoked");
-  try {
-    await addLight(lightData);
-  } catch (err) {
-    logger.error("addLightController", "Failed to add new light", err);
-    if (err.name === "MongoError" && err.code === 11000) {
-      throw new Error(
-        `Couldn't save light (${lightData.ip}) as it already exists`
-      );
-    }
-    throw err;
-  }
+  await addLight(lightData)
+    .then(async () => await lightIdsCache.deleteByKey("lightIds"))
+    .then(async () => lightsDataCache.update(lightData.id, lightData))
+    .catch(err => {
+      logger.error("addLightController", "Failed to add new light", err);
+      if (err.name === "MongoError" && err.code === 11000) {
+        throw new Error(
+          `Couldn't save light (${lightData.ip}) as it already exists`
+        );
+      }
+      throw err;
+    });
 };
 
 module.exports = {
