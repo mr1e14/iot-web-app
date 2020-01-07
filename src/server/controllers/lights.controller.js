@@ -6,7 +6,8 @@ const {
   getLightSettingsById,
   updateLightData,
   updateLightSettings,
-  deleteLightById
+  deleteLightById,
+  addLight
 } = require("../connectors/iot-db");
 const { getCache } = require("../services/cache");
 
@@ -153,6 +154,36 @@ const deleteLightController = async ({ id }) => {
     });
 };
 
+const findLightsController = async () => {
+  logger.info("findLightsController", "invoked");
+  // TODO real API call
+  const fakeNewLights = [
+    {
+      ip: "192.168.0.87"
+    },
+    {
+      ip: "192.158.0.88",
+      name: "Kitchen"
+    }
+  ];
+  return fakeNewLights;
+};
+
+const addLightController = async lightData => {
+  logger.info("addLightController", "invoked");
+  try {
+    await addLight(lightData);
+  } catch (err) {
+    logger.error("addLightController", "Failed to add new light", err);
+    if (err.name === "MongoError" && err.code === 11000) {
+      throw new Error(
+        `Couldn't save light (${lightData.ip}) as it already exists`
+      );
+    }
+    throw err;
+  }
+};
+
 module.exports = {
   lightIdsController,
   lightDataController,
@@ -162,5 +193,7 @@ module.exports = {
   supportedColorsController,
   supportedEffectsController,
   effectsConfigurationController,
-  deleteLightController
+  deleteLightController,
+  findLightsController,
+  addLightController
 };

@@ -171,6 +171,20 @@ const deleteLightById = async id => {
   }
 };
 
+const addLight = async lightData => {
+  logger.info(`addLight(${JSON.stringify(lightData)})`, "invoked");
+
+  try {
+    await establishConnection();
+
+    await lightsDataCollection.insertOne(lightData);
+  } catch (err) {
+    client = null;
+    logger.error("addLight", "Failed to save light", err);
+    throw err;
+  }
+};
+
 const clearConnection = () => {
   client = null;
 };
@@ -183,5 +197,6 @@ module.exports = {
   updateLightData,
   updateLightSettings,
   deleteLightById,
-  clearConnection
+  clearConnection,
+  addLight
 };

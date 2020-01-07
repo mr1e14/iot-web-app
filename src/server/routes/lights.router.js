@@ -9,7 +9,9 @@ const {
   supportedColorsController,
   supportedEffectsController,
   effectsConfigurationController,
-  deleteLightController
+  deleteLightController,
+  findLightsController,
+  addLightController
 } = require("../controllers/lights.controller");
 
 const lightsRouter = () => {
@@ -120,6 +122,30 @@ const lightsRouter = () => {
           err
         );
         res.sendStatus(500);
+      });
+  });
+
+  router.get("/findLights", async (req, res) => {
+    logger.info("/api/lights/findLights", "invoked");
+    await lightIdsController()
+      .then(lights => res.send({ lights }))
+      .catch(err => {
+        logger.error(
+          "/api/lights/findLights",
+          "Failed searching for lights",
+          err
+        );
+        res.sendStatus(500);
+      });
+  });
+
+  router.post("/addLight", async (req, res) => {
+    logger.info("/api/lights/addLight", "route called");
+    await addLightController(req.body)
+      .then(() => res.sendStatus(200))
+      .catch(err => {
+        logger.error("/api/lights/addLight", "Failed to add light", err);
+        res.status(500).send({ errMsg: err.message });
       });
   });
 
