@@ -15,7 +15,8 @@ const {
   updateLightData,
   updateLightSettings,
   deleteLightById,
-  clearConnection
+  clearConnection,
+  addLight
 } = require("../iot-db");
 const mongo = require("mongodb");
 
@@ -357,6 +358,47 @@ describe("iot-db", () => {
         });
         try {
           await updateLightSettings(exampleLightSettings);
+        } catch (err) {
+          result = err;
+        }
+      });
+      it("should throw an error", () => {
+        expect(result.message).toEqual("can't connect");
+      });
+    });
+  });
+  describe("addLight", () => {
+    let result;
+    const insertOneMock = jest.fn();
+    const exampleLightData = {
+      name: "bedroom",
+      color: "red",
+      brightness: "100",
+      ip: "192.168.0.254"
+    };
+    describe("given the request is successful", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => ({
+          db: () => ({
+            collection: () => ({
+              insertOne: insertOneMock
+            })
+          })
+        }));
+        await addLight(exampleLightData);
+      });
+      it("should call the mock function with initial data", () => {
+        expect(insertOneMock).toHaveBeenCalledTimes(1);
+        expect(insertOneMock).toHaveBeenCalledWith(exampleLightData);
+      });
+    });
+    describe("given the request results in an error", () => {
+      beforeEach(async () => {
+        mongo.MongoClient.connect.mockImplementation(() => {
+          throw new Error("can't connect");
+        });
+        try {
+          await addLight(exampleLightData);
         } catch (err) {
           result = err;
         }
