@@ -13,12 +13,14 @@ jest.mock("../../services/cache", () => ({
 
 const mockUpdateLightData = jest.fn(),
   mockUpdateLightSettings = jest.fn(),
-  mockDeleteByLightId = jest.fn();
+  mockDeleteByLightId = jest.fn(),
+  mockAddLight = jest.fn();
 
 jest.mock("../../connectors/iot-db", () => ({
   updateLightData: mockUpdateLightData,
   updateLightSettings: mockUpdateLightSettings,
-  deleteLightById: mockDeleteByLightId
+  deleteLightById: mockDeleteByLightId,
+  addLight: mockAddLight
 }));
 
 describe("lights.controller", () => {
@@ -32,7 +34,12 @@ describe("lights.controller", () => {
       }
     ]
   };
-  const lightData = { id: 1, color: "red", brightness: 100 };
+  const lightData = {
+    id: 1,
+    color: "red",
+    brightness: 100,
+    ip: "192.168.0.255"
+  };
   const lightSettings = {
     transitionSpeed: 30,
     duration: 120
@@ -479,6 +486,127 @@ describe("lights.controller", () => {
       it("throws exception", () => {
         expect(result.message).toEqual("db delete failed");
       });
+    });
+  });
+  describe("addLightController", () => {
+    describe("when cache ops are successful", () => {
+      const cacheDelete = jest.fn(async () => undefined);
+      const cacheUpdate = jest.fn(async () => undefined);
+      describe("when db update is successful", () => {
+        beforeEach(async () => {
+          mockGetCache.mockImplementation(() => ({
+            update: cacheUpdate,
+            deleteByKey: cacheDelete
+          }));
+          mockAddLight.mockImplementation(async () => {
+            Promise.resolve("ok");
+          });
+          const { addLightController } = require("../lights.controller");
+          await addLightController(lightData);
+        });
+        it("calls cache update", () => {
+          expect(cacheUpdate).toHaveBeenCalledTimes(1);
+          expect(cacheUpdate).toHaveBeenCalledWith(lightData.id, lightData);
+        });
+        it("calls addLight", () => {
+          expect(mockAddLight).toHaveBeenCalledTimes(1);
+          expect(mockAddLight).toHaveBeenCalledWith(lightData);
+        });
+      });
+      describe("when db insert fails for any reason", () => {
+        let result;
+        beforeEach(async () => {
+          mockAddLight.mockImplementation(async () => {
+            throw new Error("db insert failed");
+          });
+          const { addLightController } = require("../lights.controller");
+          try {
+            await addLightController(lightData);
+          } catch (error) {
+            result = error;
+          }
+        });
+        it("throws exception", () => {
+          expect(result.message).toEqual("db insert failed");
+        });
+      });
+      describe("when db insert fails due to duplicate", () => {
+        let result;
+        beforeEach(async () => {
+          mockAddLight.mockImplementation(async () => {
+            const error = new Error();
+            error.name = "MongoError";
+            error.code = 11000;
+            throw error;
+          });
+          const { addLightController } = require("../lights.controller");
+          try {
+            await addLightController(lightData);
+          } catch (error) {
+            result = error;
+          }
+        });
+        it("throws exception", () => {
+          expect(result.message).toEqual(
+            `Couldn't save light (192.168.0.255) as it already exists`
+          );
+        });
+      });
+    });
+    describe("when cache delete fails", () => {
+      const cacheDelete = jest.fn(async () => {
+        throw new Error("cache delete failed");
+      });
+      const cacheUpdate = jest.fn(async () => undefined);
+      let result;
+      beforeEach(async () => {
+        mockGetCache.mockImplementation(() => ({
+          update: cacheUpdate,
+          deleteByKey: cacheDelete
+        }));
+        mockAddLight.mockImplementation(async () => {
+          Promise.resolve("ok");
+        });
+        const { addLightController } = require("../lights.controller");
+        try {
+          await addLightController(lightData);
+        } catch (err) {
+          result = err;
+        }
+      });
+      it("calls db insert", () => {
+        expect(mockAddLight).toHaveBeenCalledTimes(1);
+        expect(mockAddLight).toHaveBeenCalledWith(lightData);
+      });
+      it("calls cache delete", () => {
+        expect(cacheDelete).toHaveBeenCalledTimes(1);
+      });
+      it("fails to call cache update", () => {
+        expect(cacheUpdate).toHaveBeenCalledTimes(0);
+      });
+      it("throws exception", () => {
+        expect(result.message).toEqual("cache delete failed");
+      });
+    });
+  });
+  describe("findLightsController", () => {
+    // TODO currently return value is hard-coded
+    let result;
+    const testArray = [
+      {
+        ip: "192.168.0.87"
+      },
+      {
+        ip: "192.158.0.88",
+        name: "Kitchen"
+      }
+    ];
+    beforeEach(async () => {
+      const { findLightsController } = require("../lights.controller");
+      result = await findLightsController();
+    });
+    it("retrieves hard-coded array", () => {
+      expect(result).toEqual(testArray);
     });
   });
 });
